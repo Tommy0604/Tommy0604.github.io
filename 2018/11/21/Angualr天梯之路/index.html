@@ -88,7 +88,7 @@
 <meta property="og:description" content="Angular程序架构 Angualr的六大核心组成分别是：组件、路由、模块、指令、服务、依赖注入。组件，指令以及服务是用来开发功能的。而模块是用来打包分发这些功能的。路由用来控制组件的创建和销毁，从而驱使应用界面跳转切换。接下来会一一介绍Angular这些特性的用法。  版本已Angular4为主，虽然眼下Angualr7都发布了😂😂😂">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://tommy0604.github.io/images/NgRouterDetail.jpg">
-<meta property="og:updated_time" content="2018-11-27T07:54:18.240Z">
+<meta property="og:updated_time" content="2019-01-04T07:23:43.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angualr天梯之路">
 <meta name="twitter:description" content="Angular程序架构 Angualr的六大核心组成分别是：组件、路由、模块、指令、服务、依赖注入。组件，指令以及服务是用来开发功能的。而模块是用来打包分发这些功能的。路由用来控制组件的创建和销毁，从而驱使应用界面跳转切换。接下来会一一介绍Angular这些特性的用法。  版本已Angular4为主，虽然眼下Angualr7都发布了😂😂😂">
@@ -320,8 +320,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-27T15:54:18+08:00">
-                2018-11-27
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-04T15:23:43+08:00">
+                2019-01-04
               </time>
             
           </span>
@@ -434,6 +434,44 @@
 </blockquote>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注入器</span></span><br><span class="line"><span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> goodsService:GoodsServiece</span>)&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 提供器</span></span><br><span class="line">providers:[GoodsService] <span class="comment">// 1</span></span><br><span class="line">providers:[&#123;provide:GoodsService, useClass:GoodsService&#125;] <span class="comment">// 实际与 1 是一样的</span></span><br><span class="line">providers:[&#123;provide:GoodsService, useClass:AnotherGoodsService&#125;]</span><br></pre></td></tr></table></figure>
 <p>构造函数里的服务，取决于providers里的useClass。当然如果没有useClass属性，就默认匹配[]里的服务。<br>当然了这个服务不是天上掉下来的，得你自己写。😉<br>OK 就介绍这么多。</p>
+<hr>
+<h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><h2 id="Injectable"><a href="#Injectable" class="headerlink" title="@Injectable"></a>@Injectable</h2><blockquote>
+<p>如果一个 Service 里面需要依赖其他 Service，需要使用 @Injectable 装饰器进行装饰。为了不给自己找麻烦，最好所有 Service 都加上 @Injectable 装饰器，这是一种良好的编码风格。用 @angular/cli 生成的 Service 会自动在头部加上 @Injectable 装饰器，不需要操心。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里我们把http服务注入到GoodsListService里</span></span><br><span class="line"><span class="keyword">import</span> &#123; HttpClient &#125; <span class="keyword">from</span> <span class="string">'@angular/common/http'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> GoodsListService &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> hc: HttpClient</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Inject"><a href="#Inject" class="headerlink" title="@Inject"></a>@Inject</h2><blockquote>
+<p>@Injectable与@Inject之间的关系，就像汽车自动挡和手动挡的区别。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; HttpClient &#125; <span class="keyword">from</span> <span class="string">'@angular/common/http'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> GoodsListService &#123;</span><br><span class="line">    <span class="comment">// 在构造函数里手动插入</span></span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line">        @Inject(HttpClient)private hc</span><br><span class="line">        ) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用 @Inject 和用 @Injectable 最终编译出来的代码是不一样的。用 @Inject 生成的代码多了很多东西，如果出现大量这种代码，最终编译出来的文件体积会变大。</p>
+<ul>
+<li>我们可以自己手动用 @Inject 装饰器来让 TypeScript 编译器保留类型元数据，但是一般来说不需要这么干（也就是说，@Inject 装饰器一般是用不到的，除非你想做一些其他的事情）。</li>
+<li>保留类型元数据的另一个简便方法是使用 @Injectable 装饰器，@Injectable 并没有什么神奇的作用，它只是告诉 TS 编译器：请生成类型元数据，然后 Angular 在运行时就知道应该注射什么类型的对象了。</li>
+<li>这是 TypeScript 强加的一个规则，如果不加 @Injectable 装饰器，TS 编译器会把参数类型元数据丢弃。对于 Angular 中的 Service 来说，最好都加上 @Injectable</li>
+</ul>
+<hr>
+<h2 id="Self"><a href="#Self" class="headerlink" title="@Self"></a>@Self</h2><blockquote>
+<p>@Self 装饰器来提示注射器，不要向上查找，只在组件自身内部查找依赖。</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在组件里添加Self服务引用</span></span><br><span class="line"><span class="keyword">import</span> &#123; Self &#125; <span class="meta">@angular</span>/core</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">    providers:[GoodsListService] <span class="comment">// 这里需要注入服务，不然会报错</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义服务</span></span><br><span class="line"> <span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line">    @Self() public GoodsListService:GoodsListService</span><br><span class="line"> )&#123;&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Optional"><a href="#Optional" class="headerlink" title="@Optional"></a>@Optional</h2><blockquote>
+<p>用@Optional 装饰器之后，被装饰的服务就变成可选的了。它会沿着Injector Tree向上查找，如果找到了需要注入的类型，就创建实例。<br>如果没有找到，就会被赋值为null，不会报错！</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们可以把@Self 和@Optional 结合使用</span></span><br><span class="line"><span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line">    @Self() @Optional() public userListService:UserListService</span><br><span class="line">) &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>这时候不在@Component注入服务，也不会报错了😂😂😂</p>
+<hr>
+<h2 id="SkipSelf"><a href="#SkipSelf" class="headerlink" title="@SkipSelf"></a>@SkipSelf</h2><blockquote>
+<p>跳过组件自身，然后沿着 Injector Tree 向上查找</p>
+</blockquote>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们可以把@Self 和@Optional 结合使用</span></span><br><span class="line"><span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line">    @SkipSelf() @Optional() public userListService: UserListService</span><br><span class="line">) &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>这样写的含义是：</p>
+<ul>
+<li>因为使用了 @SkipSelf 装饰器，所以直接跳过 ChildComponent 组件自身，从 Injector Tree 的父层节点向上进行查找，也就是说，不管 ChildComponent 组件自己有没有配置 UserListService 都不起作用，因为跳过去了；</li>
+<li>因为使用了 @Optional 装饰器，如果在父层上面找到了指定的类型，那就创建实例；否则，直接设置为 null，不抛异常。</li>
+</ul>
+<hr>
 <h1 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h1>
       
     </div>
@@ -582,7 +620,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -593,7 +631,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -642,7 +680,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Angular程序架构"><span class="nav-number">1.</span> <span class="nav-text">Angular程序架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Angular-Router-路由"><span class="nav-number">2.</span> <span class="nav-text">Angular Router 路由</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#路由配置"><span class="nav-number">2.1.</span> <span class="nav-text">路由配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本配置"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RouteOutlet-插座"><span class="nav-number">2.1.2.</span> <span class="nav-text">RouteOutlet 插座</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RouteLink-导航"><span class="nav-number">2.1.3.</span> <span class="nav-text">RouteLink 导航</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由传参"><span class="nav-number">2.2.</span> <span class="nav-text">路由传参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由的重定向"><span class="nav-number">2.3.</span> <span class="nav-text">路由的重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子路由"><span class="nav-number">2.4.</span> <span class="nav-text">子路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辅助路由"><span class="nav-number">2.5.</span> <span class="nav-text">辅助路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由守卫"><span class="nav-number">2.6.</span> <span class="nav-text">路由守卫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resolve守卫"><span class="nav-number">2.7.</span> <span class="nav-text">Resolve守卫</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖注入"><span class="nav-number">3.</span> <span class="nav-text">依赖注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续"><span class="nav-number">4.</span> <span class="nav-text">未完待续</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Angular程序架构"><span class="nav-number">1.</span> <span class="nav-text">Angular程序架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Angular-Router-路由"><span class="nav-number">2.</span> <span class="nav-text">Angular Router 路由</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#路由配置"><span class="nav-number">2.1.</span> <span class="nav-text">路由配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本配置"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RouteOutlet-插座"><span class="nav-number">2.1.2.</span> <span class="nav-text">RouteOutlet 插座</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RouteLink-导航"><span class="nav-number">2.1.3.</span> <span class="nav-text">RouteLink 导航</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由传参"><span class="nav-number">2.2.</span> <span class="nav-text">路由传参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由的重定向"><span class="nav-number">2.3.</span> <span class="nav-text">路由的重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子路由"><span class="nav-number">2.4.</span> <span class="nav-text">子路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#辅助路由"><span class="nav-number">2.5.</span> <span class="nav-text">辅助路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由守卫"><span class="nav-number">2.6.</span> <span class="nav-text">路由守卫</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resolve守卫"><span class="nav-number">2.7.</span> <span class="nav-text">Resolve守卫</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖注入"><span class="nav-number">3.</span> <span class="nav-text">依赖注入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰器"><span class="nav-number">4.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Injectable"><span class="nav-number">4.1.</span> <span class="nav-text">@Injectable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inject"><span class="nav-number">4.2.</span> <span class="nav-text">@Inject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Self"><span class="nav-number">4.3.</span> <span class="nav-text">@Self</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optional"><span class="nav-number">4.4.</span> <span class="nav-text">@Optional</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SkipSelf"><span class="nav-number">4.5.</span> <span class="nav-text">@SkipSelf</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续"><span class="nav-number">5.</span> <span class="nav-text">未完待续</span></a></li></ol></div>
             
 
           </div>
@@ -662,7 +700,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
