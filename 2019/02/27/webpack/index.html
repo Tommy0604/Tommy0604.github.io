@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="CSS3," />
+  <meta name="keywords" content="Webpack," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="圆角效果 border-radiusborder-radius是向元素添加圆角边框。 12border-radius: 10px; /* 所有角都使用半径为10px的圆角 */ border-radius: 5px 4px 3px 2px; /* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */ 边框阴影 box-shadowbox-shadow是向盒子添加阴影。支持添加一个或者多个。">
-<meta name="keywords" content="CSS3">
+<meta name="description" content="webpack学习笔记 这里用来记录学习webpack的笔记">
+<meta name="keywords" content="Webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS3边框">
-<meta property="og:url" content="https://tommy0604.github.io/2018/11/15/CSS相关/index.html">
+<meta property="og:title" content="webpack">
+<meta property="og:url" content="https://tommy0604.github.io/2019/02/27/webpack/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
-<meta property="og:description" content="圆角效果 border-radiusborder-radius是向元素添加圆角边框。 12border-radius: 10px; /* 所有角都使用半径为10px的圆角 */ border-radius: 5px 4px 3px 2px; /* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */ 边框阴影 box-shadowbox-shadow是向盒子添加阴影。支持添加一个或者多个。">
+<meta property="og:description" content="webpack学习笔记 这里用来记录学习webpack的笔记">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-23T02:36:21.454Z">
+<meta property="og:updated_time" content="2019-02-27T11:49:49.236Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS3边框">
-<meta name="twitter:description" content="圆角效果 border-radiusborder-radius是向元素添加圆角边框。 12border-radius: 10px; /* 所有角都使用半径为10px的圆角 */ border-radius: 5px 4px 3px 2px; /* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */ 边框阴影 box-shadowbox-shadow是向盒子添加阴影。支持添加一个或者多个。">
+<meta name="twitter:title" content="webpack">
+<meta name="twitter:description" content="webpack学习笔记 这里用来记录学习webpack的笔记">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/2018/11/15/CSS相关/"/>
+  <link rel="canonical" href="https://tommy0604.github.io/2019/02/27/webpack/"/>
 
 
 
 
 
-  <title>CSS3边框 | Tommy's blog</title>
+  <title>webpack | Tommy's blog</title>
   
 
 
@@ -273,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2018/11/15/CSS相关/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2019/02/27/webpack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tommy0604">
@@ -290,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSS3边框</h1>
+          <h1 class="post-title" itemprop="name headline">webpack</h1>
         
 
         <div class="post-meta">
@@ -302,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T23:42:36+08:00">
-                2018-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-27T19:43:22+08:00">
+                2019-02-27
               </time>
             
 
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-23T10:36:21+08:00">
-                2018-11-23
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-27T19:49:49+08:00">
+                2019-02-27
               </time>
             
           </span>
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS3/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS3</span>
+                  <a href="/categories/Webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">Webpack</span>
                   </a>
                 </span>
 
@@ -374,14 +374,25 @@
       
 
       
-        <h1 id="圆角效果-border-radius"><a href="#圆角效果-border-radius" class="headerlink" title="圆角效果 border-radius"></a>圆角效果 border-radius</h1><p>border-radius是向元素添加圆角边框。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border-radius</span>: 10<span class="selector-tag">px</span>; <span class="comment">/* 所有角都使用半径为10px的圆角 */</span> </span><br><span class="line"><span class="selector-tag">border-radius</span>: 5<span class="selector-tag">px</span> 4<span class="selector-tag">px</span> 3<span class="selector-tag">px</span> 2<span class="selector-tag">px</span>; <span class="comment">/* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */</span></span><br></pre></td></tr></table></figure>
-<h1 id="边框阴影-box-shadow"><a href="#边框阴影-box-shadow" class="headerlink" title="边框阴影 box-shadow"></a>边框阴影 box-shadow</h1><p>box-shadow是向盒子添加阴影。支持添加一个或者多个。<br><strong>语法：box-shadow: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展半径] [阴影颜色] [投影方式];</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">box-shadow1</span>: 4<span class="selector-tag">px</span> 2<span class="selector-tag">px</span> 6<span class="selector-tag">px</span> <span class="selector-id">#333333</span>;</span><br><span class="line"><span class="selector-tag">box-shadow2</span>: 4<span class="selector-tag">px</span> 2<span class="selector-tag">px</span> 6<span class="selector-tag">px</span> <span class="selector-id">#333333</span> <span class="selector-tag">inset</span>;</span><br><span class="line"><span class="selector-tag">box-shadow3</span>: 4<span class="selector-tag">px</span> 2<span class="selector-tag">px</span> 6<span class="selector-tag">px</span> <span class="selector-id">#f00</span>, <span class="selector-tag">-4px</span> <span class="selector-tag">-2px</span> 6<span class="selector-tag">px</span> <span class="selector-id">#000</span>,0<span class="selector-tag">px</span> 0<span class="selector-tag">px</span> 12<span class="selector-tag">px</span> 5<span class="selector-tag">px</span> <span class="selector-id">#33CC00</span> <span class="selector-tag">inset</span>;</span><br></pre></td></tr></table></figure>
+        <h1 id="webpack学习笔记"><a href="#webpack学习笔记" class="headerlink" title="webpack学习笔记"></a>webpack学习笔记</h1><blockquote>
+<p>这里用来记录学习webpack的笔记</p>
+</blockquote>
 <a id="more"></a>
-<h1 id="为边框应用图片-border-image"><a href="#为边框应用图片-border-image" class="headerlink" title="为边框应用图片 border-image"></a>为边框应用图片 border-image</h1><p>顾名思义就是为边框应用背景图片，它和我们常用的background属性比较相似。<br><strong>语法：border-image:url(图片路径) 70 repeat;<br>70是切图宽度(也分上右下左) 图片延伸方式:repeat重复、round平铺、stretch拉伸</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border-image</span><span class="selector-pseudo">:url(borderimg.png)</span> 70 <span class="selector-tag">repeat</span></span><br></pre></td></tr></table></figure>
-<h1 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h1>
+<hr>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>打开PowerShell运行脚本</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 全局安装webpack</span><br><span class="line">npm webpack install -g</span><br><span class="line">// 查看版本</span><br><span class="line">webpack -v</span><br></pre></td></tr></table></figure>
+<h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><p>Entry是代码的入口也是打包的入口，Entry是单个的也可以有多个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:[<span class="string">'index.js'</span>, <span class="string">'product.js'</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:&#123;</span><br><span class="line">        index: index.js,</span><br><span class="line">        vendor: vendor.js</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Output是代码打包成的文件，Output是单个的也可以有多个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:<span class="string">'index.js'</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: <span class="string">'index.min.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 多个entry对应的output</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:&#123;</span><br><span class="line">        index: index.js,</span><br><span class="line">        vendor: vendor.js</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: <span class="string">'[name].min.[hash:5].js'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Loader是处理文件的; 编译相关的loader有babel-loaber，ts-loader（js、ts）、样式相关的loader有style-loader、css-loader、less-loader、postcss-loader，还文件的loader有file-loader、url-loader。</p>
+</blockquote>
+<blockquote>
+<p>Plugins：可以参与打包整个过程，打包优化和压缩，配置编译的变量。。。</p>
+</blockquote>
+<p>// 3-2</p>
+
       
     </div>
     
@@ -401,7 +412,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/2018/11/15/CSS相关/" title="CSS3边框">https://tommy0604.github.io/2018/11/15/CSS相关/</a>
+    <a href="https://tommy0604.github.io/2019/02/27/webpack/" title="webpack">https://tommy0604.github.io/2019/02/27/webpack/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -416,7 +427,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CSS3/" rel="tag"># CSS3</a>
+            <a href="/tags/Webpack/" rel="tag"># Webpack</a>
           
         </div>
       
@@ -429,8 +440,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/03/http/" rel="next" title="HTTP">
-                <i class="fa fa-chevron-left"></i> HTTP
+              <a href="/2019/01/15/ngFor遍历input标签数据显示问题/" rel="next" title="ngFor遍历input标签数据显示问题">
+                <i class="fa fa-chevron-left"></i> ngFor遍历input标签数据显示问题
               </a>
             
           </div>
@@ -438,10 +449,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/21/Angualr天梯之路/" rel="prev" title="Angualr天梯之路">
-                Angualr天梯之路 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -593,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#圆角效果-border-radius"><span class="nav-number">1.</span> <span class="nav-text">圆角效果 border-radius</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#边框阴影-box-shadow"><span class="nav-number">2.</span> <span class="nav-text">边框阴影 box-shadow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为边框应用图片-border-image"><span class="nav-number">3.</span> <span class="nav-text">为边框应用图片 border-image</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续"><span class="nav-number">4.</span> <span class="nav-text">未完待续</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack学习笔记"><span class="nav-number">1.</span> <span class="nav-text">webpack学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心概念"><span class="nav-number">1.2.</span> <span class="nav-text">核心概念</span></a></li></ol></li></ol></div>
             
 
           </div>
