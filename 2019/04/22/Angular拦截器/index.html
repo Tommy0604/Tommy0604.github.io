@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Angualr,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="场景是在后端抛出异常的情况下，导致用户无法正常使用平台进行操作，并没有明确提示（控制台报错）。所以产品一直以为是前端的问题。pmsb  为了避免背黑锅，所以做了一个拦截器，用来拦截后端异常，弹窗提示。">
+<meta name="keywords" content="Angualr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular拦截器">
+<meta property="og:url" content="https://tommy0604.github.io/2019/04/22/Angular拦截器/index.html">
+<meta property="og:site_name" content="Tommy&#39;s blog">
+<meta property="og:description" content="场景是在后端抛出异常的情况下，导致用户无法正常使用平台进行操作，并没有明确提示（控制台报错）。所以产品一直以为是前端的问题。pmsb  为了避免背黑锅，所以做了一个拦截器，用来拦截后端异常，弹窗提示。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-22T15:07:43.424Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular拦截器">
+<meta name="twitter:description" content="场景是在后端抛出异常的情况下，导致用户无法正常使用平台进行操作，并没有明确提示（控制台报错）。所以产品一直以为是前端的问题。pmsb  为了避免背黑锅，所以做了一个拦截器，用来拦截后端异常，弹窗提示。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://tommy0604.github.io/2019/04/22/Angular拦截器/">
+
+
+
+
+
+  <title>Angular拦截器 | Tommy's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tommy's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">码农，另类程序猿</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2019/04/22/Angular拦截器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tommy0604">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/malko.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Angular拦截器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T22:53:18+08:00">
+                2019-04-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-22T23:07:43+08:00">
+                2019-04-22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Angualr/" itemprop="url" rel="index">
+                    <span itemprop="name">Angualr</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>场景是在后端抛出异常的情况下，导致用户无法正常使用平台进行操作，并没有明确提示（控制台报错）。所以产品一直以为是前端的问题。pmsb</p>
+</blockquote>
+<p>为了避免背黑锅，所以做了一个拦截器，用来拦截后端异常，弹窗提示。</p>
+<a id="more"></a>
+<p>这里以Angular作为例子，AntDesign作UI组件库</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> injector: Injector, <span class="keyword">private</span> not: NzNotificationService</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  readonly HTTP_STATUS = &#123;</span><br><span class="line">    <span class="number">400</span>: <span class="string">`错误请求`</span>,</span><br><span class="line">    <span class="number">401</span>: <span class="string">`未授权`</span>,</span><br><span class="line">    <span class="number">403</span>: <span class="string">`禁止`</span>,</span><br><span class="line">    <span class="number">404</span>: <span class="string">`未找到`</span>,</span><br><span class="line">    <span class="number">405</span>: <span class="string">`方法禁用`</span>,</span><br><span class="line">    <span class="number">406</span>: <span class="string">`不接受`</span>,</span><br><span class="line">    <span class="number">407</span>: <span class="string">`需要代理授权`</span>,</span><br><span class="line">    <span class="number">408</span>: <span class="string">`请求超时`</span>,</span><br><span class="line">    <span class="number">409</span>: <span class="string">`冲突`</span>,</span><br><span class="line">    <span class="number">410</span>: <span class="string">`已删除`</span>,</span><br><span class="line">    <span class="number">500</span>: <span class="string">`服务器内部错误`</span>,</span><br><span class="line">    <span class="number">501</span>: <span class="string">`尚未实施`</span>,</span><br><span class="line">    <span class="number">502</span>: <span class="string">`错误网关`</span>,</span><br><span class="line">    <span class="number">503</span>: <span class="string">`服务不可用`</span>,</span><br><span class="line">    <span class="number">504</span>: <span class="string">`网关超时`</span>,</span><br><span class="line">    <span class="number">505</span>: <span class="string">`HTTP 版本不受支持`</span></span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> handleData(</span><br><span class="line">    event: HttpResponse&lt;<span class="built_in">any</span>&gt; | HttpErrorResponse</span><br><span class="line">  ): Observable&lt;<span class="built_in">any</span>&gt; &#123;</span><br><span class="line">    <span class="comment">// 业务处理：一些通用操作</span></span><br><span class="line">    <span class="keyword">switch</span> (event.status) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">200</span>:</span><br><span class="line">        <span class="comment">// 业务层级错误处理，以下是假定restful有一套统一输出格式（指不管成功与否都有相应的数据格式）情况下进行处理</span></span><br><span class="line">        <span class="comment">// 响应内容：body: &#123; code: "0", message: "联络记录查询成功！", result: Array(3) &#125;</span></span><br><span class="line">        <span class="keyword">if</span> (event <span class="keyword">instanceof</span> HttpResponse) &#123;</span><br><span class="line">          <span class="keyword">if</span> (</span><br><span class="line">            !(</span><br><span class="line">              event.headers.has(<span class="string">'Content-Type'</span>) &amp;&amp;</span><br><span class="line">              event.headers.get(<span class="string">'Content-Type'</span>).includes(<span class="string">'application/json'</span>)</span><br><span class="line">            )</span><br><span class="line">          ) &#123;</span><br><span class="line">            <span class="comment">// 非 json 数据全部返回不做处理</span></span><br><span class="line">            <span class="keyword">return</span> of(event);</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">const</span> body: <span class="built_in">any</span> = event.body;</span><br><span class="line">          <span class="comment">// Arraybuffer 这种二进制流才有 byteLength 属性</span></span><br><span class="line">          <span class="keyword">if</span> (body.byteLength) &#123;</span><br><span class="line">            <span class="comment">/**  ArrayBuffer =&gt; Blob =&gt; string || ArrayBuffer =&gt; string =&gt; json*/</span></span><br><span class="line">            <span class="keyword">let</span> blob = <span class="keyword">new</span> Blob([body]); <span class="comment">// 注意必须包裹[]</span></span><br><span class="line">            <span class="comment">//将Blob 对象转换成字符串</span></span><br><span class="line">            <span class="keyword">let</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">            reader.readAsText(blob, <span class="string">'utf-8'</span>);</span><br><span class="line">            reader.onload = <span class="function">(<span class="params">e: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">              <span class="keyword">let</span> res = <span class="built_in">JSON</span>.parse(reader.result.toString());</span><br><span class="line">              <span class="keyword">if</span> (res &amp;&amp; res.message) &#123;</span><br><span class="line">                <span class="keyword">this</span>.not.remove();</span><br><span class="line">                <span class="keyword">this</span>.not.error(<span class="string">'操作失败'</span>, <span class="string">`<span class="subst">$&#123;res.message&#125;</span>`</span>);</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.not.remove();</span><br><span class="line">                <span class="keyword">this</span>.not.error(<span class="string">'操作失败'</span>, <span class="string">`鉴权失败`</span>);</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">            <span class="keyword">return</span> throwError(<span class="string">``</span>);</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span> (body &amp;&amp; body.code) &#123;</span><br><span class="line">            <span class="keyword">if</span> (body.code !== <span class="number">0</span> &amp;&amp; body.code !== <span class="string">'0'</span>) &#123;</span><br><span class="line">              <span class="comment">// 业务逻辑错误</span></span><br><span class="line">              <span class="keyword">if</span> (body.message) &#123;</span><br><span class="line">                <span class="keyword">this</span>.not.remove();</span><br><span class="line">                <span class="keyword">this</span>.not.error(<span class="string">'操作失败'</span>, <span class="string">`<span class="subst">$&#123;body.message&#125;</span>`</span>);</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.not.remove();</span><br><span class="line">                <span class="keyword">this</span>.not.error(<span class="string">'操作失败'</span>, <span class="string">'服务器内部发生错误'</span>);</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="comment">// 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：</span></span><br><span class="line">              <span class="comment">// this.http.get('/').subscribe() 并不会触发</span></span><br><span class="line">              <span class="keyword">return</span> throwError(<span class="string">``</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="comment">// return of(event);</span></span><br><span class="line">              <span class="comment">// 重新修改 `body` 内容为 `result` 内容，对于绝大多数场景已经无须再关心业务状态码</span></span><br><span class="line">              <span class="keyword">return</span> of(</span><br><span class="line">                <span class="keyword">new</span> HttpResponse(<span class="built_in">Object</span>.assign(event, &#123; body: body.result &#125;))</span><br><span class="line">              );</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// 保持完整的格式</span></span><br><span class="line">          <span class="keyword">return</span> of(event);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> of(event);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">if</span> (event.status &lt; <span class="number">400</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> of(event);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (event <span class="keyword">instanceof</span> HttpErrorResponse) &#123;</span><br><span class="line">          <span class="keyword">if</span> (event.error) &#123;</span><br><span class="line">            <span class="keyword">this</span>.msg.remove();</span><br><span class="line">            <span class="keyword">this</span>.msg.error(<span class="string">`<span class="subst">$&#123;event.error.message&#125;</span>`</span>, &#123;</span><br><span class="line">              nzDuration: <span class="number">5000</span></span><br><span class="line">            &#125;);</span><br><span class="line">          &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.HTTP_STATUS[event.status]) &#123;</span><br><span class="line">            <span class="keyword">this</span>.msg.remove();</span><br><span class="line">            <span class="keyword">this</span>.msg.error(<span class="string">`<span class="subst">$&#123;this.HTTP_STATUS[event.status]&#125;</span>`</span>, &#123;</span><br><span class="line">              nzDuration: <span class="number">5000</span></span><br><span class="line">            &#125;);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.msg.remove();</span><br><span class="line">            <span class="keyword">this</span>.msg.error(<span class="string">`<span class="subst">$&#123;event.status&#125;</span>: <span class="subst">$&#123;event.message&#125;</span>`</span>, &#123;</span><br><span class="line">              nzDuration: <span class="number">5000</span></span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> of(event);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> of(event);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>在拦截之前，还可以把路由做下判断，免得因为路径不对出现问题。这样就更完美了！<br>配好之后，再也不用背黑锅了，嘻嘻！<br>这个例子仅作为参考，其他框架稍有不同。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Tommy0604
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tommy0604.github.io/2019/04/22/Angular拦截器/" title="Angular拦截器">https://tommy0604.github.io/2019/04/22/Angular拦截器/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Angualr/" rel="tag"># Angualr</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/03/JS中的this/" rel="next" title="JS中的this">
+                <i class="fa fa-chevron-left"></i> JS中的this
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/malko.jpg" alt="Tommy0604">
+            
+              <p class="site-author-name" itemprop="name">Tommy0604</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Tommy0604" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5386094937" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tommy0604</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
