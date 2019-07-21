@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -83,7 +90,7 @@
 <meta name="keywords" content="Angualr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="stopPropagation事件">
-<meta property="og:url" content="https://tommy0604.github.io/2019/02/27/stopPropagation事件/index.html">
+<meta property="og:url" content="https://tommy0604.github.io/stopPropagation事件/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
 <meta property="og:description" content="最近在写业务时出了一个问题场景：需要在Table上添加行点击事件，Table的某一列中有多个按钮，绑定了click事件。问题是在点击按钮触发click事件的同时，也出发了行点击事件。">
 <meta property="og:locale" content="zh-Hans">
@@ -98,9 +105,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -120,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/2019/02/27/stopPropagation事件/">
+  <link rel="canonical" href="https://tommy0604.github.io/stopPropagation事件/">
 
 
 
@@ -145,7 +152,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -161,7 +168,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">码农，另类程序猿</p>
+        <h1 class="site-subtitle" itemprop="description">developer、popper、喜新恋旧</h1>
       
   </div>
 
@@ -230,16 +237,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -273,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2019/02/27/stopPropagation事件/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/stopPropagation事件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tommy0604">
@@ -290,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">stopPropagation事件</h1>
+          <h2 class="post-title" itemprop="name headline">stopPropagation事件</h2>
         
 
         <div class="post-meta">
@@ -408,7 +405,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/2019/02/27/stopPropagation事件/" title="stopPropagation事件">https://tommy0604.github.io/2019/02/27/stopPropagation事件/</a>
+    <a href="https://tommy0604.github.io/stopPropagation事件/" title="stopPropagation事件">https://tommy0604.github.io/stopPropagation事件/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -436,7 +433,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/27/webpack/" rel="next" title="webpack学习笔记">
+              <a href="/webpack/" rel="next" title="webpack学习笔记">
                 <i class="fa fa-chevron-left"></i> webpack学习笔记
               </a>
             
@@ -446,7 +443,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/03/JS中的this/" rel="prev" title="JS中的this">
+              <a href="/JS中的this/" rel="prev" title="JS中的this">
                 JS中的this <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -529,7 +526,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -540,7 +537,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -582,6 +579,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -607,7 +611,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -644,13 +648,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
     
 
     
@@ -728,6 +725,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

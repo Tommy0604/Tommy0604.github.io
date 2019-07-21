@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -68,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Angualr指令,">
+  <meta name="keywords" content="CSS3,">
 
 
 
@@ -79,18 +86,18 @@
 
 
 
-<meta name="description" content="场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。">
-<meta name="keywords" content="Angualr指令">
+<meta name="description" content="圆角效果 border-radiusborder-radius是向元素添加圆角边框。 12border-radius: 10px; /* 所有角都使用半径为10px的圆角 */ border-radius: 5px 4px 3px 2px; /* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */ 边框阴影 box-shadowbox-shadow是向盒子添加阴影。支持添加一个或者多个。">
+<meta name="keywords" content="CSS3">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ngFor遍历input标签数据显示问题">
-<meta property="og:url" content="https://tommy0604.github.io/2019/01/15/ngFor遍历input标签数据显示问题/index.html">
+<meta property="og:title" content="CSS3边框">
+<meta property="og:url" content="https://tommy0604.github.io/CSS相关/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
-<meta property="og:description" content="场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。">
+<meta property="og:description" content="圆角效果 border-radiusborder-radius是向元素添加圆角边框。 12border-radius: 10px; /* 所有角都使用半径为10px的圆角 */ border-radius: 5px 4px 3px 2px; /* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */ 边框阴影 box-shadowbox-shadow是向盒子添加阴影。支持添加一个或者多个。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-27T12:20:33.565Z">
+<meta property="og:updated_time" content="2018-11-23T02:36:21.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ngFor遍历input标签数据显示问题">
-<meta name="twitter:description" content="场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。">
+<meta name="twitter:title" content="CSS3边框">
+<meta name="twitter:description" content="圆角效果 border-radiusborder-radius是向元素添加圆角边框。 12border-radius: 10px; /* 所有角都使用半径为10px的圆角 */ border-radius: 5px 4px 3px 2px; /* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */ 边框阴影 box-shadowbox-shadow是向盒子添加阴影。支持添加一个或者多个。">
 
 
 
@@ -98,9 +105,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -120,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/2019/01/15/ngFor遍历input标签数据显示问题/">
+  <link rel="canonical" href="https://tommy0604.github.io/CSS相关/">
 
 
 
 
 
-  <title>ngFor遍历input标签数据显示问题 | Tommy's blog</title>
+  <title>CSS3边框 | Tommy's blog</title>
   
 
 
@@ -145,7 +152,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -161,7 +168,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">码农，另类程序猿</p>
+        <h1 class="site-subtitle" itemprop="description">developer、popper、喜新恋旧</h1>
       
   </div>
 
@@ -230,16 +237,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -273,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2019/01/15/ngFor遍历input标签数据显示问题/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/CSS相关/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tommy0604">
@@ -290,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ngFor遍历input标签数据显示问题</h1>
+          <h2 class="post-title" itemprop="name headline">CSS3边框</h2>
         
 
         <div class="post-meta">
@@ -302,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T10:56:11+08:00">
-                2019-01-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T23:42:36+08:00">
+                2018-11-15
               </time>
             
 
@@ -318,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-27T20:20:33+08:00">
-                2019-02-27
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-23T10:36:21+08:00">
+                2018-11-23
               </time>
             
           </span>
@@ -337,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Angualr/" itemprop="url" rel="index">
-                    <span itemprop="name">Angualr</span>
+                  <a href="/categories/CSS3/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS3</span>
                   </a>
                 </span>
 
@@ -379,16 +376,14 @@
       
 
       
-        <blockquote>
-<p>场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。</p>
-</blockquote>
+        <h1 id="圆角效果-border-radius"><a href="#圆角效果-border-radius" class="headerlink" title="圆角效果 border-radius"></a>圆角效果 border-radius</h1><p>border-radius是向元素添加圆角边框。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border-radius</span>: 10<span class="selector-tag">px</span>; <span class="comment">/* 所有角都使用半径为10px的圆角 */</span> </span><br><span class="line"><span class="selector-tag">border-radius</span>: 5<span class="selector-tag">px</span> 4<span class="selector-tag">px</span> 3<span class="selector-tag">px</span> 2<span class="selector-tag">px</span>; <span class="comment">/* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */</span></span><br></pre></td></tr></table></figure>
+<h1 id="边框阴影-box-shadow"><a href="#边框阴影-box-shadow" class="headerlink" title="边框阴影 box-shadow"></a>边框阴影 box-shadow</h1><p>box-shadow是向盒子添加阴影。支持添加一个或者多个。<br><strong>语法：box-shadow: X轴偏移量 Y轴偏移量 [阴影模糊半径] [阴影扩展半径] [阴影颜色] [投影方式];</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">box-shadow1</span>: 4<span class="selector-tag">px</span> 2<span class="selector-tag">px</span> 6<span class="selector-tag">px</span> <span class="selector-id">#333333</span>;</span><br><span class="line"><span class="selector-tag">box-shadow2</span>: 4<span class="selector-tag">px</span> 2<span class="selector-tag">px</span> 6<span class="selector-tag">px</span> <span class="selector-id">#333333</span> <span class="selector-tag">inset</span>;</span><br><span class="line"><span class="selector-tag">box-shadow3</span>: 4<span class="selector-tag">px</span> 2<span class="selector-tag">px</span> 6<span class="selector-tag">px</span> <span class="selector-id">#f00</span>, <span class="selector-tag">-4px</span> <span class="selector-tag">-2px</span> 6<span class="selector-tag">px</span> <span class="selector-id">#000</span>,0<span class="selector-tag">px</span> 0<span class="selector-tag">px</span> 12<span class="selector-tag">px</span> 5<span class="selector-tag">px</span> <span class="selector-id">#33CC00</span> <span class="selector-tag">inset</span>;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>可能没有陈述明白，直接上代码和图。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngFor</span>=<span class="string">"let t of tactics; trackBy: trackByTactics; let i=index"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nz-input-group</span> <span class="attr">nzCompact</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"monthValue"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"12"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.monthValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%; border-left: 0px;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"discountValue"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"10"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.discountValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">nz-button</span> <span class="attr">nzGhost</span>=<span class="string">"true"</span> <span class="attr">nzType</span>=<span class="string">"primary"</span> (<span class="attr">click</span>)=<span class="string">"removeTactic(t)"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nz-input-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">nz-button</span> <span class="attr">nzGhost</span>=<span class="string">"true"</span> <span class="attr">nzType</span>=<span class="string">"primary"</span> (<span class="attr">click</span>)=<span class="string">"addTactic()"</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>。。。查了下资料Angular表单中使用ngModel需要注意,必须带有name属性或者使用 [ngModelOptions]=”{standalone: true}”，二选一。看到“必须带有name属性”就在想会不会跟name属性有关，上面html里的input标签name属性是写死的，于是我稍微改了下。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">input</span> [<span class="attr">name</span>]=<span class="string">"'monthValue' + i"</span>  <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"12"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.monthValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%; border-left: 0px;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> [<span class="attr">name</span>]=<span class="string">"'discountValue' + i"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"10"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.discountValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%;"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>i是ngFor里遍历项的索引，在用值绑定这样input的name属性就是动态的了。<br>试了下确实可以，23333<br>(这问题卡了90min。。。😑)</p>
-
+<h1 id="为边框应用图片-border-image"><a href="#为边框应用图片-border-image" class="headerlink" title="为边框应用图片 border-image"></a>为边框应用图片 border-image</h1><p>顾名思义就是为边框应用背景图片，它和我们常用的background属性比较相似。<br><strong>语法：border-image:url(图片路径) 70 repeat;<br>70是切图宽度(也分上右下左) 图片延伸方式:repeat重复、round平铺、stretch拉伸</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">border-image</span><span class="selector-pseudo">:url(borderimg.png)</span> 70 <span class="selector-tag">repeat</span></span><br></pre></td></tr></table></figure>
+<h1 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h1>
       
     </div>
     
@@ -408,7 +403,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/2019/01/15/ngFor遍历input标签数据显示问题/" title="ngFor遍历input标签数据显示问题">https://tommy0604.github.io/2019/01/15/ngFor遍历input标签数据显示问题/</a>
+    <a href="https://tommy0604.github.io/CSS相关/" title="CSS3边框">https://tommy0604.github.io/CSS相关/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -423,7 +418,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Angualr指令/" rel="tag"># Angualr指令</a>
+            <a href="/tags/CSS3/" rel="tag"># CSS3</a>
           
         </div>
       
@@ -436,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/21/Angualr天梯之路/" rel="next" title="Angualr天梯之路">
-                <i class="fa fa-chevron-left"></i> Angualr天梯之路
+              <a href="/http/" rel="next" title="HTTP">
+                <i class="fa fa-chevron-left"></i> HTTP
               </a>
             
           </div>
@@ -446,8 +441,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/27/webpack/" rel="prev" title="webpack学习笔记">
-                webpack学习笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/Angualr天梯之路/" rel="prev" title="Angualr天梯之路">
+                Angualr天梯之路 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -500,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -529,7 +533,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -540,7 +544,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -580,7 +584,30 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
 
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#圆角效果-border-radius"><span class="nav-number">1.</span> <span class="nav-text">圆角效果 border-radius</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#边框阴影-box-shadow"><span class="nav-number">2.</span> <span class="nav-text">边框阴影 box-shadow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为边框应用图片-border-image"><span class="nav-number">3.</span> <span class="nav-text">为边框应用图片 border-image</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续"><span class="nav-number">4.</span> <span class="nav-text">未完待续</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -607,7 +634,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -644,13 +671,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
     
 
     
@@ -728,6 +748,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

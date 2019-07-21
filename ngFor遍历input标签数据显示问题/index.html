@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -68,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="JS,">
+  <meta name="keywords" content="Angualr指令,">
 
 
 
@@ -79,18 +86,18 @@
 
 
 
-<meta name="description" content="this在JS中是个常见且重要的，谁能认领了它，就决定了this的指向（谁认领了它，当了它的爹，就决定了它的一生）。">
-<meta name="keywords" content="JS">
+<meta name="description" content="场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。">
+<meta name="keywords" content="Angualr指令">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS中的this">
-<meta property="og:url" content="https://tommy0604.github.io/2019/04/03/JS中的this/index.html">
+<meta property="og:title" content="ngFor遍历input标签数据显示问题">
+<meta property="og:url" content="https://tommy0604.github.io/ngFor遍历input标签数据显示问题/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
-<meta property="og:description" content="this在JS中是个常见且重要的，谁能认领了它，就决定了this的指向（谁认领了它，当了它的爹，就决定了它的一生）。">
+<meta property="og:description" content="场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-09T14:19:18.949Z">
+<meta property="og:updated_time" content="2019-02-27T12:20:33.565Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS中的this">
-<meta name="twitter:description" content="this在JS中是个常见且重要的，谁能认领了它，就决定了this的指向（谁认领了它，当了它的爹，就决定了它的一生）。">
+<meta name="twitter:title" content="ngFor遍历input标签数据显示问题">
+<meta name="twitter:description" content="场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。">
 
 
 
@@ -98,9 +105,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -120,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/2019/04/03/JS中的this/">
+  <link rel="canonical" href="https://tommy0604.github.io/ngFor遍历input标签数据显示问题/">
 
 
 
 
 
-  <title>JS中的this | Tommy's blog</title>
+  <title>ngFor遍历input标签数据显示问题 | Tommy's blog</title>
   
 
 
@@ -145,7 +152,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -161,7 +168,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">码农，另类程序猿</p>
+        <h1 class="site-subtitle" itemprop="description">developer、popper、喜新恋旧</h1>
       
   </div>
 
@@ -230,16 +237,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -273,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2019/04/03/JS中的this/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/ngFor遍历input标签数据显示问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tommy0604">
@@ -290,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JS中的this</h1>
+          <h2 class="post-title" itemprop="name headline">ngFor遍历input标签数据显示问题</h2>
         
 
         <div class="post-meta">
@@ -302,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-03T22:38:30+08:00">
-                2019-04-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T10:56:11+08:00">
+                2019-01-15
               </time>
             
 
@@ -318,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-09T22:19:18+08:00">
-                2019-04-09
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-27T20:20:33+08:00">
+                2019-02-27
               </time>
             
           </span>
@@ -337,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index">
-                    <span itemprop="name">JS</span>
+                  <a href="/categories/Angualr/" itemprop="url" rel="index">
+                    <span itemprop="name">Angualr</span>
                   </a>
                 </span>
 
@@ -379,10 +376,15 @@
       
 
       
-        <p>this在JS中是个常见且重要的，谁能认领了它，就决定了this的指向<br>（谁认领了它，当了它的爹，就决定了它的一生）。</p>
+        <blockquote>
+<p>场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。</p>
+</blockquote>
 <a id="more"></a>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.num);</span><br><span class="line"><span class="built_in">window</span>.num = <span class="number">20</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.num);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span> === <span class="built_in">window</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.num++);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">     num : <span class="number">30</span>,</span><br><span class="line">     B : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="keyword">this</span>.num++);</span><br><span class="line">         <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>.num++);</span><br><span class="line">      &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> A();</span><br><span class="line"> <span class="keyword">let</span> b = obj.B;</span><br><span class="line"> b()();</span><br><span class="line"> obj.B();</span><br><span class="line"> b.apply(obj);</span><br><span class="line"> <span class="keyword">new</span> A();</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="built_in">window</span>.num);</span><br></pre></td></tr></table></figure>
-<p>输出结果：<br>第2行： 找不到window.num =&gt; undefined<br>第4行： 指向window.num =&gt; 20<br>第5行： 指向window.num =&gt; true<br>第16行： 先输出，后自加1 =&gt; 20<br>第17行： 为什么没有绑定到obj.num：30?<br>b = obj.B 赋值等其他的操作，将引用类型作为一个整体丢弃，只获取 obj.b（一个函数）的值进行传递。<br>第18行： 调用函数B，先输出21 再输出22<br>为了让 obj.B() 有效，JavaScript 用一个技巧 —— 这个 ‘.’ 点返回的不是一个函数, 而是一种特殊的[引用类型]的值<br>(<a href="https://tc39.github.io/ecma262#sec-reference-specification-type" target="_blank" rel="noopener">https://tc39.github.io/ecma262#sec-reference-specification-type</a>)<br>当在引用类型上用 () 调用时，它们接收到这个对象和它的方法的所有信息，并且设定正确的 this 值（这里等于 obj）<br>第19行： 由于()接受了对象和方法的所有信息，隐式绑定启动，this由obj认领，因此输出 30<br>第20行： apply直接把无人认领的b，强抱给了obj，所以 输出 31<br>第21行： new A() 创建了A的实例，this改为由A认领，因为A没有num属性，num++等于undefined+1 得出 NaN<br>第22行： 一共加了三次，输出23</p>
+<p>可能没有陈述明白，直接上代码和图。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngFor</span>=<span class="string">"let t of tactics; trackBy: trackByTactics; let i=index"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nz-input-group</span> <span class="attr">nzCompact</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"monthValue"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"12"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.monthValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%; border-left: 0px;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"discountValue"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"10"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.discountValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">nz-button</span> <span class="attr">nzGhost</span>=<span class="string">"true"</span> <span class="attr">nzType</span>=<span class="string">"primary"</span> (<span class="attr">click</span>)=<span class="string">"removeTactic(t)"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nz-input-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">nz-button</span> <span class="attr">nzGhost</span>=<span class="string">"true"</span> <span class="attr">nzType</span>=<span class="string">"primary"</span> (<span class="attr">click</span>)=<span class="string">"addTactic()"</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>。。。查了下资料Angular表单中使用ngModel需要注意,必须带有name属性或者使用 [ngModelOptions]=”{standalone: true}”，二选一。看到“必须带有name属性”就在想会不会跟name属性有关，上面html里的input标签name属性是写死的，于是我稍微改了下。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">input</span> [<span class="attr">name</span>]=<span class="string">"'monthValue' + i"</span>  <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"12"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.monthValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%; border-left: 0px;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> [<span class="attr">name</span>]=<span class="string">"'discountValue' + i"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"10"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.discountValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%;"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>i是ngFor里遍历项的索引，在用值绑定这样input的name属性就是动态的了。<br>试了下确实可以，23333<br>(这问题卡了90min。。。😑)</p>
 
       
     </div>
@@ -403,7 +405,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/2019/04/03/JS中的this/" title="JS中的this">https://tommy0604.github.io/2019/04/03/JS中的this/</a>
+    <a href="https://tommy0604.github.io/ngFor遍历input标签数据显示问题/" title="ngFor遍历input标签数据显示问题">https://tommy0604.github.io/ngFor遍历input标签数据显示问题/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -418,7 +420,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JS/" rel="tag"># JS</a>
+            <a href="/tags/Angualr指令/" rel="tag"># Angualr指令</a>
           
         </div>
       
@@ -431,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/27/stopPropagation事件/" rel="next" title="stopPropagation事件">
-                <i class="fa fa-chevron-left"></i> stopPropagation事件
+              <a href="/Angualr天梯之路/" rel="next" title="Angualr天梯之路">
+                <i class="fa fa-chevron-left"></i> Angualr天梯之路
               </a>
             
           </div>
@@ -441,8 +443,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/22/Angular拦截器/" rel="prev" title="Angular拦截器">
-                Angular拦截器 <i class="fa fa-chevron-right"></i>
+              <a href="/webpack/" rel="prev" title="webpack学习笔记">
+                webpack学习笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -524,7 +526,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -535,7 +537,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -577,6 +579,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -602,7 +611,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -639,13 +648,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
     
 
     
@@ -723,6 +725,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

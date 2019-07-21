@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -68,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="HTTP,">
+  <meta name="keywords" content="JS,">
 
 
 
@@ -79,18 +86,18 @@
 
 
 
-<meta name="description" content="Http跨域请求 在Api请求过程中，肯定会遇到跨域问题，这里介绍几种跨域的方法，慢慢食用。">
-<meta name="keywords" content="HTTP">
+<meta name="description" content="this在JS中是个常见且重要的，谁能认领了它，就决定了this的指向（谁认领了它，当了它的爹，就决定了它的一生）。">
+<meta name="keywords" content="JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTP">
-<meta property="og:url" content="https://tommy0604.github.io/2018/09/03/http/index.html">
+<meta property="og:title" content="JS中的this">
+<meta property="og:url" content="https://tommy0604.github.io/JS中的this/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
-<meta property="og:description" content="Http跨域请求 在Api请求过程中，肯定会遇到跨域问题，这里介绍几种跨域的方法，慢慢食用。">
+<meta property="og:description" content="this在JS中是个常见且重要的，谁能认领了它，就决定了this的指向（谁认领了它，当了它的爹，就决定了它的一生）。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-04T03:40:07.046Z">
+<meta property="og:updated_time" content="2019-04-09T14:19:18.949Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTP">
-<meta name="twitter:description" content="Http跨域请求 在Api请求过程中，肯定会遇到跨域问题，这里介绍几种跨域的方法，慢慢食用。">
+<meta name="twitter:title" content="JS中的this">
+<meta name="twitter:description" content="this在JS中是个常见且重要的，谁能认领了它，就决定了this的指向（谁认领了它，当了它的爹，就决定了它的一生）。">
 
 
 
@@ -98,9 +105,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -120,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/2018/09/03/http/">
+  <link rel="canonical" href="https://tommy0604.github.io/JS中的this/">
 
 
 
 
 
-  <title>HTTP | Tommy's blog</title>
+  <title>JS中的this | Tommy's blog</title>
   
 
 
@@ -145,7 +152,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -161,7 +168,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">码农，另类程序猿</p>
+        <h1 class="site-subtitle" itemprop="description">developer、popper、喜新恋旧</h1>
       
   </div>
 
@@ -230,16 +237,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -273,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2018/09/03/http/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/JS中的this/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tommy0604">
@@ -290,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HTTP</h1>
+          <h2 class="post-title" itemprop="name headline">JS中的this</h2>
         
 
         <div class="post-meta">
@@ -302,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-03T22:11:40+08:00">
-                2018-09-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-03T22:38:30+08:00">
+                2019-04-03
               </time>
             
 
@@ -318,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-04T11:40:07+08:00">
-                2019-01-04
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-09T22:19:18+08:00">
+                2019-04-09
               </time>
             
           </span>
@@ -337,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTTP/" itemprop="url" rel="index">
-                    <span itemprop="name">HTTP</span>
+                  <a href="/categories/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
                   </a>
                 </span>
 
@@ -379,19 +376,10 @@
       
 
       
-        <h1 id="Http跨域请求"><a href="#Http跨域请求" class="headerlink" title="Http跨域请求"></a>Http跨域请求</h1><blockquote>
-<p>在Api请求过程中，肯定会遇到跨域问题，这里介绍几种跨域的方法，慢慢食用。</p>
-</blockquote>
+        <p>this在JS中是个常见且重要的，谁能认领了它，就决定了this的指向<br>（谁认领了它，当了它的爹，就决定了它的一生）。</p>
 <a id="more"></a>
-<h2 id="Jsonp"><a href="#Jsonp" class="headerlink" title="Jsonp"></a>Jsonp</h2><blockquote>
-<p>JsonP是一种利用HTML标签的src，有可以跨域访问js脚本的特性，来实现跨域的。包括link标签里的href属性，也具有跨域特性！🐮</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 访问某张图片</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"图片路径"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// 执行某个脚本</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"脚本路径"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><blockquote>
-</blockquote>
-<h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><blockquote>
-<p>Cookie是在服务端返回数据的时候，通过Set-Cookie设置在浏览器里面的内容，浏览器里面的内容就是Cookie</p>
-</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.num);</span><br><span class="line"><span class="built_in">window</span>.num = <span class="number">20</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.num);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span> === <span class="built_in">window</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="keyword">this</span>.num++);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">     num : <span class="number">30</span>,</span><br><span class="line">     B : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="keyword">this</span>.num++);</span><br><span class="line">         <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>.num++);</span><br><span class="line">      &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> A();</span><br><span class="line"> <span class="keyword">let</span> b = obj.B;</span><br><span class="line"> b()();</span><br><span class="line"> obj.B();</span><br><span class="line"> b.apply(obj);</span><br><span class="line"> <span class="keyword">new</span> A();</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="built_in">window</span>.num);</span><br></pre></td></tr></table></figure>
+<p>输出结果：<br>第2行： 找不到window.num =&gt; undefined<br>第4行： 指向window.num =&gt; 20<br>第5行： 指向window.num =&gt; true<br>第16行： 先输出，后自加1 =&gt; 20<br>第17行： 为什么没有绑定到obj.num：30?<br>b = obj.B 赋值等其他的操作，将引用类型作为一个整体丢弃，只获取 obj.b（一个函数）的值进行传递。<br>第18行： 调用函数B，先输出21 再输出22<br>为了让 obj.B() 有效，JavaScript 用一个技巧 —— 这个 ‘.’ 点返回的不是一个函数, 而是一种特殊的[引用类型]的值<br>(<a href="https://tc39.github.io/ecma262#sec-reference-specification-type" target="_blank" rel="noopener">https://tc39.github.io/ecma262#sec-reference-specification-type</a>)<br>当在引用类型上用 () 调用时，它们接收到这个对象和它的方法的所有信息，并且设定正确的 this 值（这里等于 obj）<br>第19行： 由于()接受了对象和方法的所有信息，隐式绑定启动，this由obj认领，因此输出 30<br>第20行： apply直接把无人认领的b，强抱给了obj，所以 输出 31<br>第21行： new A() 创建了A的实例，this改为由A认领，因为A没有num属性，num++等于undefined+1 得出 NaN<br>第22行： 一共加了三次，输出23</p>
 
       
     </div>
@@ -412,7 +400,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/2018/09/03/http/" title="HTTP">https://tommy0604.github.io/2018/09/03/http/</a>
+    <a href="https://tommy0604.github.io/JS中的this/" title="JS中的this">https://tommy0604.github.io/JS中的this/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -427,7 +415,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+            <a href="/tags/JS/" rel="tag"># JS</a>
           
         </div>
       
@@ -440,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/30/blog/" rel="next" title=" ">
-                <i class="fa fa-chevron-left"></i>  
+              <a href="/stopPropagation事件/" rel="next" title="stopPropagation事件">
+                <i class="fa fa-chevron-left"></i> stopPropagation事件
               </a>
             
           </div>
@@ -450,8 +438,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/15/CSS相关/" rel="prev" title="CSS3边框">
-                CSS3边框 <i class="fa fa-chevron-right"></i>
+              <a href="/Angular拦截器/" rel="prev" title="Angular拦截器">
+                Angular拦截器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -504,17 +492,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -542,7 +521,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -553,7 +532,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -593,23 +572,14 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
 
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Http跨域请求"><span class="nav-number">1.</span> <span class="nav-text">Http跨域请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsonp"><span class="nav-number">1.1.</span> <span class="nav-text">Jsonp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS"><span class="nav-number">1.2.</span> <span class="nav-text">CORS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie"><span class="nav-number">2.</span> <span class="nav-text">Cookie</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
-
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -636,7 +606,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -673,13 +643,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
     
 
     
@@ -757,6 +720,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

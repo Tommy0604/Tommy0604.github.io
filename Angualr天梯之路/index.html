@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -68,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Angualr,">
+  <meta name="keywords" content="Angular,">
 
 
 
@@ -80,15 +87,15 @@
 
 
 <meta name="description" content="Angular程序架构 Angualr的六大核心组成分别是：组件、路由、模块、指令、服务、依赖注入。组件，指令以及服务是用来开发功能的。而模块是用来打包分发这些功能的。路由用来控制组件的创建和销毁，从而驱使应用界面跳转切换。接下来会一一介绍Angular这些特性的用法。  版本已Angular4为主，虽然眼下Angualr7都发布了😂😂😂">
-<meta name="keywords" content="Angualr">
+<meta name="keywords" content="Angular">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angualr天梯之路">
-<meta property="og:url" content="https://tommy0604.github.io/2018/11/21/Angualr天梯之路/index.html">
+<meta property="og:url" content="https://tommy0604.github.io/Angualr天梯之路/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
 <meta property="og:description" content="Angular程序架构 Angualr的六大核心组成分别是：组件、路由、模块、指令、服务、依赖注入。组件，指令以及服务是用来开发功能的。而模块是用来打包分发这些功能的。路由用来控制组件的创建和销毁，从而驱使应用界面跳转切换。接下来会一一介绍Angular这些特性的用法。  版本已Angular4为主，虽然眼下Angualr7都发布了😂😂😂">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://tommy0604.github.io/images/NgRouterDetail.jpg">
-<meta property="og:updated_time" content="2019-01-04T07:23:43.541Z">
+<meta property="og:updated_time" content="2019-07-18T12:31:37.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angualr天梯之路">
 <meta name="twitter:description" content="Angular程序架构 Angualr的六大核心组成分别是：组件、路由、模块、指令、服务、依赖注入。组件，指令以及服务是用来开发功能的。而模块是用来打包分发这些功能的。路由用来控制组件的创建和销毁，从而驱使应用界面跳转切换。接下来会一一介绍Angular这些特性的用法。  版本已Angular4为主，虽然眼下Angualr7都发布了😂😂😂">
@@ -100,9 +107,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -122,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/2018/11/21/Angualr天梯之路/">
+  <link rel="canonical" href="https://tommy0604.github.io/Angualr天梯之路/">
 
 
 
@@ -147,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -163,7 +170,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">码农，另类程序猿</p>
+        <h1 class="site-subtitle" itemprop="description">developer、popper、喜新恋旧</h1>
       
   </div>
 
@@ -232,16 +239,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
-            
-            公益404
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -275,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2018/11/21/Angualr天梯之路/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Angualr天梯之路/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tommy0604">
@@ -292,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Angualr天梯之路</h1>
+          <h2 class="post-title" itemprop="name headline">Angualr天梯之路</h2>
         
 
         <div class="post-meta">
@@ -320,8 +317,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-04T15:23:43+08:00">
-                2019-01-04
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-18T20:31:37+08:00">
+                2019-07-18
               </time>
             
           </span>
@@ -339,8 +336,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Angualr/" itemprop="url" rel="index">
-                    <span itemprop="name">Angualr</span>
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
                   </a>
                 </span>
 
@@ -497,7 +494,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/2018/11/21/Angualr天梯之路/" title="Angualr天梯之路">https://tommy0604.github.io/2018/11/21/Angualr天梯之路/</a>
+    <a href="https://tommy0604.github.io/Angualr天梯之路/" title="Angualr天梯之路">https://tommy0604.github.io/Angualr天梯之路/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -512,7 +509,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Angualr/" rel="tag"># Angualr</a>
+            <a href="/tags/Angular/" rel="tag"># Angular</a>
           
         </div>
       
@@ -525,7 +522,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/15/CSS相关/" rel="next" title="CSS3边框">
+              <a href="/CSS相关/" rel="next" title="CSS3边框">
                 <i class="fa fa-chevron-left"></i> CSS3边框
               </a>
             
@@ -535,7 +532,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/15/ngFor遍历input标签数据显示问题/" rel="prev" title="ngFor遍历input标签数据显示问题">
+              <a href="/ngFor遍历input标签数据显示问题/" rel="prev" title="ngFor遍历input标签数据显示问题">
                 ngFor遍历input标签数据显示问题 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -627,7 +624,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -638,7 +635,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -696,6 +693,13 @@
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -721,7 +725,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -758,13 +762,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
     
 
     
@@ -842,6 +839,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
