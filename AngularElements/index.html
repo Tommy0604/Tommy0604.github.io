@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="HTTP,">
+  <meta name="keywords" content="angular,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="Http跨域请求 在Api请求过程中，肯定会遇到跨域问题，这里介绍几种跨域的方法，慢慢食用。">
-<meta name="keywords" content="HTTP">
+<meta name="description" content="介绍 在Angular v6中添加了一个特性，Angular Elements又称angular元素  @angular/Elements是Angular中的一个新包，它帮助我们将Angular组件发布自定义元素。它基于浏览器的 Custom Elements API 实现，通过将Angular组件转化成web Components来做到这一点。让我们来看看如何合理利用这一特性。">
+<meta name="keywords" content="angular">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTP">
-<meta property="og:url" content="https://tommy0604.github.io/http/index.html">
+<meta property="og:title" content="@angular&#x2F;Elements">
+<meta property="og:url" content="https://tommy0604.github.io/AngularElements/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
-<meta property="og:description" content="Http跨域请求 在Api请求过程中，肯定会遇到跨域问题，这里介绍几种跨域的方法，慢慢食用。">
+<meta property="og:description" content="介绍 在Angular v6中添加了一个特性，Angular Elements又称angular元素  @angular/Elements是Angular中的一个新包，它帮助我们将Angular组件发布自定义元素。它基于浏览器的 Custom Elements API 实现，通过将Angular组件转化成web Components来做到这一点。让我们来看看如何合理利用这一特性。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-04T03:40:07.046Z">
+<meta property="og:updated_time" content="2019-09-16T15:34:04.871Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTP">
-<meta name="twitter:description" content="Http跨域请求 在Api请求过程中，肯定会遇到跨域问题，这里介绍几种跨域的方法，慢慢食用。">
+<meta name="twitter:title" content="@angular&#x2F;Elements">
+<meta name="twitter:description" content="介绍 在Angular v6中添加了一个特性，Angular Elements又称angular元素  @angular/Elements是Angular中的一个新包，它帮助我们将Angular组件发布自定义元素。它基于浏览器的 Custom Elements API 实现，通过将Angular组件转化成web Components来做到这一点。让我们来看看如何合理利用这一特性。">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/http/">
+  <link rel="canonical" href="https://tommy0604.github.io/AngularElements/">
 
 
 
 
 
-  <title>HTTP | Tommy's blog</title>
+  <title>@angular/Elements | Tommy's blog</title>
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/http/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/AngularElements/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tommy0604">
@@ -287,7 +287,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">HTTP</h2>
+          <h2 class="post-title" itemprop="name headline">@angular/Elements</h2>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-03T22:11:40+08:00">
-                2018-09-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T22:25:38+08:00">
+                2019-09-16
               </time>
             
 
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-04T11:40:07+08:00">
-                2019-01-04
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-16T23:34:04+08:00">
+                2019-09-16
               </time>
             
           </span>
@@ -334,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTTP/" itemprop="url" rel="index">
-                    <span itemprop="name">HTTP</span>
+                  <a href="/categories/angular/" itemprop="url" rel="index">
+                    <span itemprop="name">angular</span>
                   </a>
                 </span>
 
@@ -376,19 +376,54 @@
       
 
       
-        <h1 id="Http跨域请求"><a href="#Http跨域请求" class="headerlink" title="Http跨域请求"></a>Http跨域请求</h1><blockquote>
-<p>在Api请求过程中，肯定会遇到跨域问题，这里介绍几种跨域的方法，慢慢食用。</p>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
+<p>在Angular v6中添加了一个特性，Angular Elements又称angular元素</p>
 </blockquote>
+<p><code>@angular/Elements</code>是Angular中的一个新包，它帮助我们将Angular组件发布自定义元素。<strong>它基于浏览器的 <code>Custom Elements API</code> 实现，通过将Angular组件转化成<code>web Components</code>来做到这一点</strong>。让我们来看看如何合理利用这一特性。</p>
 <a id="more"></a>
-<h2 id="Jsonp"><a href="#Jsonp" class="headerlink" title="Jsonp"></a>Jsonp</h2><blockquote>
-<p>JsonP是一种利用HTML标签的src，有可以跨域访问js脚本的特性，来实现跨域的。包括link标签里的href属性，也具有跨域特性！🐮</p>
+<hr>
+<h2 id="作用-amp-好处"><a href="#作用-amp-好处" class="headerlink" title="作用&amp;好处"></a>作用&amp;好处</h2><p>使用Angular元素，我们可以使我们的组件真正地可重用。也就是说，我们可以在其他架和库中使用Angular组件，比如<code>React</code>、<code>Vue</code>和<code>Ember</code>!也可以在<code>angularjs</code>中使用<code>angular/Elements</code>。<br>还可以把Angular添加到项目后端，好处多多啊🤙</p>
+<hr>
+<h2 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h2><p>确保Angular CLI版本 大于v6，因为v6才开始支持<code>@angular/Elements</code>的。</p>
+<p>创建一个angular的基础项目</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ng new angular-app</span><br><span class="line">cd angular-app</span><br><span class="line">ng serve --open</span><br></pre></td></tr></table></figure>
+<p>接着创建一个angular组件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng g c HelloWorld</span><br></pre></td></tr></table></figure>
+<p>安装@angular/elements</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ng add @angular/elements</span><br><span class="line">ng add @webcomponents/webcomponentsjs</span><br></pre></td></tr></table></figure>
+<p>安装好之后，转到<code>app.module</code>。，并对<code>@NgModule</code>进行以下更改:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; BrowserModule &#125; <span class="keyword">from</span> <span class="string">'@angular/platform-browser'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; NgModule, Injector &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createCustomElement &#125; <span class="keyword">from</span> <span class="string">'@angular/elements'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; HelloWorldComponent &#125; <span class="keyword">from</span> <span class="string">'./hello-world/hello-world.component'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  declarations: [HelloWorldComponent],</span><br><span class="line">  imports: [BrowserModule],</span><br><span class="line">  entryComponents: [HelloWorldComponent],</span><br><span class="line">  providers: [],</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppModule &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params">injector: Injector</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> custom = createCustomElement(HelloWorldComponent, &#123; injector &#125;);</span><br><span class="line">    customElements.define(<span class="string">'app-hello-world'</span>, custom);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ngDoBootstrap() &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="创建一个独立的元素"><a href="#创建一个独立的元素" class="headerlink" title="创建一个独立的元素"></a>创建一个独立的元素</h2><blockquote>
+<p>如果一个项目有N个组件，要从中抽取一个转换成<code>WebComponents</code>，打包的时候救需要把这个组件单独打包，否则文件会比单个组件包大。这里建议创建一个独立的元素（或者该项目全是<code>webComponents</code>）</p>
 </blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 访问某张图片</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"图片路径"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// 执行某个脚本</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"脚本路径"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><blockquote>
+<p>在Angular项目的根目录中创建一个名为preview的新文件夹。在这个文件夹中，创建一个名为index.html的新文件，并在其中编写以下代码:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./angularapp.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">app-hello-world</span>&gt;</span><span class="tag">&lt;/<span class="name">app-hello-world</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>现在我们不再需要AppComponent了，可以删除没有用的文件:<br><code>app.component.css</code>、<br><code>app.component.html</code>、<br><code>app.component.spec.ts</code>、<br><code>app.component.ts</code>、<br><code>app.routing.module.ts</code>，之需保留<code>app.module</code></p>
+<hr>
+<h2 id="打包-amp-运行"><a href="#打包-amp-运行" class="headerlink" title="打包&amp;运行"></a>打包&amp;运行</h2><p>在项目根目录添加一个custombuild.sh的<code>Shell</code>的脚本文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line">ng build angular-app --prod --output-hashing=none &amp;&amp; cat dist/angular-app/&#123;runtime,polyfills,scripts,main&#125;****.js &gt; preview/angularapp.js</span><br></pre></td></tr></table></figure>
+<p>shell脚本不支持Bash，所以加了 <code>#!/bin/sh</code>,用git-bash运行。</p>
+<blockquote>
+<p>这里打包有很多方式，可以用gzip压缩体积，其他脚本库，还有Angular v7 更新的Ivy，Angular v9都出了🚀</p>
 </blockquote>
-<h1 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h1><blockquote>
-<p>Cookie是在服务端返回数据的时候，通过Set-Cookie设置在浏览器里面的内容，浏览器里面的内容就是Cookie</p>
-</blockquote>
+<p>这里的打包比较简陋，实质就是把<code>ng build</code>的生成文件合并到了<code>angularapp.js</code>。运行这个脚本，<code>preview</code>会多出一个<code>angularapp.js</code>文件</p>
+<p>最后一步，在根目录运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx live-server preview</span><br></pre></td></tr></table></figure>
+<p>页面显示’hello-world works!’如果可以那个恭喜创建成功了🎉<br>此外你可以去其他尝试引用<code>angularapp.js</code>,并用<code>&lt;app-hello-world&gt;&lt;/app-hello-world&gt;</code>元素。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇文章主要记录了，Angular如何利用<code>@Angular/Elements</code>将angular组件转换成webComponent。<br>很简单对吧233。</p>
+<p>上文提到<code>@Angular/Elements</code>是基于浏览器Web Components的<code>Custom Elements API</code>实现的，Web Components还有其他API <code>Shadow DOM</code>、<code>HTML templates</code>详细可以参考 <strong><a href="https://developer.mozilla.org/zh-CN/docs/Web/Web_Components" target="_blank" rel="noopener">跳转</a>。</strong> Angular Elements将Custom Elements的API实现了抽象化，因此代码会更优雅，可读性和维护性也更好，同时也更易于扩展。</p>
+<p>关于<code>@Angular/Elements</code>的打包，本文方法比较粗劣。后期考虑使用工具打包压缩，提高页面js请求效率。</p>
+<p>学无止境，还得辛苦加油!🤣</p>
+<h2 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h2><ul>
+<li><p><a href="https://angular.cn/guide/elements" target="_blank" rel="noopener">官方</a></p>
+</li>
+<li><p><a href="https://medium.com/@tomsu/building-web-components-with-angular-elements-746cd2a38d5b" target="_blank" rel="noopener">Building Custom Elements / Web Components with Angular 6</a></p>
+</li>
+<li><p><a href="https://juejin.im/post/5b4c33386fb9a04f914a8709" target="_blank" rel="noopener">【译】Angular Elements 及其运作原理</a></p>
+</li>
+</ul>
 
       
     </div>
@@ -409,7 +444,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/http/" title="HTTP">https://tommy0604.github.io/http/</a>
+    <a href="https://tommy0604.github.io/AngularElements/" title="@angular/Elements">https://tommy0604.github.io/AngularElements/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -424,7 +459,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+            <a href="/tags/angular/" rel="tag"># angular</a>
           
         </div>
       
@@ -437,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/" rel="next" title=" ">
-                <i class="fa fa-chevron-left"></i>  
+              <a href="/Rxjs/" rel="next" title="Rxjs的使用">
+                <i class="fa fa-chevron-left"></i> Rxjs的使用
               </a>
             
           </div>
@@ -446,10 +481,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/CSS相关/" rel="prev" title="CSS3边框">
-                CSS3边框 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Http跨域请求"><span class="nav-number">1.</span> <span class="nav-text">Http跨域请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jsonp"><span class="nav-number">1.1.</span> <span class="nav-text">Jsonp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS"><span class="nav-number">1.2.</span> <span class="nav-text">CORS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie"><span class="nav-number">2.</span> <span class="nav-text">Cookie</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用-amp-好处"><span class="nav-number">2.</span> <span class="nav-text">作用&amp;好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目创建"><span class="nav-number">3.</span> <span class="nav-text">项目创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个独立的元素"><span class="nav-number">4.</span> <span class="nav-text">创建一个独立的元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包-amp-运行"><span class="nav-number">5.</span> <span class="nav-text">打包&amp;运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐"><span class="nav-number">7.</span> <span class="nav-text">推荐</span></a></li></ol></div>
             
 
           </div>
