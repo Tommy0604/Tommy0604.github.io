@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Tommy&#39;s blog">
 <meta property="og:description" content="场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-16T14:33:54.713Z">
+<meta property="og:updated_time" content="2019-10-21T14:13:06.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ngFor遍历input标签数据显示问题">
 <meta name="twitter:description" content="场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-16T22:33:54+08:00">
-                2019-09-16
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-21T22:13:06+08:00">
+                2019-10-21
               </time>
             
           </span>
@@ -377,14 +377,20 @@
 
       
         <blockquote>
-<p>场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。</p>
+<p>场景是用<code>ngFor</code>来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。</p>
 </blockquote>
 <a id="more"></a>
 <p>可能没有陈述明白，直接上代码和图。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngFor</span>=<span class="string">"let t of tactics; trackBy: trackByTactics; let i=index"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nz-input-group</span> <span class="attr">nzCompact</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"monthValue"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"12"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.monthValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%; border-left: 0px;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"discountValue"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"10"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.discountValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">nz-button</span> <span class="attr">nzGhost</span>=<span class="string">"true"</span> <span class="attr">nzType</span>=<span class="string">"primary"</span> (<span class="attr">click</span>)=<span class="string">"removeTactic(t)"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nz-input-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">nz-button</span> <span class="attr">nzGhost</span>=<span class="string">"true"</span> <span class="attr">nzType</span>=<span class="string">"primary"</span> (<span class="attr">click</span>)=<span class="string">"addTactic()"</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngFor</span>=<span class="string">"let t of tactics; let i=index"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nz-input-group</span> <span class="attr">nzCompact</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"monthValue"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.monthValue"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"discountValue"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.discountValue"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">nz-button</span> <span class="attr">nzGhost</span>=<span class="string">"true"</span> <span class="attr">nzType</span>=<span class="string">"primary"</span> (<span class="attr">click</span>)=<span class="string">"removeTactic(t)"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nz-input-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">nz-button</span> <span class="attr">nzGhost</span>=<span class="string">"true"</span> <span class="attr">nzType</span>=<span class="string">"primary"</span> (<span class="attr">click</span>)=<span class="string">"addTactic()"</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>。。。查了下资料Angular表单中使用ngModel需要注意,必须带有name属性或者使用 [ngModelOptions]=”{standalone: true}”，二选一。看到“必须带有name属性”就在想会不会跟name属性有关，上面html里的input标签name属性是写死的，于是我稍微改了下。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">input</span> [<span class="attr">name</span>]=<span class="string">"'monthValue' + i"</span>  <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"12"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.monthValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%; border-left: 0px;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> [<span class="attr">name</span>]=<span class="string">"'discountValue' + i"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">min</span>=<span class="string">"1"</span> <span class="attr">max</span>=<span class="string">"10"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.discountValue"</span> <span class="attr">style</span>=<span class="string">"width: 14%;"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>i是ngFor里遍历项的索引，在用值绑定这样input的name属性就是动态的了。<br>试了下确实可以，23333<br>(这问题卡了90min。。。😑)</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">input</span> [<span class="attr">name</span>]=<span class="string">"'monthValue' + i"</span>  <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.monthValue"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> [<span class="attr">name</span>]=<span class="string">"'discountValue' + i"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.discountValue"</span> &gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>i</code>是<code>ngFor</code>里遍历项的索引，在用值绑定这样<code>input</code>的<code>name</code>属性就是动态的了。<br>试了下确实可以，23333</p>
+<p>列表场景下的ngFor</p>
+<p>上面的方法只适用于 DOM 体积较小，不涉及引用更改的场景。<br>在使用 REST-API或使用不可变的数据结构时，编辑了其中一对象，所有对象的引用都发生了变化。原因这时的 Angular 对每一个对象都是陌生的，它不认识这里的对象，所以就删除了之前的 DOM ，做了一次新的渲染。导致所有列表数据一致。。。</p>
+<p>这时我们可以使用<code>trackBy</code>函数来帮助 Angular 识别每一个对象，只需要为每一个对象添加一个唯一标识就好。<br>例子如下:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">array = [</span><br><span class="line">    &#123;</span><br><span class="line">      guid: <span class="string">'900ea552-ef68-42cc-b6a6-b8c4dff10fb7'</span>,</span><br><span class="line">      age: <span class="number">32</span>,</span><br><span class="line">      name: <span class="string">'Powers Schneider'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      guid: <span class="string">'880381d3-8dca-4aed-b207-b3b4e575a15f'</span>,</span><br><span class="line">      age: <span class="number">25</span>,</span><br><span class="line">      name: <span class="string">'Adrian Lawrence'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      guid: <span class="string">'87b47684-c465-4c51-8c88-3f1a1aa2671b'</span>,</span><br><span class="line">      age: <span class="number">32</span>,</span><br><span class="line">      name: <span class="string">'Boyer Stanley'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  trackElement(index: <span class="built_in">number</span>, element: <span class="built_in">any</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> element ? element.guid : <span class="literal">null</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> *<span class="attr">ngFor</span>=<span class="string">"let element of array; trackBy: trackElement"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>感兴趣可以阅读: <a href="https://malcoded.com/posts/angular-ngfor/" target="_blank" rel="noopener">Angular NgFor: Everything you need to know</a></p>
 
       
     </div>
@@ -443,8 +449,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/webpack/" rel="prev" title="webpack学习笔记">
-                webpack学习笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/stopPropagation事件/" rel="prev" title="stopPropagation事件">
+                stopPropagation事件 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -515,7 +521,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -526,7 +532,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -537,7 +543,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
