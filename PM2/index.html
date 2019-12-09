@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Angular,">
+  <meta name="keywords" content="PM2,">
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。">
-<meta name="keywords" content="Angular">
+<meta name="description" content="概述 这篇文章用来记录第一次使用PM2的感受，和使用nodemon到PM2的区别，及PM2所带来的好处。   安装1npm i pm2 -g --registry https://registry.npm.taobao.org 安装好之后，修改package配置文件 1&quot;prd&quot;: &quot;cross-env NODE_ENV=production pm2 start bin/www&quot;, 运行 npm">
+<meta name="keywords" content="PM2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ngFor遍历input标签数据显示问题">
-<meta property="og:url" content="https://tommy0604.github.io/ngFor遍历input标签数据显示问题/index.html">
+<meta property="og:title" content="初识PM2">
+<meta property="og:url" content="https://tommy0604.github.io/PM2/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
-<meta property="og:description" content="场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。">
+<meta property="og:description" content="概述 这篇文章用来记录第一次使用PM2的感受，和使用nodemon到PM2的区别，及PM2所带来的好处。   安装1npm i pm2 -g --registry https://registry.npm.taobao.org 安装好之后，修改package配置文件 1&quot;prd&quot;: &quot;cross-env NODE_ENV=production pm2 start bin/www&quot;, 运行 npm">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-21T14:13:06.956Z">
+<meta property="og:updated_time" content="2019-12-09T14:54:49.160Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ngFor遍历input标签数据显示问题">
-<meta name="twitter:description" content="场景是用ngFor来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。">
+<meta name="twitter:title" content="初识PM2">
+<meta name="twitter:description" content="概述 这篇文章用来记录第一次使用PM2的感受，和使用nodemon到PM2的区别，及PM2所带来的好处。   安装1npm i pm2 -g --registry https://registry.npm.taobao.org 安装好之后，修改package配置文件 1&quot;prd&quot;: &quot;cross-env NODE_ENV=production pm2 start bin/www&quot;, 运行 npm">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/ngFor遍历input标签数据显示问题/">
+  <link rel="canonical" href="https://tommy0604.github.io/PM2/">
 
 
 
 
 
-  <title>ngFor遍历input标签数据显示问题 | Tommy's blog</title>
+  <title>初识PM2 | Tommy's blog</title>
   
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/ngFor遍历input标签数据显示问题/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/PM2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tommy0604">
@@ -287,7 +287,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">ngFor遍历input标签数据显示问题</h2>
+          <h2 class="post-title" itemprop="name headline">初识PM2</h2>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T10:56:11+08:00">
-                2019-01-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-09T22:45:08+08:00">
+                2019-12-09
               </time>
             
 
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-21T22:13:06+08:00">
-                2019-10-21
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-09T22:54:49+08:00">
+                2019-12-09
               </time>
             
           </span>
@@ -334,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Angular/" itemprop="url" rel="index">
-                    <span itemprop="name">Angular</span>
+                  <a href="/categories/PM2/" itemprop="url" rel="index">
+                    <span itemprop="name">PM2</span>
                   </a>
                 </span>
 
@@ -376,21 +376,27 @@
       
 
       
-        <blockquote>
-<p>场景是用<code>ngFor</code>来遍历input标签，动态添加input输入框。问题是在我修改第一组input的值之后，添加第二组input标签，第一组的值显示了原来的默认值。正确的应该是 第一组显示之前修改的值，第二组为默认。</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p>这篇文章用来记录第一次使用PM2的感受，和使用nodemon到PM2的区别，及PM2所带来的好处。<br><!-- *PM2*不同于*nodemon*是在后台运行的，服务起来之后，可以运行其他脚本，同样拥有热编译。一般用于线上环境的进程守护，日志记录等 --></p>
 </blockquote>
-<a id="more"></a>
-<p>可能没有陈述明白，直接上代码和图。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngFor</span>=<span class="string">"let t of tactics; let i=index"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nz-input-group</span> <span class="attr">nzCompact</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"monthValue"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.monthValue"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"discountValue"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.discountValue"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">nz-button</span> <span class="attr">nzGhost</span>=<span class="string">"true"</span> <span class="attr">nzType</span>=<span class="string">"primary"</span> (<span class="attr">click</span>)=<span class="string">"removeTactic(t)"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">nz-input-group</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">nz-button</span> <span class="attr">nzGhost</span>=<span class="string">"true"</span> <span class="attr">nzType</span>=<span class="string">"primary"</span> (<span class="attr">click</span>)=<span class="string">"addTactic()"</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>。。。查了下资料Angular表单中使用ngModel需要注意,必须带有name属性或者使用 [ngModelOptions]=”{standalone: true}”，二选一。看到“必须带有name属性”就在想会不会跟name属性有关，上面html里的input标签name属性是写死的，于是我稍微改了下。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">input</span> [<span class="attr">name</span>]=<span class="string">"'monthValue' + i"</span>  <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.monthValue"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> [<span class="attr">name</span>]=<span class="string">"'discountValue' + i"</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">nz-input</span> [(<span class="attr">ngModel</span>)]=<span class="string">"t.discountValue"</span> &gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>i</code>是<code>ngFor</code>里遍历项的索引，在用值绑定这样<code>input</code>的<code>name</code>属性就是动态的了。<br>试了下确实可以，23333</p>
-<p>列表场景下的ngFor</p>
-<p>上面的方法只适用于 DOM 体积较小，不涉及引用更改的场景。<br>在使用 REST-API或使用不可变的数据结构时，编辑了其中一对象，所有对象的引用都发生了变化。原因这时的 Angular 对每一个对象都是陌生的，它不认识这里的对象，所以就删除了之前的 DOM ，做了一次新的渲染。导致所有列表数据一致。。。</p>
-<p>这时我们可以使用<code>trackBy</code>函数来帮助 Angular 识别每一个对象，只需要为每一个对象添加一个唯一标识就好。<br>例子如下:</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">array = [</span><br><span class="line">    &#123;</span><br><span class="line">      guid: <span class="string">'900ea552-ef68-42cc-b6a6-b8c4dff10fb7'</span>,</span><br><span class="line">      age: <span class="number">32</span>,</span><br><span class="line">      name: <span class="string">'Powers Schneider'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      guid: <span class="string">'880381d3-8dca-4aed-b207-b3b4e575a15f'</span>,</span><br><span class="line">      age: <span class="number">25</span>,</span><br><span class="line">      name: <span class="string">'Adrian Lawrence'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      guid: <span class="string">'87b47684-c465-4c51-8c88-3f1a1aa2671b'</span>,</span><br><span class="line">      age: <span class="number">32</span>,</span><br><span class="line">      name: <span class="string">'Boyer Stanley'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  trackElement(index: <span class="built_in">number</span>, element: <span class="built_in">any</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> element ? element.guid : <span class="literal">null</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> *<span class="attr">ngFor</span>=<span class="string">"let element of array; trackBy: trackElement"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>感兴趣可以阅读: <a href="https://malcoded.com/posts/angular-ngfor/" target="_blank" rel="noopener">Angular NgFor: Everything you need to know</a></p>
+<hr>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i pm2 -g --registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>安装好之后，修改<em>package</em>配置文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"prd"</span>: <span class="string">"cross-env NODE_ENV=production pm2 start bin/www"</span>,</span><br></pre></td></tr></table></figure>
+<p>运行 <em>npm run prd</em> 服务就会跑起来，并且会打印出一个表格，上面会记录服务所在进程的信息👇，这样就算是成功跑起来了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬─────────</span><br><span class="line">─┐</span><br><span class="line">│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │</span><br><span class="line">├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼─────────</span><br><span class="line">─┤</span><br><span class="line">│ 0  │ www                │ fork     │ 0    │ online    │ 0%       │ 28.2mb   │</span><br><span class="line">└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="进程守护"><a href="#进程守护" class="headerlink" title="进程守护"></a>进程守护</h2><blockquote>
+<p><em>nodemon</em> 进程崩毁后就不能访问了，<em>pm2</em> 遇到进程崩溃会自动重启</p>
+</blockquote>
+<p>nodemon 服务报错之后，可会导致整个页面无法运行，这样测试就不得不停下手头的工作开始摸鱼，你们开发又写bug啦。pm2 在服务报错之后，进程依然在后台运行，只有报错页面出现问题，其他页面可以正常使用。在错误与正确之间，pm2 会自动重启。这就是进程守护机制。</p>
+<hr>
+<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"apps"</span>: &#123;</span><br><span class="line">        "name": "weather-service", // 服务名称</span><br><span class="line">        "script": "bin/www", // 启动脚本路径</span><br><span class="line">        "watch": true, // 是否开启自动重启</span><br><span class="line">        "ignore_watch": [</span><br><span class="line">            "node_modules", </span><br><span class="line">            <span class="string">"logs"</span></span><br><span class="line">        ],</span><br><span class="line">        "error_file": "logs/err.log", // 错误日志文件路径</span><br><span class="line">        "out_file": "logs/out.log", // 输出日志文件路径</span><br><span class="line">        "log_date_format": "YYYY-MM-DD HH:mm:ss", // 日志文件时间戳</span><br><span class="line">        "instances": 4 // 进程数量</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>这些功能对<em>PM2</em>来说九牛一毛，还有很多高级配置没有用到，<em>PM2</em>很有搞头，以后尝试在项目中进一步使用。</p>
+<ul>
+<li><a href="https://pm2.keymetrics.io/" target="_blank" rel="noopener">官方文档</a></li>
+</ul>
 
       
     </div>
@@ -411,7 +417,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/ngFor遍历input标签数据显示问题/" title="ngFor遍历input标签数据显示问题">https://tommy0604.github.io/ngFor遍历input标签数据显示问题/</a>
+    <a href="https://tommy0604.github.io/PM2/" title="初识PM2">https://tommy0604.github.io/PM2/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -426,7 +432,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Angular/" rel="tag"># Angular</a>
+            <a href="/tags/PM2/" rel="tag"># PM2</a>
           
         </div>
       
@@ -439,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Angualr天梯之路/" rel="next" title="Angular天梯之路">
-                <i class="fa fa-chevron-left"></i> Angular天梯之路
+              <a href="/AngularElements/" rel="next" title="@angular/Elements">
+                <i class="fa fa-chevron-left"></i> @angular/Elements
               </a>
             
           </div>
@@ -448,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/stopPropagation事件/" rel="prev" title="stopPropagation事件">
-                stopPropagation事件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -503,8 +505,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -582,6 +593,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程守护"><span class="nav-number">3.</span> <span class="nav-text">进程守护</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础配置"><span class="nav-number">4.</span> <span class="nav-text">基础配置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
