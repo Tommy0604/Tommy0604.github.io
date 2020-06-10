@@ -95,7 +95,7 @@
 <meta property="og:description" content="Angular程序架构 Angular的六大核心组成分别是：组件、路由、模块、指令、服务、依赖注入。组件，指令以及服务是用来开发功能的。而模块是用来打包分发这些功能的。路由用来控制组件的创建和销毁，从而驱使应用界面跳转切换。接下来会一一介绍Angular这些特性的用法。  版本已Angular4为主，虽然眼下Angular7都发布了😂😂😂">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://tommy0604.github.io/images/NgRouterDetail.jpg">
-<meta property="og:updated_time" content="2019-09-16T14:33:56.840Z">
+<meta property="og:updated_time" content="2020-05-27T03:13:07.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular天梯之路">
 <meta name="twitter:description" content="Angular程序架构 Angular的六大核心组成分别是：组件、路由、模块、指令、服务、依赖注入。组件，指令以及服务是用来开发功能的。而模块是用来打包分发这些功能的。路由用来控制组件的创建和销毁，从而驱使应用界面跳转切换。接下来会一一介绍Angular这些特性的用法。  版本已Angular4为主，虽然眼下Angular7都发布了😂😂😂">
@@ -317,8 +317,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-16T22:33:56+08:00">
-                2019-09-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-27T11:13:07+08:00">
+                2020-05-27
               </time>
             
           </span>
@@ -440,7 +440,8 @@
 <h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><h2 id="Injectable"><a href="#Injectable" class="headerlink" title="@Injectable"></a>@Injectable</h2><blockquote>
 <p>如果一个 Service 里面需要依赖其他 Service，需要使用 @Injectable 装饰器进行装饰。为了不给自己找麻烦，最好所有 Service 都加上 @Injectable 装饰器，这是一种良好的编码风格。用 @angular/cli 生成的 Service 会自动在头部加上 @Injectable 装饰器，不需要操心。</p>
 </blockquote>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里我们把http服务注入到GoodsListService里</span></span><br><span class="line"><span class="keyword">import</span> &#123; HttpClient &#125; <span class="keyword">from</span> <span class="string">'@angular/common/http'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> GoodsListService &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> hc: HttpClient</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里我们把http服务注入到GoodsListService里</span></span><br><span class="line"><span class="keyword">import</span> &#123; HttpClient &#125; <span class="keyword">from</span> <span class="string">'@angular/common/http'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Injectable</span>(&#123;</span><br><span class="line">  providedIn: <span class="string">'root'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> GoodsListService &#123;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> hc: HttpClient</span>) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在配置<code>ModuleInjector</code>时，推荐使用<code>@Injectable()</code>的 providedIn 属性优于 <code>@NgModule()</code> 的 providers 数组，因为使用 <code>@Injectable()</code> 的 providedIn 时，优化工具可以进行摇树优化，从而删除您的应用程序中未使用的服务，以减小捆绑包尺寸。</p>
 <hr>
 <h2 id="Inject"><a href="#Inject" class="headerlink" title="@Inject"></a>@Inject</h2><blockquote>
 <p>@Injectable与@Inject之间的关系，就像汽车自动挡和手动挡的区别。</p>
@@ -522,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CSS相关/" rel="next" title="CSS3边框">
-                <i class="fa fa-chevron-left"></i> CSS3边框
+              <a href="/blog/" rel="next" title=" ">
+                <i class="fa fa-chevron-left"></i>  
               </a>
             
           </div>
@@ -613,7 +614,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -624,7 +625,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -635,7 +636,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
