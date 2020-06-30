@@ -420,6 +420,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/javascript-OOP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tommy0604">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/malko.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/javascript-OOP/" itemprop="url">javascript OOP</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-30T23:57:10+08:00">
+                2020-06-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-30T23:58:06+08:00">
+                2020-06-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是面向对象？"><a href="#什么是面向对象？" class="headerlink" title="什么是面向对象？"></a>什么是面向对象？</h2><p>“面向对象”是一种编程范型，但是就像 <code>exist</code> 这个选项一样，我们还有很多其他的选择，比如函数式编程，响应式编程编程等等。</p>
+<h2 id="这一范式的特点是什么？"><a href="#这一范式的特点是什么？" class="headerlink" title="这一范式的特点是什么？"></a>这一范式的特点是什么？</h2><p>我们在这个范例中所做的是以一种更接近现实的方式进行编程，我们根据类、对象、方法、属性等等进行编程，特别是集成了抽象、封装、模块<br>化、隐私、多态、继承等术语。</p>
+<blockquote>
+<p>基于类和基于原型的语言都是面向对象程序设计语言的范式，经典的C#与JAVA就是基于类面向对象的，JavaScript面向对象是基于原型的。</p>
+</blockquote>
+<p>在 ES5中，我们可以使用工厂模式进行下一个示例:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'*** PERSON ***'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义Person对象的属性和方法</span></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">   eyes: <span class="number">2</span>,</span><br><span class="line">   month: <span class="number">1</span>,</span><br><span class="line">   sleep: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'zzz'</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 创建 Person 对象</span></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">'OldWang'</span>);</span><br><span class="line"><span class="comment">// 尝试打印:</span></span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">  <span class="string">`name: <span class="subst">$&#123;p1.name&#125;</span>`</span>,</span><br><span class="line">  <span class="string">`eyes: <span class="subst">$&#123;p1.eyes&#125;</span>`</span>,</span><br><span class="line">  <span class="string">`month: <span class="subst">$&#123;p1.month&#125;</span>`</span>,</span><br><span class="line">   p1.sleep()</span><br><span class="line">);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'*** EMPLOYEE ***'</span>)</span><br><span class="line"><span class="comment">// 但是现在，如果我们有一个Employee类，我们就可以继承该人的财产。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Employee</span> (<span class="params">name, salary</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.salary = salary;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实现继承</span></span><br><span class="line">Employee.prototype = <span class="built_in">Object</span>.create(Person.prototype);</span><br><span class="line">Employee.prototype.constructor = Employee; <span class="comment">// 设置Employee的构造函数</span></span><br><span class="line"><span class="comment">// So now, we just can do the same thing</span></span><br><span class="line"><span class="comment">// 创建我们的员工</span></span><br><span class="line"><span class="keyword">const</span> em1 = <span class="keyword">new</span> Employee(<span class="string">'tom'</span>, <span class="number">3000</span>);</span><br><span class="line"><span class="comment">// 员工信息:</span></span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">  <span class="string">`name: <span class="subst">$&#123;em1.name&#125;</span>`</span>,</span><br><span class="line">  <span class="string">`salary: <span class="subst">$&#123;em1.salary&#125;</span> RMB`</span>,</span><br><span class="line">  <span class="string">`eyes: <span class="subst">$&#123;em1.eyes&#125;</span>`</span>,</span><br><span class="line">  <span class="string">`month: <span class="subst">$&#123;em1.month&#125;</span>`</span>,</span><br><span class="line">   em1.sleep()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>现在，在<code>ES6</code>中，我们可以用一种简单的方式来完成所有这些操作，但是我们必须记住，这只是语法糖:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.eyes = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">this</span>.month = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  sleep () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'zzz'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (name, salary) &#123;</span><br><span class="line">    <span class="keyword">super</span>(name);</span><br><span class="line">    <span class="keyword">this</span>.salary = salary;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">'Nick'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">  <span class="string">`name: <span class="subst">$&#123;p1.name&#125;</span>`</span>,</span><br><span class="line">  <span class="string">`eyes: <span class="subst">$&#123;p1.eyes&#125;</span>`</span>,</span><br><span class="line">  <span class="string">`month: <span class="subst">$&#123;p1.month&#125;</span>`</span>,</span><br><span class="line">   p1.sleep()</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> em1 = <span class="keyword">new</span> Employee(<span class="string">'John'</span>, <span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(</span><br><span class="line">  <span class="string">`name: <span class="subst">$&#123;em1.name&#125;</span>`</span>,</span><br><span class="line">  <span class="string">`salary: <span class="subst">$&#123;em1.salary&#125;</span> USD`</span>,</span><br><span class="line">  <span class="string">`eyes: <span class="subst">$&#123;em1.eyes&#125;</span>`</span>,</span><br><span class="line">  <span class="string">`month: <span class="subst">$&#123;em1.month&#125;</span>`</span>,</span><br><span class="line">   em1.sleep()</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>在这种情况下，使用 <code>extends</code> 关键字，我们只需说: ‘好吧，我想继承 Person 类的产品’。 但在幕后，这与我们在 es5示例中使用原型所做的是一样的。</p>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> whatIs() &#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">'一种可爱的动物'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用静态方法，我们无需实例化类的新对象即可访问方法。实例化调用反而会报错🐛</span></span><br><span class="line"><span class="built_in">console</span>.log( Dog.whatIs() );</span><br></pre></td></tr></table></figure>
+<h3 id="私有方法"><a href="#私有方法" class="headerlink" title="私有方法"></a>私有方法</h3><p>在 JavaScript 中，我们没有像 <code>Java</code> 和 <code>C#</code> 那样的 <code>private</code> 关键字，重要的是在 JavaScript 中，我们有一个用于 <code>private</code> 值的约定, 这个约定是在单词之前使用一个下划线 <code>_</code> 让我展示给你看:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"> <span class="keyword">constructor</span> (name, phone) &#123;</span><br><span class="line">   <span class="keyword">this</span>.name = name;</span><br><span class="line">   <span class="keyword">this</span>._phone = phone;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">'John'</span>, <span class="number">544342212</span>);</span><br><span class="line"><span class="comment">// 因为js没有private所以，可以打印出来</span></span><br><span class="line"><span class="built_in">console</span>.log(p1._phone);</span><br></pre></td></tr></table></figure>
+<p>ES6中，我们有一个对象调用<code>WeakMap</code>，我们可以用他创建私有属性，让我们看看:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> secret = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (name, phone) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    secret.set(<span class="keyword">this</span>, &#123;<span class="attr">_phonenumber</span>: phone&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">'John'</span>, <span class="number">544342212</span>);</span><br><span class="line"><span class="comment">// 现在无法访问</span></span><br><span class="line"><span class="built_in">console</span>.log(p1._phonenumber); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<h3 id="GET-amp-SET"><a href="#GET-amp-SET" class="headerlink" title="GET&amp;SET"></a>GET&amp;SET</h3><p>当我们有私有属性时，通常会创建一个返回私有值的公有方法，因此我们必须返回一个值并设置一个新值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> secret = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (name, phone) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    secret.set(<span class="keyword">this</span>, &#123;<span class="attr">_phonenumber</span>: phone&#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  get phoneNumber() &#123;</span><br><span class="line">    <span class="keyword">return</span> secret.get(<span class="keyword">this</span>)._phonenumber;</span><br><span class="line">  &#125;</span><br><span class="line">  set phoneNumber(newNumber) &#123;</span><br><span class="line">    secret.get(<span class="keyword">this</span>)._phonenumber = newNumber;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> Person(<span class="string">'John'</span>, <span class="number">544342212</span>);</span><br><span class="line"><span class="comment">// 现在，我们可以使用getter来访问电话号码：</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.phoneNumber); <span class="comment">// 544342212</span></span><br><span class="line">p1.phoneNumber = <span class="number">432232323</span>;</span><br><span class="line"><span class="built_in">console</span>.log(p1.phoneNumber); <span class="comment">// 432232323</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Angular-Ivy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -467,8 +637,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T17:09:22+08:00">
-                2020-02-06
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-15T22:42:06+08:00">
+                2020-06-15
               </time>
             
           </span>
@@ -1690,170 +1860,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Angualr天梯之路/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tommy0604">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/malko.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tommy's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Angualr天梯之路/" itemprop="url">Angular天梯之路</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-21T13:35:11+08:00">
-                2018-11-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-06-15T22:42:24+08:00">
-                2020-06-15
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Angular/" itemprop="url" rel="index">
-                    <span itemprop="name">Angular</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Angular程序架构"><a href="#Angular程序架构" class="headerlink" title="Angular程序架构"></a>Angular程序架构</h1><blockquote>
-<p>Angular的六大核心组成分别是：组件、路由、模块、指令、服务、依赖注入。组件，指令以及服务是用来开发功能的。而模块是用来打包分发这些功能的。路由用来控制组件的创建和销毁，从而驱使应用界面跳转切换。接下来会一一介绍Angular这些特性的用法。</p>
-</blockquote>
-<p>版本已Angular4为主，虽然眼下Angular9都发布了😂😂😂</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Angualr天梯之路/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1899,7 +1912,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1910,7 +1923,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1921,7 +1934,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

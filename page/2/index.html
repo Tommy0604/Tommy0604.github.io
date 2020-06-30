@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Angular,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -86,18 +86,13 @@
 
 
 
-<meta name="description" content="最近在写业务时出了一个问题场景：需要在Table上添加行点击事件，Table的某一列中有一个按钮，绑定了click事件。问题是在点击按钮触发click事件的同时，也触发了行点击事件。">
-<meta name="keywords" content="Angular">
-<meta property="og:type" content="article">
-<meta property="og:title" content="stopPropagation事件">
-<meta property="og:url" content="https://tommy0604.github.io/stopPropagation事件/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tommy&#39;s blog">
+<meta property="og:url" content="https://tommy0604.github.io/page/2/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
-<meta property="og:description" content="最近在写业务时出了一个问题场景：需要在Table上添加行点击事件，Table的某一列中有一个按钮，绑定了click事件。问题是在点击按钮触发click事件的同时，也触发了行点击事件。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-16T14:33:53.366Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="stopPropagation事件">
-<meta name="twitter:description" content="最近在写业务时出了一个问题场景：需要在Table上添加行点击事件，Table的某一列中有一个按钮，绑定了click事件。问题是在点击按钮触发click事件的同时，也触发了行点击事件。">
+<meta name="twitter:title" content="Tommy&#39;s blog">
 
 
 
@@ -127,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/stopPropagation事件/">
+  <link rel="canonical" href="https://tommy0604.github.io/page/2/">
 
 
 
 
 
-  <title>stopPropagation事件 | Tommy's blog</title>
+  <title>Hexo, NexT - Tommy's blogdeveloper、popper、喜新恋旧</title>
   
 
 
@@ -152,7 +147,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -255,9 +251,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -270,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/stopPropagation事件/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Angualr天梯之路/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tommy0604">
@@ -287,7 +283,9 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">stopPropagation事件</h2>
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Angualr天梯之路/" itemprop="url">Angular天梯之路</a></h2>
         
 
         <div class="post-meta">
@@ -299,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-27T22:04:09+08:00">
-                2019-02-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-21T13:35:11+08:00">
+                2018-11-21
               </time>
             
 
@@ -315,8 +313,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-16T22:33:53+08:00">
-                2019-09-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-06-15T22:42:24+08:00">
+                2020-06-15
               </time>
             
           </span>
@@ -334,8 +332,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/想不到的bug/" itemprop="url" rel="index">
-                    <span itemprop="name">想不到的bug</span>
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
                   </a>
                 </span>
 
@@ -352,11 +350,6 @@
           
           
 
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
           
 
           
@@ -376,16 +369,19 @@
       
 
       
-        <blockquote>
-<p>最近在写业务时出了一个问题<br>场景：需要在Table上添加行点击事件，Table的某一列中有一个按钮，绑定了click事件。问题是在点击按钮触发click事件的同时，也触发了行点击事件。</p>
+        
+          <h1 id="Angular程序架构"><a href="#Angular程序架构" class="headerlink" title="Angular程序架构"></a>Angular程序架构</h1><blockquote>
+<p>Angular的六大核心组成分别是：组件、路由、模块、指令、服务、依赖注入。组件，指令以及服务是用来开发功能的。而模块是用来打包分发这些功能的。路由用来控制组件的创建和销毁，从而驱使应用界面跳转切换。接下来会一一介绍Angular这些特性的用法。</p>
 </blockquote>
-<a id="more"></a>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nz-table</span> #<span class="attr">basicTable</span> [<span class="attr">nzData</span>]=<span class="string">"dataSet"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>Name<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>Age<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>Address<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>Action<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">tr</span> *<span class="attr">ngFor</span>=<span class="string">"let data of basicTable.data"</span></span></span><br><span class="line"><span class="tag">       (<span class="attr">click</span>)=<span class="string">"goBasicDetail(data)"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;data.name&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;data.age&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;data.address&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a</span> (<span class="attr">click</span>)=<span class="string">"goGoods()"</span>&gt;</span>Goods － &#123;&#123;data.name&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">nz-divider</span> <span class="attr">nzType</span>=<span class="string">"vertical"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">nz-divider</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">a</span>&gt;</span>Delete<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nz-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>拿上面的例子来说，点击a标签之后，触发goGoods()的同时也触发了goBasicDetail(data)，这个不是我想要的。<br>经过半小时研究之后，快吐血了😵<br>只需要在带有click的列中，绑定$event.stopPropagation()事件就好了。。。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">td</span> (<span class="attr">click</span>)=<span class="string">"$event.stopPropagation()"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> (<span class="attr">click</span>)=<span class="string">"goGoods()"</span>&gt;</span>Action 一 &#123;&#123;data.name&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>event.stopPropagation() 是用来阻止事件冒泡到父元素，阻止任何父事件处理程序被执行。</strong></p>
-<p>这样一来就通了，开始还以为Angular变更检测机制使DOM事件执行了多次。。看来还是理解不够深，加强基础知识！💪</p>
-
+<p>版本已Angular4为主，虽然眼下Angular9都发布了😂😂😂</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Angualr天梯之路/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
     
@@ -397,61 +393,17 @@
     
 
     
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者：</strong>
-    Tommy0604
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/stopPropagation事件/" title="stopPropagation事件">https://tommy0604.github.io/stopPropagation事件/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-
-      </div>
-    
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Angular/" rel="tag"># Angular</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/ngFor遍历input标签数据显示问题/" rel="next" title="ngFor遍历input标签数据显示问题">
-                <i class="fa fa-chevron-left"></i> ngFor遍历input标签数据显示问题
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/JS中的this/" rel="prev" title="JS中的this">
-                JS中的this <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -461,11 +413,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -473,10 +428,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -735,10 +686,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
