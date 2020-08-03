@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Tommy&#39;s blog">
 <meta property="og:description" content="介绍 在Angular v6中添加了一个特性，Angular Elements又称angular元素  @angular/Elements是Angular中的一个新包，它帮助我们将Angular组件发布自定义元素。它基于浏览器的 Custom Elements API 实现，通过将Angular组件转化成web Components来做到这一点。让我们来看看如何合理利用这一特性。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-03T03:44:51.261Z">
+<meta property="og:updated_time" content="2020-08-03T03:47:01.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="@angular&#x2F;Elements">
 <meta name="twitter:description" content="介绍 在Angular v6中添加了一个特性，Angular Elements又称angular元素  @angular/Elements是Angular中的一个新包，它帮助我们将Angular组件发布自定义元素。它基于浏览器的 Custom Elements API 实现，通过将Angular组件转化成web Components来做到这一点。让我们来看看如何合理利用这一特性。">
@@ -315,7 +315,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-03T11:44:51+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-03T11:47:01+08:00">
                 2020-08-03
               </time>
             
@@ -402,7 +402,7 @@
 <p>现在我们不再需要AppComponent了，可以删除没有用的文件:<br><code>app.component.css</code>、<br><code>app.component.html</code>、<br><code>app.component.spec.ts</code>、<br><code>app.component.ts</code>、<br><code>app.routing.module.ts</code>，之需保留<code>app.module</code></p>
 <hr>
 <h2 id="打包-amp-运行"><a href="#打包-amp-运行" class="headerlink" title="打包&amp;运行"></a>打包&amp;运行</h2><p>在项目根目录添加一个custombuild.sh的<code>Shell</code>的脚本文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">ng build angular-app --prod --output-hashing=none &amp;&amp; cat dist/angular-app/&#123;runtime,polyfills,scripts,main&#125;****.js &gt; preview/angularapp.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line">ng build angular-app --prod --output-hashing=none &amp;&amp; cat dist/angular-app/&#123;runtime,polyfills,scripts,main&#125;****.js &gt; preview/angularapp.js</span><br></pre></td></tr></table></figure>
 <p>shell脚本不支持Bash，所以加了 <code>#!/bin/sh</code>,用git-bash运行。</p>
 <blockquote>
 <p>这里打包有很多方式，可以用gzip压缩体积，其他脚本库，还有Angular v7 更新的Ivy，Angular v9都出了🚀</p>
