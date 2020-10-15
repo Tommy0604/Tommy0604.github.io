@@ -402,7 +402,7 @@
 <p>现在我们不再需要AppComponent了，可以删除没有用的文件:<br><code>app.component.css</code>、<br><code>app.component.html</code>、<br><code>app.component.spec.ts</code>、<br><code>app.component.ts</code>、<br><code>app.routing.module.ts</code>，之需保留<code>app.module</code></p>
 <hr>
 <h2 id="打包-amp-运行"><a href="#打包-amp-运行" class="headerlink" title="打包&amp;运行"></a>打包&amp;运行</h2><p>在项目根目录添加一个custombuild.sh的<code>Shell</code>的脚本文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line">ng build angular-app --prod --output-hashing=none &amp;&amp; cat dist/angular-app/&#123;runtime,polyfills,scripts,main&#125;****.js &gt; preview/angularapp.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">ng build angular-app --prod --output-hashing=none &amp;&amp; cat dist/angular-app/&#123;runtime,polyfills,scripts,main&#125;****.js &gt; preview/angularapp.js</span><br></pre></td></tr></table></figure>
 <p>shell脚本不支持Bash，所以加了 <code>#!/bin/sh</code>,用git-bash运行。</p>
 <blockquote>
 <p>这里打包有很多方式，可以用gzip压缩体积，其他脚本库，还有Angular v7 更新的Ivy，Angular v9都出了🚀</p>
@@ -563,7 +563,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
