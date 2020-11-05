@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://tommy0604.github.io/Angualr%E5%A4%A9%E6%A2%AF%E4%B9%8B%E8%B7%AF/</loc>
+    <lastmod>2020-11-05</lastmod>
+  </url>
+  <url>
     <loc>https://tommy0604.github.io/%E8%AE%B0%E5%BD%9510%E6%9C%8823%E5%8F%B7%E4%B8%80%E6%AC%A1%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2020-11-05</lastmod>
   </url>
@@ -11,10 +15,6 @@
   <url>
     <loc>https://tommy0604.github.io/Angular%E6%A8%A1%E6%9D%BF%E7%BB%91%E5%AE%9A/</loc>
     <lastmod>2020-10-15</lastmod>
-  </url>
-  <url>
-    <loc>https://tommy0604.github.io/Angualr%E5%A4%A9%E6%A2%AF%E4%B9%8B%E8%B7%AF/</loc>
-    <lastmod>2020-10-12</lastmod>
   </url>
   <url>
     <loc>https://tommy0604.github.io/Angular%E6%8B%A6%E6%88%AA%E5%99%A8/</loc>
@@ -37,11 +37,11 @@
     <lastmod>2020-08-03</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/Angular-Ivy/</loc>
+    <loc>https://tommy0604.github.io/PM2/</loc>
     <lastmod>2020-08-03</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/PM2/</loc>
+    <loc>https://tommy0604.github.io/Angular-Ivy/</loc>
     <lastmod>2020-08-03</lastmod>
   </url>
   <url>
@@ -53,11 +53,11 @@
     <lastmod>2020-08-03</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/stopPropagation%E4%BA%8B%E4%BB%B6/</loc>
+    <loc>https://tommy0604.github.io/ngFor%E9%81%8D%E5%8E%86input%E6%A0%87%E7%AD%BE%E6%95%B0%E6%8D%AE%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2020-08-03</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/ngFor%E9%81%8D%E5%8E%86input%E6%A0%87%E7%AD%BE%E6%95%B0%E6%8D%AE%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://tommy0604.github.io/stopPropagation%E4%BA%8B%E4%BB%B6/</loc>
     <lastmod>2020-08-03</lastmod>
   </url>
   <url>
