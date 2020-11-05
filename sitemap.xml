@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tommy0604.github.io/about/index.html</loc>
+    
+    <lastmod>2020-11-05</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tommy0604.github.io/%E8%AE%B0%E5%BD%9510%E6%9C%8823%E5%8F%B7%E4%B8%80%E6%AC%A1%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%9D%A2%E8%AF%95/</loc>
     
     <lastmod>2020-11-05</lastmod>
@@ -59,13 +66,6 @@
   
   <url>
     <loc>https://tommy0604.github.io/Rxjs/</loc>
-    
-    <lastmod>2020-08-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tommy0604.github.io/about/index.html</loc>
     
     <lastmod>2020-08-03</lastmod>
     
@@ -165,13 +165,6 @@
   </url>
   
   <url>
-    <loc>https://tommy0604.github.io/tags/angular/</loc>
-    <lastmod>2020-11-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tommy0604.github.io/tags/Rxjs/</loc>
     <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
@@ -179,14 +172,14 @@
   </url>
   
   <url>
-    <loc>https://tommy0604.github.io/tags/PM2/</loc>
+    <loc>https://tommy0604.github.io/tags/angular/</loc>
     <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tommy0604.github.io/tags/git/</loc>
+    <loc>https://tommy0604.github.io/tags/PM2/</loc>
     <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -201,6 +194,13 @@
   
   <url>
     <loc>https://tommy0604.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2020-11-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://tommy0604.github.io/tags/git/</loc>
     <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -244,14 +244,14 @@
   </url>
   
   <url>
-    <loc>https://tommy0604.github.io/categories/angular/</loc>
+    <loc>https://tommy0604.github.io/categories/Rxjs/</loc>
     <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tommy0604.github.io/categories/Rxjs/</loc>
+    <loc>https://tommy0604.github.io/categories/angular/</loc>
     <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -265,14 +265,14 @@
   </url>
   
   <url>
-    <loc>https://tommy0604.github.io/categories/git/</loc>
+    <loc>https://tommy0604.github.io/categories/%E7%AE%97%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://tommy0604.github.io/categories/%E7%AE%97%E6%B3%95-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <loc>https://tommy0604.github.io/categories/git/</loc>
     <lastmod>2020-11-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
