@@ -1,3 +1,4 @@
+https://tommy0604.github.io/环形图中心汇总数据以及浮窗/
 https://tommy0604.github.io/记录10月23号一次失败的面试/
 https://tommy0604.github.io/深入分析Angular中的ViewChild/
 https://tommy0604.github.io/Angular模板绑定/

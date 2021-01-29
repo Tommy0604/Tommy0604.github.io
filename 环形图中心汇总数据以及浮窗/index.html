@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="PM2,">
+  <meta name="keywords" content="echarts,">
 
 
 
@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="概述 这篇文章用来记录第一次使用PM2的感受，和使用nodemon到PM2的区别，及PM2所带来的好处。">
-<meta name="keywords" content="PM2">
+<meta name="description" content="思路就是在环形图中间放置一个饼图   三步: 先把饼图中间开个洞，变成环形图 再到往饼图中间放个饼图，背景透明 设置label">
+<meta name="keywords" content="echarts">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初识PM2">
-<meta property="og:url" content="https://tommy0604.github.io/PM2/index.html">
+<meta property="og:title" content="环形图中心汇总数据以及浮窗">
+<meta property="og:url" content="https://tommy0604.github.io/环形图中心汇总数据以及浮窗/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
-<meta property="og:description" content="概述 这篇文章用来记录第一次使用PM2的感受，和使用nodemon到PM2的区别，及PM2所带来的好处。">
+<meta property="og:description" content="思路就是在环形图中间放置一个饼图   三步: 先把饼图中间开个洞，变成环形图 再到往饼图中间放个饼图，背景透明 设置label">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-03T03:47:01.345Z">
+<meta property="og:updated_time" content="2021-01-29T03:54:52.968Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初识PM2">
-<meta name="twitter:description" content="概述 这篇文章用来记录第一次使用PM2的感受，和使用nodemon到PM2的区别，及PM2所带来的好处。">
+<meta name="twitter:title" content="环形图中心汇总数据以及浮窗">
+<meta name="twitter:description" content="思路就是在环形图中间放置一个饼图   三步: 先把饼图中间开个洞，变成环形图 再到往饼图中间放个饼图，背景透明 设置label">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/PM2/">
+  <link rel="canonical" href="https://tommy0604.github.io/环形图中心汇总数据以及浮窗/">
 
 
 
 
 
-  <title>初识PM2 | Tommy's blog</title>
+  <title>环形图中心汇总数据以及浮窗 | Tommy's blog</title>
   
 
 
@@ -274,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/PM2/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/环形图中心汇总数据以及浮窗/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TommyKi">
@@ -291,7 +291,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">初识PM2</h2>
+          <h2 class="post-title" itemprop="name headline">环形图中心汇总数据以及浮窗</h2>
         
 
         <div class="post-meta">
@@ -303,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-09T22:45:08+08:00">
-                2019-12-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-29T11:18:30+08:00">
+                2021-01-29
               </time>
             
 
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-03T11:47:01+08:00">
-                2020-08-03
+              <time title="更新于" itemprop="dateModified" datetime="2021-01-29T11:54:52+08:00">
+                2021-01-29
               </time>
             
           </span>
@@ -338,8 +338,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PM2/" itemprop="url" rel="index">
-                    <span itemprop="name">PM2</span>
+                  <a href="/categories/echarts/" itemprop="url" rel="index">
+                    <span itemprop="name">echarts</span>
                   </a>
                 </span>
 
@@ -380,28 +380,22 @@
       
 
       
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
-<p>这篇文章用来记录第一次使用PM2的感受，和使用nodemon到PM2的区别，及PM2所带来的好处。<br><!-- *PM2*不同于*nodemon*是在后台运行的，服务起来之后，可以运行其他脚本，同样拥有热编译。一般用于线上环境的进程守护，日志记录等 --></p>
+        <blockquote>
+<p>思路就是在环形图中间放置一个饼图</p>
 </blockquote>
-<a id="more"></a>
-<hr>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i pm2 -g --registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>安装好之后，修改<em>package</em>配置文件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"prd"</span>: <span class="string">"cross-env NODE_ENV=production pm2 start bin/www"</span>,</span><br></pre></td></tr></table></figure>
-<p>运行 <em>npm run prd</em> 服务就会跑起来，并且会打印出一个表格，上面会记录服务所在进程的信息👇，这样就算是成功跑起来了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬─────────</span><br><span class="line">─┐</span><br><span class="line">│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │</span><br><span class="line">├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼─────────</span><br><span class="line">─┤</span><br><span class="line">│ 0  │ www                │ fork     │ 0    │ online    │ 0%       │ 28.2mb   │</span><br><span class="line">└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="进程守护"><a href="#进程守护" class="headerlink" title="进程守护"></a>进程守护</h2><blockquote>
-<p><em>nodemon</em> 进程崩毁后就不能访问了，<em>pm2</em> 遇到进程崩溃会自动重启</p>
-</blockquote>
-<p>nodemon 服务报错之后，可会导致整个页面无法运行，这样测试就不得不停下手头的工作开始摸鱼，你们开发又写bug啦。pm2 在服务报错之后，进程依然在后台运行，只有报错页面出现问题，其他页面可以正常使用。在错误与正确之间，pm2 会自动重启。这就是进程守护机制。</p>
-<hr>
-<h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"apps"</span>: &#123;</span><br><span class="line">        "name": "weather-service", // 服务名称</span><br><span class="line">        "script": "bin/www", // 启动脚本路径</span><br><span class="line">        "watch": true, // 是否开启自动重启</span><br><span class="line">        "ignore_watch": [</span><br><span class="line">            "node_modules", </span><br><span class="line">            <span class="string">"logs"</span></span><br><span class="line">        ],</span><br><span class="line">        "error_file": "logs/err.log", // 错误日志文件路径</span><br><span class="line">        "out_file": "logs/out.log", // 输出日志文件路径</span><br><span class="line">        "log_date_format": "YYYY-MM-DD HH:mm:ss", // 日志文件时间戳</span><br><span class="line">        "instances": 4 // 进程数量</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
-<p>这些功能对<em>PM2</em>来说九牛一毛，还有很多高级配置没有用到，<em>PM2</em>很有搞头，以后尝试在项目中进一步使用。</p>
 <ul>
-<li><a href="https://pm2.keymetrics.io/" target="_blank" rel="noopener">官方文档</a></li>
+<li>三步:<ul>
+<li>先把饼图中间开个洞，变成环形图</li>
+<li>再到往饼图中间放个饼图，背景透明</li>
+<li>设置<code>label</code></li>
 </ul>
+</li>
+</ul>
+<a id="more"></a>
+<p>推荐使用全局<code>tooltip</code>，这样<code>series</code>数据都能触发<code>hover</code>事件。</p>
+<p>不能使用<code>title</code>和<code>graphic</code>来充当中心的<code>label</code>，只有数据项才会触发弹窗事件，action操作<code>tooltip.showTip</code>也无效。(曾在<code>graphic</code>的<code>mouseover</code>事件里尝试过)</p>
+<p>可以直接把下面代码copy到官网代码视图部分运行<br>example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">option = &#123;</span><br><span class="line">    tooltip: &#123;</span><br><span class="line">        trigger: <span class="string">'item'</span>,</span><br><span class="line">        formatter: <span class="string">'&#123;a&#125; &lt;br/&gt;&#123;b&#125;: &#123;c&#125; (&#123;d&#125;%)'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    legend: &#123;</span><br><span class="line">        orient: <span class="string">'vertical'</span>,</span><br><span class="line">        left: <span class="number">10</span>,</span><br><span class="line">        data: [<span class="string">'直接访问'</span>, <span class="string">'邮件营销'</span>, <span class="string">'联盟广告'</span>, <span class="string">'视频广告'</span>, <span class="string">'搜索引擎'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    series: [</span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">'访问来源'</span>,</span><br><span class="line">            type: <span class="string">'pie'</span>,</span><br><span class="line">            radius: [<span class="string">'50%'</span>, <span class="string">'70%'</span>],</span><br><span class="line">            avoidLabelOverlap: <span class="literal">false</span>,</span><br><span class="line">            hoverAnimation: <span class="literal">false</span>,</span><br><span class="line">            label: &#123;</span><br><span class="line">                show: <span class="literal">false</span>,</span><br><span class="line">                position: <span class="string">'center'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            emphasis: &#123;</span><br><span class="line">                label: &#123;</span><br><span class="line">                    show: <span class="literal">false</span>,</span><br><span class="line">                    fontSize: <span class="string">'30'</span>,</span><br><span class="line">                    fontWeight: <span class="string">'bold'</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            labelLine: &#123;</span><br><span class="line">                show: <span class="literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            data: [</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">335</span>, <span class="attr">name</span>: <span class="string">'直接访问'</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">310</span>, <span class="attr">name</span>: <span class="string">'邮件营销'</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">234</span>, <span class="attr">name</span>: <span class="string">'联盟广告'</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">135</span>, <span class="attr">name</span>: <span class="string">'视频广告'</span>&#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">            name: <span class="string">'搜索引擎'</span>,</span><br><span class="line">            type: <span class="string">'pie'</span>,</span><br><span class="line">            radius: [<span class="string">'0%'</span>, <span class="string">'30%'</span>],</span><br><span class="line">            avoidLabelOverlap: <span class="literal">false</span>,</span><br><span class="line">            hoverAnimation: <span class="literal">false</span>,</span><br><span class="line">            label: &#123;</span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">                position: <span class="string">'center'</span>,</span><br><span class="line">                verticalAlign: <span class="string">'bottom'</span>,</span><br><span class="line">                formatter: <span class="string">`&#123;a&#125;:&#123;c&#125;`</span>,</span><br><span class="line">                lineHeight: <span class="number">30</span>,</span><br><span class="line">                color: <span class="string">'#30323b'</span>,</span><br><span class="line">                fontSize: <span class="number">14</span>,</span><br><span class="line">                fontWeight: <span class="string">'lighter'</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            labelLine: &#123;</span><br><span class="line">                show: <span class="literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            data: [</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">1548</span>, <span class="attr">name</span>: <span class="string">'搜索引擎'</span>&#125;</span><br><span class="line">            ],</span><br><span class="line">            itemStyle: &#123;</span><br><span class="line">                color: <span class="string">'rgba(255, 0, 0, 0)'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -422,7 +416,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/PM2/" title="初识PM2">https://tommy0604.github.io/PM2/</a>
+    <a href="https://tommy0604.github.io/环形图中心汇总数据以及浮窗/" title="环形图中心汇总数据以及浮窗">https://tommy0604.github.io/环形图中心汇总数据以及浮窗/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -437,7 +431,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/PM2/" rel="tag"># PM2</a>
+            <a href="/tags/echarts/" rel="tag"># echarts</a>
           
         </div>
       
@@ -450,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/AngularElements/" rel="next" title="@angular/Elements">
-                <i class="fa fa-chevron-left"></i> @angular/Elements
+              <a href="/记录10月23号一次失败的面试/" rel="next" title="记录10月23号一次的面试">
+                <i class="fa fa-chevron-left"></i> 记录10月23号一次的面试
               </a>
             
           </div>
@@ -459,10 +453,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Angular-Ivy/" rel="prev" title="Angular-Ivy">
-                Angular-Ivy <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -514,17 +504,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -602,22 +583,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程守护"><span class="nav-number">3.</span> <span class="nav-text">进程守护</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础配置"><span class="nav-number">4.</span> <span class="nav-text">基础配置</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
