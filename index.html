@@ -426,6 +426,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/ViewEncapsulation-现饭现炒/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TommyKi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/malko.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ViewEncapsulation-现饭现炒/" itemprop="url">ViewEncapsulation 现饭现炒</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-09T14:12:25+08:00">
+                2021-05-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-05-10T00:28:29+08:00">
+                2021-05-10
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="ViewEncapsulation-现饭现炒"><a href="#ViewEncapsulation-现饭现炒" class="headerlink" title="ViewEncapsulation 现饭现炒"></a>ViewEncapsulation 现饭现炒</h2><blockquote>
+<p>在Angular组件封装中，组件样式难免会遇到被第三方样式覆盖的问题，不可能一直用 <code>!important</code> 来提升样式优先级，如果不加 <code>:host</code> 样式可能会向父节点穿透而覆盖其他组件样式，所以尽量避免使用 <code>!important</code> ，本文介绍Angular组件封装的几种方式。</p>
+</blockquote>
+<p><strong>先了解下ShadowDom</strong></p>
+<p>关于<code>ShadowDom</code>简而言之，能使我们将<code>Scoped Styles</code>应用于封装元素，而不会影响其他元素。</p>
+<h3 id="ViewEncapsulation-Types"><a href="#ViewEncapsulation-Types" class="headerlink" title="ViewEncapsulation Types"></a>ViewEncapsulation Types</h3><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emulated</td>
+<td>0</td>
+<td>通过向宿主元素添加包含替代 ID 的属性并预处理通过 styles 或 styleUrls 提供样式规则，来模拟 Native 所有选择器。这是默认选项。</td>
+</tr>
+<tr>
+<td>None</td>
+<td>2</td>
+<td>不要提供任何模板或样式封装。</td>
+</tr>
+<tr>
+<td>ShadowDom</td>
+<td>3</td>
+<td>使用 <code>Shadow DOM</code> 封装样式。</td>
+</tr>
+</tbody>
+</table>
+<p>现在我们一个一个地查看所有ViewEncapsulation模式。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/ViewEncapsulation-现饭现炒/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/环形图中心汇总数据以及浮窗/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1600,8 +1789,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-03T11:47:01+08:00">
-                2020-08-03
+              <time title="更新于" itemprop="dateModified" datetime="2021-05-09T14:13:39+08:00">
+                2021-05-09
               </time>
             
           </span>
@@ -1619,8 +1808,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/angular/" itemprop="url" rel="index">
-                    <span itemprop="name">angular</span>
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
                   </a>
                 </span>
 
@@ -1664,166 +1853,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Angular-Ivy/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/PM2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="TommyKi">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/malko.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tommy's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/PM2/" itemprop="url">初识PM2</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-09T22:45:08+08:00">
-                2019-12-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-08-03T11:47:01+08:00">
-                2020-08-03
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PM2/" itemprop="url" rel="index">
-                    <span itemprop="name">PM2</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
-<p>这篇文章用来记录第一次使用PM2的感受，和使用nodemon到PM2的区别，及PM2所带来的好处。<br><!-- *PM2*不同于*nodemon*是在后台运行的，服务起来之后，可以运行其他脚本，同样拥有热编译。一般用于线上环境的进程守护，日志记录等 --></p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/PM2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1913,7 +1942,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1924,7 +1953,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1935,7 +1964,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="算法,数据结构,">
+  <meta name="keywords" content="Angular,">
 
 
 
@@ -90,24 +90,22 @@
 
 
 
-<meta name="description" content="二叉树是连通无环图，并且每个结点的度最大为2，度就是有几个直接的子结点。">
-<meta name="keywords" content="算法,数据结构">
+<meta name="description" content="ViewEncapsulation 现饭现炒 在Angular组件封装中，组件样式难免会遇到被第三方样式覆盖的问题，不可能一直用 !important 来提升样式优先级，如果不加 :host 样式可能会向父节点穿透而覆盖其他组件样式，所以尽量避免使用 !important ，本文介绍Angular组件封装的几种方式。  先了解下ShadowDom 关于ShadowDom简而言之，能使我们将Scop">
+<meta name="keywords" content="Angular">
 <meta property="og:type" content="article">
-<meta property="og:title" content="二叉树">
-<meta property="og:url" content="https://tommy0604.github.io/二叉树/index.html">
+<meta property="og:title" content="ViewEncapsulation 现饭现炒">
+<meta property="og:url" content="https://tommy0604.github.io/ViewEncapsulation-现饭现炒/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
-<meta property="og:description" content="二叉树是连通无环图，并且每个结点的度最大为2，度就是有几个直接的子结点。">
+<meta property="og:description" content="ViewEncapsulation 现饭现炒 在Angular组件封装中，组件样式难免会遇到被第三方样式覆盖的问题，不可能一直用 !important 来提升样式优先级，如果不加 :host 样式可能会向父节点穿透而覆盖其他组件样式，所以尽量避免使用 !important ，本文介绍Angular组件封装的几种方式。  先了解下ShadowDom 关于ShadowDom简而言之，能使我们将Scop">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://tommy0604.github.io/images/2xtree/满二叉树.PNG">
-<meta property="og:image" content="https://tommy0604.github.io/images/2xtree/完全二叉树.PNG">
-<meta property="og:image" content="https://tommy0604.github.io/images/2xtree/排序二叉树.PNG">
-<meta property="og:image" content="https://tommy0604.github.io/images/2xtree/有序二叉树.PNG">
-<meta property="og:image" content="https://tommy0604.github.io/images/2xtree/平衡二叉树.PNG">
-<meta property="og:updated_time" content="2020-09-05T16:29:40.476Z">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/view-encapsulation/none.png">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/view-encapsulation/e.png">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/view-encapsulation/shadomDom.png">
+<meta property="og:updated_time" content="2021-05-09T16:28:29.978Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="二叉树">
-<meta name="twitter:description" content="二叉树是连通无环图，并且每个结点的度最大为2，度就是有几个直接的子结点。">
-<meta name="twitter:image" content="https://tommy0604.github.io/images/2xtree/满二叉树.PNG">
+<meta name="twitter:title" content="ViewEncapsulation 现饭现炒">
+<meta name="twitter:description" content="ViewEncapsulation 现饭现炒 在Angular组件封装中，组件样式难免会遇到被第三方样式覆盖的问题，不可能一直用 !important 来提升样式优先级，如果不加 :host 样式可能会向父节点穿透而覆盖其他组件样式，所以尽量避免使用 !important ，本文介绍Angular组件封装的几种方式。  先了解下ShadowDom 关于ShadowDom简而言之，能使我们将Scop">
+<meta name="twitter:image" content="https://tommy0604.github.io/images/ng/view-encapsulation/none.png">
 
 
 
@@ -137,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/二叉树/">
+  <link rel="canonical" href="https://tommy0604.github.io/ViewEncapsulation-现饭现炒/">
 
 
 
 
 
-  <title>二叉树 | Tommy's blog</title>
+  <title>ViewEncapsulation 现饭现炒 | Tommy's blog</title>
   
 
 
@@ -280,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/二叉树/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/ViewEncapsulation-现饭现炒/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TommyKi">
@@ -297,7 +295,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">二叉树</h2>
+          <h2 class="post-title" itemprop="name headline">ViewEncapsulation 现饭现炒</h2>
         
 
         <div class="post-meta">
@@ -309,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-06T00:18:35+08:00">
-                2020-09-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-09T14:12:25+08:00">
+                2021-05-09
               </time>
             
 
@@ -325,8 +323,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-09-06T00:29:40+08:00">
-                2020-09-06
+              <time title="更新于" itemprop="dateModified" datetime="2021-05-10T00:28:29+08:00">
+                2021-05-10
               </time>
             
           </span>
@@ -344,8 +342,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法-数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">算法&数据结构</span>
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
                   </a>
                 </span>
 
@@ -386,60 +384,70 @@
       
 
       
-        <blockquote>
-<p>二叉树是连通无环图，并且每个结点的度最大为2，度就是有几个直接的子结点。</p>
+        <h2 id="ViewEncapsulation-现饭现炒"><a href="#ViewEncapsulation-现饭现炒" class="headerlink" title="ViewEncapsulation 现饭现炒"></a>ViewEncapsulation 现饭现炒</h2><blockquote>
+<p>在Angular组件封装中，组件样式难免会遇到被第三方样式覆盖的问题，不可能一直用 <code>!important</code> 来提升样式优先级，如果不加 <code>:host</code> 样式可能会向父节点穿透而覆盖其他组件样式，所以尽量避免使用 <code>!important</code> ，本文介绍Angular组件封装的几种方式。</p>
 </blockquote>
+<p><strong>先了解下ShadowDom</strong></p>
+<p>关于<code>ShadowDom</code>简而言之，能使我们将<code>Scoped Styles</code>应用于封装元素，而不会影响其他元素。</p>
+<h3 id="ViewEncapsulation-Types"><a href="#ViewEncapsulation-Types" class="headerlink" title="ViewEncapsulation Types"></a>ViewEncapsulation Types</h3><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emulated</td>
+<td>0</td>
+<td>通过向宿主元素添加包含替代 ID 的属性并预处理通过 styles 或 styleUrls 提供样式规则，来模拟 Native 所有选择器。这是默认选项。</td>
+</tr>
+<tr>
+<td>None</td>
+<td>2</td>
+<td>不要提供任何模板或样式封装。</td>
+</tr>
+<tr>
+<td>ShadowDom</td>
+<td>3</td>
+<td>使用 <code>Shadow DOM</code> 封装样式。</td>
+</tr>
+</tbody>
+</table>
+<p>现在我们一个一个地查看所有ViewEncapsulation模式。</p>
 <a id="more"></a>
-<ul>
-<li>二叉树<ul>
-<li>满二叉树</li>
-<li>完全二叉树</li>
-<li>平衡二叉树</li>
-</ul>
-</li>
-</ul>
-<h2 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h2><blockquote>
-<p>每一层都挂满节点的二叉树，就是满二叉树</p>
+<p>先介绍下例子的组件结构</p>
+<p><strong>app.html</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hello</span> <span class="attr">name</span>=<span class="string">"&#123;&#123; name &#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">hello</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">  Start editing to see some magic happen :)</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">app-example</span>&gt;</span><span class="tag">&lt;/<span class="name">app-example</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">app-child</span>&gt;</span><span class="tag">&lt;/<span class="name">app-child</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>example.html</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">example works!</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">app-child</span>&gt;</span><span class="tag">&lt;/<span class="name">app-child</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>example.css</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.example</span>  &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#ff1493</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>child.html</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">child works!</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在<code>appComponent</code>组件中<code>app-example</code>与<code>app-child</code>组件同级，且只有<code>example</code>组件设置了样式。</p>
+<h2 id="1-ViewEncapsulation-None"><a href="#1-ViewEncapsulation-None" class="headerlink" title="1.ViewEncapsulation.None"></a>1.ViewEncapsulation.None</h2><p>首先在<code>app-example</code>组件下设置<code>ViewEncapsulation.None</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  encapsulation: ViewEncapsulation.None</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/ng/view-encapsulation/none.png" alt=" "></p>
+<p>可以看到三个<code>example</code>样式不仅在子组件生效，在同级组件也生效，似乎样式穿透到了上级，与全局样式的效果相同。所以用的时候需要注意使用场景。除非在<code>example</code>样式上封一层样式，像下面这样：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">  <span class="selector-class">.example</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ff1493</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>而且使用了<code>ViewEncapsulation.None</code>的组件，样式权重比全局样式权重和第三方样式高</strong>，这一点也要注意。</p>
+<h2 id="2-ViewEncapsulation-Emulated"><a href="#2-ViewEncapsulation-Emulated" class="headerlink" title="2.ViewEncapsulation.Emulated"></a>2.ViewEncapsulation.Emulated</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  encapsulation: ViewEncapsulation.Emulated</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>再切换到<code>ViewEncapsulation.Emulated</code>,也可以直接去掉<code>encapsulation</code>属性，因为它就是默认的。切换之后看到例子，它只对设置了<code>encapsulation</code>的组件本身生效，不会向子元素穿透。</p>
+<p><img src="/images/ng/view-encapsulation/e.png" alt=" "></p>
+<p>同<code>None</code>属性一样，样式权重大于全局样式，但是第三方组件样式权重可能会大于<code>Emulated</code>。<br>用<code>:host ::ng-deep</code>伪类选择器 选择宿主元素以及子元素样式生效，必要时可以使用<code>None</code>属性。</p>
+<p><code>:host ::ng-deep</code>会创建一个属性<code>_ngcontent-xxs-c360</code>（每次渲染会有不同），来标识宿主class</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.example</span><span class="selector-attr">[_ngcontent-xxs-c360]</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#ff1493</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-ViewEncapsulation-ShadowDom"><a href="#2-ViewEncapsulation-ShadowDom" class="headerlink" title="2.ViewEncapsulation.ShadowDom"></a>2.ViewEncapsulation.ShadowDom</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  encapsulation: ViewEncapsulation.ShadowDom</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>很明显<code>ViewEncapsulation.ShadowDom</code>会让组件最终渲染成 <code>Shadom Dom</code>，样式会与父组件隔离，子组件会生效。</p>
+<p><img src="/images/ng/view-encapsulation/shadomDom.png" alt=" "></p>
+<blockquote>
+<p>在<code>Shadom Dom</code>中用 <code>:host ::ng-deep</code>伪类选择器，不会生效，也没必要。编译之后的css被“封装”在了<code>Shadom Dom</code>里，与<code>Emulated</code>模式不同，不会生成 host 伪类</p>
 </blockquote>
-<p><img src="/images/2xtree/满二叉树.PNG" alt=" "></p>
-<p>节点数：2 ^ h - 1<br>h 为树的高度（可以理解为二叉树层数）</p>
-<h2 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h2><blockquote>
-<p>完全二叉树就是除了最后一层，上层都是满节点，最后一层从左到右排。<strong>可以不排满</strong></p>
-</blockquote>
-<p>得出结论满二叉树 “包含” 完全二叉树，反过来不行！</p>
-<p><img src="/images/2xtree/完全二叉树.PNG" alt=" "></p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>二叉树的特点：“叶子节点的位置比较规律”。因此在对数据进行排序或者查找时可以用到它，比如堆排序就使用了它。</p>
-<h3 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h3><p>二叉树的提出其实主要就是为了提高查找效率，比如我们常用的 HashMap 在处理哈希冲突严重时，拉链过长导致查找效率降低，就引入了红黑树</p>
-<p>二分查找可以缩短排序的时间，但是它要求 <strong>查找的数据必须是有序</strong> 的。每次查找、操作时都要维护一个有序的数据集，于是有了二叉排序树这个概念。</p>
-<p><img src="/images/2xtree/排序二叉树.PNG" alt=" "></p>
-<ul>
-<li>特点<ul>
-<li>左子树所有节点值均小于它的根节点的值</li>
-<li>右子树所有节点值均大于或等于根节点的值</li>
-<li>左、右子树也分别为二叉排序树</li>
-</ul>
-</li>
-</ul>
-<p>排序二叉树也可能出现下图：</p>
-<p><img src="/images/2xtree/有序二叉树.PNG" alt=" "></p>
-<p>插入的元素是有序的，生成的二叉排序树就是一个链表，这种情况下，需要遍历全部元素才行</p>
-<p>插入有序的元素时不太好控制，按二叉排序树的定义，我们无法判断当前的树是否需要调整。</p>
-<p>因此就要用到平衡二叉树（AVL 树）了。</p>
-<h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><blockquote>
-<p>平衡二叉树也称为AVI树。平衡二叉树的提出就是为了保证树不至于太倾斜，尽量保证两边平衡。</p>
-</blockquote>
-<ul>
-<li>特点<ul>
-<li>平衡二叉树要么是一棵空树</li>
-<li>在AVL树中任何节点的两个子树的高度最大差别为1</li>
-<li>子树也必须是一棵AVL树</li>
-<li>左子树所有节点都小于根节点的值，右子树节点都大于根节点的值</li>
-</ul>
-</li>
-</ul>
-<p>现有 无序数组 [35,16,44,56,78,12,96,21]</p>
-<p><img src="/images/2xtree/平衡二叉树.PNG" alt=" "></p>
-<p>本文通篇都是讲述二叉树概念，未涉及实现，后续补上。</p>
+<hr>
+<p>附上<code>stackblitz</code>，玩一玩方便理解。</p>
+<embed width="100%" height="500px" src="https://stackblitz.com/edit/angular-view-encapsulation-8rfhrc?file=app/example/example.component.ts">
 
       
     </div>
@@ -460,7 +468,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/二叉树/" title="二叉树">https://tommy0604.github.io/二叉树/</a>
+    <a href="https://tommy0604.github.io/ViewEncapsulation-现饭现炒/" title="ViewEncapsulation 现饭现炒">https://tommy0604.github.io/ViewEncapsulation-现饭现炒/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -475,9 +483,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
-          
-            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+            <a href="/tags/Angular/" rel="tag"># Angular</a>
           
         </div>
       
@@ -490,8 +496,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/git迁移问题/" rel="next" title="git迁移问题">
-                <i class="fa fa-chevron-left"></i> git迁移问题
+              <a href="/环形图中心汇总数据以及浮窗/" rel="next" title="环形图中心汇总数据以及浮窗">
+                <i class="fa fa-chevron-left"></i> 环形图中心汇总数据以及浮窗
               </a>
             
           </div>
@@ -499,10 +505,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Angular模板绑定/" rel="prev" title="你不知道的Angular模板绑定">
-                你不知道的Angular模板绑定 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -652,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#满二叉树"><span class="nav-number">1.</span> <span class="nav-text">满二叉树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全二叉树"><span class="nav-number">2.</span> <span class="nav-text">完全二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">2.1.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉排序树"><span class="nav-number">2.2.</span> <span class="nav-text">二叉排序树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡二叉树"><span class="nav-number">3.</span> <span class="nav-text">平衡二叉树</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ViewEncapsulation-现饭现炒"><span class="nav-number">1.</span> <span class="nav-text">ViewEncapsulation 现饭现炒</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewEncapsulation-Types"><span class="nav-number">1.1.</span> <span class="nav-text">ViewEncapsulation Types</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-ViewEncapsulation-None"><span class="nav-number">2.</span> <span class="nav-text">1.ViewEncapsulation.None</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ViewEncapsulation-Emulated"><span class="nav-number">3.</span> <span class="nav-text">2.ViewEncapsulation.Emulated</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ViewEncapsulation-ShadowDom"><span class="nav-number">4.</span> <span class="nav-text">2.ViewEncapsulation.ShadowDom</span></a></li></ol></div>
             
 
           </div>
