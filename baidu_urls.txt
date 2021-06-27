@@ -1,4 +1,3 @@
-https://tommy0604.github.io/Angular性能优化之纯管道/
 https://tommy0604.github.io/ViewEncapsulation-现饭现炒/
 https://tommy0604.github.io/环形图中心汇总数据以及浮窗/
 https://tommy0604.github.io/记录10月23号一次失败的面试/
