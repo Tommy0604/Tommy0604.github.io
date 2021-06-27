@@ -426,7 +426,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/ViewEncapsulation-现饭现炒/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Angular性能优化之纯管道/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TommyKi">
@@ -445,7 +445,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/ViewEncapsulation-现饭现炒/" itemprop="url">ViewEncapsulation 现饭现炒</a></h2>
+                <a class="post-title-link" href="/Angular性能优化之纯管道/" itemprop="url">Angular性能优化之纯管道</a></h2>
         
 
         <div class="post-meta">
@@ -457,8 +457,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-09T14:12:25+08:00">
-                2021-05-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-06T16:53:12+08:00">
+                2021-06-06
               </time>
             
 
@@ -473,8 +473,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-05-10T00:28:29+08:00">
-                2021-05-10
+              <time title="更新于" itemprop="dateModified" datetime="2021-06-27T21:41:32+08:00">
+                2021-06-27
               </time>
             
           </span>
@@ -530,7 +530,169 @@
 
       
         
-          <h2 id="ViewEncapsulation-现饭现炒"><a href="#ViewEncapsulation-现饭现炒" class="headerlink" title="ViewEncapsulation 现饭现炒"></a>ViewEncapsulation 现饭现炒</h2><blockquote>
+          <p><img src="https://source.unsplash.com/1600x800/weekly?cat" alt=" "></p>
+<blockquote>
+<p>这篇文章可以让你了解到，如何利用管道提高 Angular 应用程序性能</p>
+</blockquote>
+<p>接下来我们通过一个例子来演示下：</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Angular性能优化之纯管道/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/ViewEncapsulation-现饭现炒/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TommyKi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/malko.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/ViewEncapsulation-现饭现炒/" itemprop="url">ViewEncapsulation 现饭现炒</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-09T14:12:25+08:00">
+                2021-05-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2021-06-06T17:17:43+08:00">
+                2021-06-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
 <p>在Angular组件封装中，组件样式难免会遇到被第三方样式覆盖的问题，不可能一直用 <code>!important</code> 来提升样式优先级，如果不加 <code>:host</code> 样式可能会向父节点穿透而覆盖其他组件样式，所以尽量避免使用 <code>!important</code> ，本文介绍Angular组件封装的几种方式。</p>
 </blockquote>
 <p><strong>先了解下ShadowDom</strong></p>
@@ -830,8 +992,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-11-05T11:25:44+08:00">
-                2020-11-05
+              <time title="更新于" itemprop="dateModified" datetime="2021-06-27T21:50:20+08:00">
+                2021-06-27
               </time>
             
           </span>
@@ -887,7 +1049,8 @@
 
       
         
-          <blockquote>
+          <p><img src="https://source.unsplash.com/1600x800/weekly?dog" alt=" "></p>
+<blockquote>
 <p>新开一个 tag 主要用来记录，我这🥦🐔面试时没回答好的问题！</p>
 </blockquote>
           <!--noindex-->
@@ -1729,167 +1892,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Angular-Ivy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="TommyKi">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/malko.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tommy's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Angular-Ivy/" itemprop="url">Angular-Ivy</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-06T23:59:11+08:00">
-                2020-01-06
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2021-05-09T14:13:39+08:00">
-                2021-05-09
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Angular/" itemprop="url" rel="index">
-                    <span itemprop="name">Angular</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="所有你需要知道的关于Ivy，新的Angular引擎"><a href="#所有你需要知道的关于Ivy，新的Angular引擎" class="headerlink" title="所有你需要知道的关于Ivy，新的Angular引擎"></a>所有你需要知道的关于Ivy，新的Angular引擎</h2><blockquote>
-<p>由于官方文档并没有做Ivy的太多说明，出于好奇就有了这篇译文：）</p>
-</blockquote>
-<p>原文链接: <a href="https://medium.com/angular-in-depth/all-you-need-to-know-about-ivy-the-new-angular-engine-9cde471f42cf" target="_blank" rel="noopener">All you need to know about Ivy, The new Angular engine!</a></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Angular-Ivy/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1942,7 +1944,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
