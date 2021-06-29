@@ -79,7 +79,7 @@
 
 
 
-  <meta name="keywords" content="echarts,">
+  <meta name="keywords" content="Angular,Angular性能优化,">
 
 
 
@@ -90,18 +90,18 @@
 
 
 
-<meta name="description" content="思路就是在环形图中间放置一个饼图   三步: 先把饼图中间开个洞，变成环形图 再到往饼图中间放个饼图，背景透明 设置label">
-<meta name="keywords" content="echarts">
+<meta name="description" content="这篇文章可以让你了解到，如何利用管道提高 Angular 应用程序性能  接下来我们通过一个例子来演示下：">
+<meta name="keywords" content="Angular,Angular性能优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="环形图中心汇总数据以及浮窗">
-<meta property="og:url" content="https://tommy0604.github.io/环形图中心汇总数据以及浮窗/index.html">
+<meta property="og:title" content="Angular性能优化之纯管道">
+<meta property="og:url" content="https://tommy0604.github.io/Angular性能优化之纯管道/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
-<meta property="og:description" content="思路就是在环形图中间放置一个饼图   三步: 先把饼图中间开个洞，变成环形图 再到往饼图中间放个饼图，背景透明 设置label">
+<meta property="og:description" content="这篇文章可以让你了解到，如何利用管道提高 Angular 应用程序性能  接下来我们通过一个例子来演示下：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-01-29T03:54:52.968Z">
+<meta property="og:updated_time" content="2021-06-29T12:29:23.226Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="环形图中心汇总数据以及浮窗">
-<meta name="twitter:description" content="思路就是在环形图中间放置一个饼图   三步: 先把饼图中间开个洞，变成环形图 再到往饼图中间放个饼图，背景透明 设置label">
+<meta name="twitter:title" content="Angular性能优化之纯管道">
+<meta name="twitter:description" content="这篇文章可以让你了解到，如何利用管道提高 Angular 应用程序性能  接下来我们通过一个例子来演示下：">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://tommy0604.github.io/环形图中心汇总数据以及浮窗/">
+  <link rel="canonical" href="https://tommy0604.github.io/Angular性能优化之纯管道/">
 
 
 
 
 
-  <title>环形图中心汇总数据以及浮窗 | Tommy's blog</title>
+  <title>Angular性能优化之纯管道 | Tommy's blog</title>
   
 
 
@@ -274,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/环形图中心汇总数据以及浮窗/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Angular性能优化之纯管道/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="TommyKi">
@@ -291,7 +291,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">环形图中心汇总数据以及浮窗</h2>
+          <h2 class="post-title" itemprop="name headline">Angular性能优化之纯管道</h2>
         
 
         <div class="post-meta">
@@ -303,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-29T11:18:30+08:00">
-                2021-01-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-06-06T20:25:14+08:00">
+                2021-06-06
               </time>
             
 
@@ -319,8 +319,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2021-01-29T11:54:52+08:00">
-                2021-01-29
+              <time title="更新于" itemprop="dateModified" datetime="2021-06-29T20:29:23+08:00">
+                2021-06-29
               </time>
             
           </span>
@@ -338,8 +338,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/echarts/" itemprop="url" rel="index">
-                    <span itemprop="name">echarts</span>
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
                   </a>
                 </span>
 
@@ -381,21 +381,39 @@
 
       
         <blockquote>
-<p>思路就是在环形图中间放置一个饼图</p>
+<p>这篇文章可以让你了解到，如何利用管道提高 Angular 应用程序性能</p>
 </blockquote>
-<ul>
-<li>三步:<ul>
-<li>先把饼图中间开个洞，变成环形图</li>
-<li>再到往饼图中间放个饼图，背景透明</li>
-<li>设置<code>label</code></li>
-</ul>
-</li>
-</ul>
+<p>接下来我们通过一个例子来演示下：</p>
 <a id="more"></a>
-<p>推荐使用全局<code>tooltip</code>，这样<code>series</code>数据都能触发<code>hover</code>事件。</p>
-<p>不能使用<code>title</code>和<code>graphic</code>来充当中心的<code>label</code>，只有数据项才会触发弹窗事件，action操作<code>tooltip.showTip</code>也无效。(曾在<code>graphic</code>的<code>mouseover</code>事件里尝试过)</p>
-<p>可以直接把下面代码copy到官网代码视图部分运行<br>example:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">option = &#123;</span><br><span class="line">    tooltip: &#123;</span><br><span class="line">        trigger: <span class="string">'item'</span>,</span><br><span class="line">        formatter: <span class="string">'&#123;a&#125; &lt;br/&gt;&#123;b&#125;: &#123;c&#125; (&#123;d&#125;%)'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    legend: &#123;</span><br><span class="line">        orient: <span class="string">'vertical'</span>,</span><br><span class="line">        left: <span class="number">10</span>,</span><br><span class="line">        data: [<span class="string">'直接访问'</span>, <span class="string">'邮件营销'</span>, <span class="string">'联盟广告'</span>, <span class="string">'视频广告'</span>, <span class="string">'搜索引擎'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    series: [</span><br><span class="line">        &#123;</span><br><span class="line">            name: <span class="string">'访问来源'</span>,</span><br><span class="line">            type: <span class="string">'pie'</span>,</span><br><span class="line">            radius: [<span class="string">'50%'</span>, <span class="string">'70%'</span>],</span><br><span class="line">            avoidLabelOverlap: <span class="literal">false</span>,</span><br><span class="line">            hoverAnimation: <span class="literal">false</span>,</span><br><span class="line">            label: &#123;</span><br><span class="line">                show: <span class="literal">false</span>,</span><br><span class="line">                position: <span class="string">'center'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            emphasis: &#123;</span><br><span class="line">                label: &#123;</span><br><span class="line">                    show: <span class="literal">false</span>,</span><br><span class="line">                    fontSize: <span class="string">'30'</span>,</span><br><span class="line">                    fontWeight: <span class="string">'bold'</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            labelLine: &#123;</span><br><span class="line">                show: <span class="literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            data: [</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">335</span>, <span class="attr">name</span>: <span class="string">'直接访问'</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">310</span>, <span class="attr">name</span>: <span class="string">'邮件营销'</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">234</span>, <span class="attr">name</span>: <span class="string">'联盟广告'</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">135</span>, <span class="attr">name</span>: <span class="string">'视频广告'</span>&#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">            name: <span class="string">'搜索引擎'</span>,</span><br><span class="line">            type: <span class="string">'pie'</span>,</span><br><span class="line">            radius: [<span class="string">'0%'</span>, <span class="string">'30%'</span>],</span><br><span class="line">            avoidLabelOverlap: <span class="literal">false</span>,</span><br><span class="line">            hoverAnimation: <span class="literal">false</span>,</span><br><span class="line">            label: &#123;</span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">                position: <span class="string">'center'</span>,</span><br><span class="line">                verticalAlign: <span class="string">'bottom'</span>,</span><br><span class="line">                formatter: <span class="string">`&#123;a&#125;:&#123;c&#125;`</span>,</span><br><span class="line">                lineHeight: <span class="number">30</span>,</span><br><span class="line">                color: <span class="string">'#30323b'</span>,</span><br><span class="line">                fontSize: <span class="number">14</span>,</span><br><span class="line">                fontWeight: <span class="string">'lighter'</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            labelLine: &#123;</span><br><span class="line">                show: <span class="literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            data: [</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">1548</span>, <span class="attr">name</span>: <span class="string">'搜索引擎'</span>&#125;</span><br><span class="line">            ],</span><br><span class="line">            itemStyle: &#123;</span><br><span class="line">                color: <span class="string">'rgba(255, 0, 0, 0)'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="string">'my-app'</span>,</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;p *ngFor="let user of users"&gt;</span></span><br><span class="line"><span class="string">      &#123;&#123; user.name &#125;&#125;有一只猫 &#123;&#123; getCat(user.id).name &#125;&#125;</span></span><br><span class="line"><span class="string">    &lt;/p&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  styleUrls: [<span class="string">'./app.component.css'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppComponent &#123;</span><br><span class="line">  users = [&#123; id: <span class="number">1</span>, name: <span class="string">'wang'</span> &#125;, &#123; id: <span class="number">2</span>, name: <span class="string">'li'</span> &#125;];</span><br><span class="line">  cats = [&#123; name: <span class="string">'Tom'</span>, userId: <span class="number">1</span> &#125;, &#123; name: <span class="string">'Jerry'</span>, userId: <span class="number">2</span> &#125;];</span><br><span class="line"></span><br><span class="line">  getCat(userId: <span class="built_in">number</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'🤪User'</span>, userId);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.cats.find(<span class="function"><span class="params">c</span> =&gt;</span> c.userId === userId);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有两组数据分别是 <code>users</code> 与 <code>cats</code>，可以把 <code>users</code> 理解为传入数据，或者是其他数据源。通过 <code>getCat()</code> 方法获取对应的 猫咪，这种场景再业务开发中再熟悉不过了。<br>最后添加一个全局模板直接进行一个循环输出。</p>
+<p>接下来看下输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">🤪User 1</span><br><span class="line">🤪User 2</span><br><span class="line">🤪User 1</span><br><span class="line">🤪User 2</span><br><span class="line">🤪User 1</span><br><span class="line">🤪User 2</span><br><span class="line">🤪User 1</span><br><span class="line">🤪User 2</span><br></pre></td></tr></table></figure>
+<p>可以 <code>getCat()</code> 方法调用了<strong>8</strong>次，有<strong>6</strong>次无用调用。这是因为当在模板内使用方法时，<code>angular</code> 每次变更检测都会调用其方法。</p>
+<p>我们可以添加一个监听事件</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@HostListener</span>(<span class="string">'click'</span>)</span><br><span class="line">clicked() &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>每当点击事件触发，就会调用 <strong>4</strong> 次</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">🤪User 1</span><br><span class="line">🤪User 2</span><br><span class="line">🤪User 1</span><br><span class="line">🤪User 2</span><br></pre></td></tr></table></figure>
+<p>这不是我想要，我只想让它调用两次啊！！！数据量大了这么玩顶不住。</p>
+<hr>
+<h2 id="Pure-Pipe"><a href="#Pure-Pipe" class="headerlink" title="Pure Pipe"></a>Pure Pipe</h2><p>接下来就是主角登场了。我们先创建一个 <code>pipe</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Pipe</span>(&#123;</span><br><span class="line">  name: <span class="string">'cat'</span>,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> CatPipe <span class="keyword">implements</span> PipeTransform &#123;</span><br><span class="line">  <span class="keyword">constructor</span>(<span class="params"><span class="keyword">private</span> appComponent: AppComponent</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  transform(value, property: <span class="string">'name'</span> | <span class="string">'userId'</span>): unknown &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'🤪User'</span>, value);</span><br><span class="line">    <span class="keyword">const</span> cat = <span class="keyword">this</span>.appComponent.cats.find(<span class="function"><span class="params">c</span> =&gt;</span> c.userId === value);</span><br><span class="line">    <span class="keyword">if</span> (cat) &#123;</span><br><span class="line">      <span class="keyword">return</span> cat[property];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到 <code>pipe</code> 的实现与之前调用的方法基本是一样的，在模板中添加引用之后，却发现结果符合之前的预期了，只调用了两次。</p>
+<p>这是因为 <code>pipe</code> 默认是 <code>pure pipe</code>，且 <code>Pipe</code> 装饰器有 <code>pure</code> 可用来设置管道模式。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Pipe</span>(&#123;</span><br><span class="line">  name: <span class="string">'cat'</span>,</span><br><span class="line">  pure: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>而 <code>pure</code> 表示的是: <code>transform</code> 的值(入参value)发生变化时是否 不跟随变更检测调用</strong>。</p>
+<blockquote>
+<p>官方解释：如果该管道具有内部状态（也就是说，其结果会依赖内部状态，而不仅仅依赖参数），就要把 pure 设置为 false。 这种情况下，该管道会在每个变更检测周期中都被调用一次 —— 即使其参数没有发生任何变化。<br>When true, the pipe is pure, meaning that the transform() method is invoked only when its input arguments change. Pipes are pure by default.</p>
+</blockquote>
+<p>当把 <code>pure</code> 改成 <code>false</code>，会随变更检测调用多次，不管值发生变化没。</p>
+<blockquote>
+<p>了解变更检测机制： <a href="https://zhuanlan.zhihu.com/p/96486260" target="_blank" rel="noopener">[译]深入理解Angular onPush变更检测策略</a></p>
+</blockquote>
+<p>这样我们通过 <code>pipe</code> 代替模板中的方法，就减少了 <code>angular</code> 模板中不必要的调用。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当模板中数据为静态数据需要转换或加工时，调用pipe比调用方法好</p>
+<hr>
+<p>上文例子stackblitz</p>
+<embed width="100%" height="500px" src="https://stackblitz.com/edit/ng-pipe-pure?file=src/app/app.component.ts">
 
       
     </div>
@@ -416,7 +434,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://tommy0604.github.io/环形图中心汇总数据以及浮窗/" title="环形图中心汇总数据以及浮窗">https://tommy0604.github.io/环形图中心汇总数据以及浮窗/</a>
+    <a href="https://tommy0604.github.io/Angular性能优化之纯管道/" title="Angular性能优化之纯管道">https://tommy0604.github.io/Angular性能优化之纯管道/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -431,7 +449,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/echarts/" rel="tag"># echarts</a>
+            <a href="/tags/Angular/" rel="tag"># Angular</a>
+          
+            <a href="/tags/Angular性能优化/" rel="tag"># Angular性能优化</a>
           
         </div>
       
@@ -444,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/记录10月23号一次失败的面试/" rel="next" title="记录10月23号一次的面试">
-                <i class="fa fa-chevron-left"></i> 记录10月23号一次的面试
+              <a href="/ViewEncapsulation-现饭现炒/" rel="next" title="ViewEncapsulation 现饭现炒">
+                <i class="fa fa-chevron-left"></i> ViewEncapsulation 现饭现炒
               </a>
             
           </div>
@@ -453,10 +473,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ViewEncapsulation-现饭现炒/" rel="prev" title="ViewEncapsulation 现饭现炒">
-                ViewEncapsulation 现饭现炒 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,8 +524,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -587,6 +612,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">1.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pure-Pipe"><span class="nav-number">2.</span> <span class="nav-text">Pure Pipe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
