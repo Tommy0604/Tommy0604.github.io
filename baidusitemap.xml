@@ -1,83 +1,411 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
   <url>
-    <loc>https://tommy0604.github.io/Angular%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/</loc>
-    <lastmod>2022-01-04</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/Angular%25E6%2598%25AF%25E6%2580%258E%25E4%25B9%2588%25E5%25B7%25A5%25E4%25BD%259C%25E7%259A%2584/</loc>
+    <lastmod>2022-01-04T08:04:19.937Z</lastmod>
+    <data>
+        <display>
+        <title>Angular是怎么工作的</title>
+        <pubTime>2022-01-04T06:17:25.000Z</pubTime>
+        
+        <tag>Angular </tag>
+         
+         
+           
+             
+              <breadCrumb title="Angular" url="https://tommy0604.github.io/categories/Angular/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BA%AF%E7%AE%A1%E9%81%93/</loc>
-    <lastmod>2021-06-29</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/Angular%25E6%2580%25A7%25E8%2583%25BD%25E4%25BC%2598%25E5%258C%2596%25E4%25B9%258B%25E7%25BA%25AF%25E7%25AE%25A1%25E9%2581%2593/</loc>
+    <lastmod>2021-06-29T12:29:23.226Z</lastmod>
+    <data>
+        <display>
+        <title>Angular性能优化之纯管道</title>
+        <pubTime>2021-06-06T12:25:14.000Z</pubTime>
+        
+        <tag>Angular </tag>
+         
+        <tag>Angular性能优化 </tag>
+         
+         
+           
+             
+              <breadCrumb title="Angular" url="https://tommy0604.github.io/categories/Angular/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/%E8%AE%B0%E5%BD%9510%E6%9C%8823%E5%8F%B7%E4%B8%80%E6%AC%A1%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%9D%A2%E8%AF%95/</loc>
-    <lastmod>2021-06-27</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/%25E8%25AE%25B0%25E5%25BD%259510%25E6%259C%258823%25E5%258F%25B7%25E4%25B8%2580%25E6%25AC%25A1%25E5%25A4%25B1%25E8%25B4%25A5%25E7%259A%2584%25E9%259D%25A2%25E8%25AF%2595/</loc>
+    <lastmod>2021-06-27T13:50:20.526Z</lastmod>
+    <data>
+        <display>
+        <title>记录10月23号一次的面试</title>
+        <pubTime>2020-10-25T14:36:37.000Z</pubTime>
+        
+        <tag>面试 </tag>
+         
+         
+           
+             
+              <breadCrumb title="面试" url="https://tommy0604.github.io/categories/%25E9%259D%25A2%25E8%25AF%2595/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/ViewEncapsulation-%E7%8E%B0%E9%A5%AD%E7%8E%B0%E7%82%92/</loc>
-    <lastmod>2021-06-06</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/ViewEncapsulation-%25E7%258E%25B0%25E9%25A5%25AD%25E7%258E%25B0%25E7%2582%2592/</loc>
+    <lastmod>2021-06-06T09:17:43.381Z</lastmod>
+    <data>
+        <display>
+        <title>ViewEncapsulation 现饭现炒</title>
+        <pubTime>2021-05-09T06:12:25.000Z</pubTime>
+        
+        <tag>Angular </tag>
+         
+         
+           
+             
+              <breadCrumb title="Angular" url="https://tommy0604.github.io/categories/Angular/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>https://tommy0604.github.io/AngularElements/</loc>
-    <lastmod>2021-05-09</lastmod>
-  </url>
+    <lastmod>2021-05-09T06:13:39.190Z</lastmod>
+    <data>
+        <display>
+        <title>@angular/Elements</title>
+        <pubTime>2019-09-16T14:25:38.000Z</pubTime>
+        
+        <tag>Angular </tag>
+         
+         
+           
+             
+              <breadCrumb title="Angular" url="https://tommy0604.github.io/categories/Angular/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>https://tommy0604.github.io/Angular-Ivy/</loc>
-    <lastmod>2021-05-09</lastmod>
-  </url>
+    <lastmod>2021-05-09T06:13:39.190Z</lastmod>
+    <data>
+        <display>
+        <title>Angular-Ivy</title>
+        <pubTime>2020-01-06T15:59:11.000Z</pubTime>
+        
+        <tag>Angular </tag>
+         
+         
+           
+             
+              <breadCrumb title="Angular" url="https://tommy0604.github.io/categories/Angular/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/%E7%8E%AF%E5%BD%A2%E5%9B%BE%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%B5%AE%E7%AA%97/</loc>
-    <lastmod>2021-01-29</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/%25E7%258E%25AF%25E5%25BD%25A2%25E5%259B%25BE%25E4%25B8%25AD%25E5%25BF%2583%25E6%25B1%2587%25E6%2580%25BB%25E6%2595%25B0%25E6%258D%25AE%25E4%25BB%25A5%25E5%258F%258A%25E6%25B5%25AE%25E7%25AA%2597/</loc>
+    <lastmod>2021-01-29T03:54:52.968Z</lastmod>
+    <data>
+        <display>
+        <title>环形图中心汇总数据以及浮窗</title>
+        <pubTime>2021-01-29T03:18:30.000Z</pubTime>
+        
+        <tag>echarts </tag>
+         
+         
+           
+             
+              <breadCrumb title="echarts" url="https://tommy0604.github.io/categories/echarts/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/Angualr%E5%A4%A9%E6%A2%AF%E4%B9%8B%E8%B7%AF/</loc>
-    <lastmod>2020-11-05</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/Angualr%25E5%25A4%25A9%25E6%25A2%25AF%25E4%25B9%258B%25E8%25B7%25AF/</loc>
+    <lastmod>2020-11-05T07:45:46.025Z</lastmod>
+    <data>
+        <display>
+        <title>Angular装饰器</title>
+        <pubTime>2018-11-21T05:35:11.000Z</pubTime>
+        
+        <tag>Angular </tag>
+         
+         
+           
+             
+              <breadCrumb title="Angular" url="https://tommy0604.github.io/categories/Angular/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
   <url>
-    <loc>https://tommy0604.github.io/%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90Angular%E4%B8%AD%E7%9A%84ViewChild/</loc>
-    <lastmod>2020-10-20</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/%25E6%25B7%25B1%25E5%2585%25A5%25E5%2588%2586%25E6%259E%2590Angular%25E4%25B8%25AD%25E7%259A%2584ViewChild/</loc>
+    <lastmod>2020-10-20T14:36:19.557Z</lastmod>
+    <data>
+        <display>
+        <title>[译]深入分析Angular中的ViewChild，ElementRef和ViewChildren</title>
+        <pubTime>2020-10-19T15:25:51.000Z</pubTime>
+        
+        <tag>Angular </tag>
+         
+         
+           
+             
+              <breadCrumb title="Angular" url="https://tommy0604.github.io/categories/Angular/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/Angular%E6%A8%A1%E6%9D%BF%E7%BB%91%E5%AE%9A/</loc>
-    <lastmod>2020-10-15</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/Angular%25E6%25A8%25A1%25E6%259D%25BF%25E7%25BB%2591%25E5%25AE%259A/</loc>
+    <lastmod>2020-10-15T15:24:47.375Z</lastmod>
+    <data>
+        <display>
+        <title>你不知道的Angular模板绑定</title>
+        <pubTime>2020-10-12T15:52:48.000Z</pubTime>
+        
+        <tag>Angular </tag>
+         
+         
+           
+             
+              <breadCrumb title="Angular" url="https://tommy0604.github.io/categories/Angular/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/Angular%E6%8B%A6%E6%88%AA%E5%99%A8/</loc>
-    <lastmod>2020-09-20</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/Angular%25E6%258B%25A6%25E6%2588%25AA%25E5%2599%25A8/</loc>
+    <lastmod>2020-09-20T09:41:05.470Z</lastmod>
+    <data>
+        <display>
+        <title>Angular拦截器&应用场景</title>
+        <pubTime>2019-04-22T14:53:18.000Z</pubTime>
+        
+        <tag>Angular </tag>
+         
+         
+           
+             
+              <breadCrumb title="Angular" url="https://tommy0604.github.io/categories/Angular/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
-    <lastmod>2020-09-05</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/%25E4%25BA%258C%25E5%258F%2589%25E6%25A0%2591/</loc>
+    <lastmod>2020-09-05T16:29:40.476Z</lastmod>
+    <data>
+        <display>
+        <title>二叉树</title>
+        <pubTime>2020-09-05T16:18:35.000Z</pubTime>
+        
+        <tag>算法 </tag>
+         
+        <tag>数据结构 </tag>
+         
+         
+           
+             
+              <breadCrumb title="算法&amp;数据结构" url="https://tommy0604.github.io/categories/%25E7%25AE%2597%25E6%25B3%2595-%25E6%2595%25B0%25E6%258D%25AE%25E7%25BB%2593%25E6%259E%2584/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>https://tommy0604.github.io/javascript-OOP/</loc>
-    <lastmod>2020-09-05</lastmod>
-  </url>
+    <lastmod>2020-09-05T16:22:16.780Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript OOP</title>
+        <pubTime>2020-06-30T15:57:10.000Z</pubTime>
+        
+        <tag>JavaScript </tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="https://tommy0604.github.io/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/git%E8%BF%81%E7%A7%BB%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2020-08-15</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/git%25E8%25BF%2581%25E7%25A7%25BB%25E9%2597%25AE%25E9%25A2%2598/</loc>
+    <lastmod>2020-08-15T01:53:38.462Z</lastmod>
+    <data>
+        <display>
+        <title>git迁移问题</title>
+        <pubTime>2020-08-15T01:51:55.000Z</pubTime>
+        
+        <tag>git </tag>
+         
+         
+           
+             
+              <breadCrumb title="git" url="https://tommy0604.github.io/categories/git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>https://tommy0604.github.io/Rxjs/</loc>
-    <lastmod>2020-08-03</lastmod>
-  </url>
+    <lastmod>2020-08-03T13:57:24.777Z</lastmod>
+    <data>
+        <display>
+        <title>Rxjs的使用</title>
+        <pubTime>2019-08-07T00:46:59.000Z</pubTime>
+        
+        <tag>Rxjs </tag>
+         
+         
+           
+             
+              <breadCrumb title="Rxjs" url="https://tommy0604.github.io/categories/Rxjs/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>https://tommy0604.github.io/PM2/</loc>
-    <lastmod>2020-08-03</lastmod>
-  </url>
+    <lastmod>2020-08-03T03:47:01.345Z</lastmod>
+    <data>
+        <display>
+        <title>初识PM2</title>
+        <pubTime>2019-12-09T14:45:08.000Z</pubTime>
+        
+        <tag>PM2 </tag>
+         
+         
+           
+             
+              <breadCrumb title="PM2" url="https://tommy0604.github.io/categories/PM2/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/JS%E4%B8%AD%E7%9A%84this/</loc>
-    <lastmod>2020-08-03</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/JS%25E4%25B8%25AD%25E7%259A%2584this/</loc>
+    <lastmod>2020-08-03T03:47:01.341Z</lastmod>
+    <data>
+        <display>
+        <title>JS中的this</title>
+        <pubTime>2019-04-03T14:38:30.000Z</pubTime>
+        
+        <tag>JavaScript </tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="https://tommy0604.github.io/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/ngFor%E9%81%8D%E5%8E%86input%E6%A0%87%E7%AD%BE%E6%95%B0%E6%8D%AE%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2020-08-03</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/stopPropagation%25E4%25BA%258B%25E4%25BB%25B6/</loc>
+    <lastmod>2020-08-03T03:47:01.340Z</lastmod>
+    <data>
+        <display>
+        <title>stopPropagation事件</title>
+        <pubTime>2019-02-27T14:04:09.000Z</pubTime>
+        
+        <tag>Angular </tag>
+         
+         
+           
+             
+              <breadCrumb title="想不到的bug" url="https://tommy0604.github.io/categories/%25E6%2583%25B3%25E4%25B8%258D%25E5%2588%25B0%25E7%259A%2584bug/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
-    <loc>https://tommy0604.github.io/stopPropagation%E4%BA%8B%E4%BB%B6/</loc>
-    <lastmod>2020-08-03</lastmod>
-  </url>
+    <loc>https://tommy0604.github.io/ngFor%25E9%2581%258D%25E5%258E%2586input%25E6%25A0%2587%25E7%25AD%25BE%25E6%2595%25B0%25E6%258D%25AE%25E6%2598%25BE%25E7%25A4%25BA%25E9%2597%25AE%25E9%25A2%2598/</loc>
+    <lastmod>2020-08-03T03:47:01.340Z</lastmod>
+    <data>
+        <display>
+        <title>ngFor遍历input标签数据显示问题</title>
+        <pubTime>2019-01-15T02:56:11.000Z</pubTime>
+        
+        <tag>Angular </tag>
+         
+         
+           
+             
+              <breadCrumb title="Angular" url="https://tommy0604.github.io/categories/Angular/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>https://tommy0604.github.io/blog/</loc>
-    <lastmod>2020-08-03</lastmod>
-  </url>
-</urlset> 
+    <lastmod>2020-08-03T03:47:01.338Z</lastmod>
+    <data>
+        <display>
+        <title> </title>
+        <pubTime>2018-08-29T16:00:00.000Z</pubTime>
+        
+        <tag>夸白 </tag>
+         
+         
+           
+             
+              <breadCrumb title="夸白" url="https://tommy0604.github.io/categories/%25E5%25A4%25B8%25E7%2599%25BD/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+</urlset>
