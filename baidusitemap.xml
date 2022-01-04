@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://tommy0604.github.io/Angular%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/</loc>
+    <lastmod>2022-01-04</lastmod>
+  </url>
+  <url>
     <loc>https://tommy0604.github.io/Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BA%AF%E7%AE%A1%E9%81%93/</loc>
     <lastmod>2021-06-29</lastmod>
   </url>
@@ -65,11 +69,11 @@
     <lastmod>2020-08-03</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/stopPropagation%E4%BA%8B%E4%BB%B6/</loc>
+    <loc>https://tommy0604.github.io/ngFor%E9%81%8D%E5%8E%86input%E6%A0%87%E7%AD%BE%E6%95%B0%E6%8D%AE%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2020-08-03</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/ngFor%E9%81%8D%E5%8E%86input%E6%A0%87%E7%AD%BE%E6%95%B0%E6%8D%AE%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://tommy0604.github.io/stopPropagation%E4%BA%8B%E4%BB%B6/</loc>
     <lastmod>2020-08-03</lastmod>
   </url>
   <url>
