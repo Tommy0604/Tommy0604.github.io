@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans,en,default">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="NfoHNvnMAz9S6JqgSiximHUo1x-iWZ_tymLcLHvG2OI">
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="code-2aKaLafO55">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo01.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo01.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Angular,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这篇文章用来记录 angular 创建阶段（angular creation），angular是如何把ts组件解释成浏览器原始的js代码的，以及变更检测阶段都做了什么。原视频How Angular works | Kara Erickson  我们从一个简单的例子开始，全文会围绕这个例子展开：">
+<meta name="keywords" content="Angular">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular是怎么工作的">
+<meta property="og:url" content="https://tommy0604.github.io/Angular是怎么工作的/index.html">
+<meta property="og:site_name" content="Tommy&#39;s blog">
+<meta property="og:description" content="这篇文章用来记录 angular 创建阶段（angular creation），angular是如何把ts组件解释成浏览器原始的js代码的，以及变更检测阶段都做了什么。原视频How Angular works | Kara Erickson  我们从一个简单的例子开始，全文会围绕这个例子展开：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/how-angular-works/01.png">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/how-angular-works/02.png">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/how-angular-works/03-LView.png">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/how-angular-works/04.gif">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/how-angular-works/05.png">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/how-angular-works/06.png">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/how-angular-works/07.png">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/how-angular-works/08.png">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/how-angular-works/09.png">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/how-angular-works/10.png">
+<meta property="og:image" content="https://tommy0604.github.io/images/ng/how-angular-works/11.png">
+<meta property="og:updated_time" content="2022-07-08T14:19:25.680Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular是怎么工作的">
+<meta name="twitter:description" content="这篇文章用来记录 angular 创建阶段（angular creation），angular是如何把ts组件解释成浏览器原始的js代码的，以及变更检测阶段都做了什么。原视频How Angular works | Kara Erickson  我们从一个简单的例子开始，全文会围绕这个例子展开：">
+<meta name="twitter:image" content="https://tommy0604.github.io/images/ng/how-angular-works/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://tommy0604.github.io/Angular是怎么工作的/">
+
+
+
+
+
+  <title>Angular是怎么工作的 | Tommy's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tommy's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">developer、popper、喜新恋旧</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Angular是怎么工作的/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="TommyKi">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/malko.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Angular是怎么工作的</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-04T14:17:25+08:00">
+                2022-01-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2022-07-08T22:19:25+08:00">
+                2022-07-08
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>这篇文章用来记录 angular 创建阶段（angular creation），angular是如何把ts组件解释成浏览器原始的js代码的，以及变更检测阶段都做了什么。<br>原视频<a href="https://www.youtube.com/watch?v=S0o-4yc2n-8" target="_blank" rel="noopener">How Angular works | Kara Erickson</a></p>
+</blockquote>
+<p>我们从一个简单的例子开始，全文会围绕这个例子展开：</p>
+<a id="more"></a>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  selector: <span class="string">'app-root'</span>,</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;img src="car.jpg"&gt;</span></span><br><span class="line"><span class="string">    &lt;h1&gt; &#123;&#123; header&#125;&#125; &lt;/h1&gt;</span></span><br><span class="line"><span class="string">    &lt;info-card [name]="name"&gt;&lt;/info-card&gt;</span></span><br><span class="line"><span class="string">    &lt;footer&gt;&lt;/footer&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  styleUrls: [<span class="string">'./admin.component.scss'</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">class</span> AppComponent &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>在编译之后，ts会降级成js：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppComponent</span> </span>&#123; &#125;</span><br><span class="line">AppComponent.ngComponentDef = defineComponent(&#123;</span><br><span class="line">  selectors: [[<span class="string">`app-root`</span>]],</span><br><span class="line">  factory: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> AppComponent();</span><br><span class="line">  &#125;,</span><br><span class="line">  template: <span class="function"><span class="keyword">function</span>(<span class="params">renderFlags, context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (renderFlags &amp; RenderFlags.Create) &#123;</span><br><span class="line">      elements(<span class="number">0</span>, <span class="string">'img'</span>, [<span class="string">'src, '</span>cat.jpg\<span class="string">']);</span></span><br><span class="line"><span class="string">      elementStart(1, '</span>h1<span class="string">');</span></span><br><span class="line"><span class="string">      text(2);</span></span><br><span class="line"><span class="string">      elementEnd();</span></span><br><span class="line"><span class="string">      element(3, '</span>info-card<span class="string">');</span></span><br><span class="line"><span class="string">      element(4, '</span>footer<span class="string">');</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    if(renderFlags &amp; RenderFlags.Update) &#123;</span></span><br><span class="line"><span class="string">      advance(2);</span></span><br><span class="line"><span class="string">      textInterpolate1(" ", ctx.header, " ");</span></span><br><span class="line"><span class="string">      advance(1);</span></span><br><span class="line"><span class="string">      property("name", ctx.name);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;,</span></span><br><span class="line"><span class="string">  directives: [ InfoCard, Footer ],</span></span><br><span class="line"><span class="string">&#125;)</span></span><br></pre></td></tr></table></figure>
+<p>这是已经clean后的js，实际是这样的…</p>
+<p><img src="/images/ng/how-angular-works/01.png" alt=" "></p>
+<p>经过webpack包装之后还是能看出有很大相似😅😅😅，只需要记住上面代码就好了。</p>
+<h2 id="Appication-Bootstrap"><a href="#Appication-Bootstrap" class="headerlink" title="Appication Bootstrap"></a>Appication Bootstrap</h2><blockquote>
+<p>下文部分小节是已第一人称带入的，文中的”我们”可以指代 angular，angular团队，或者Kara Erickson的团队。</p>
+</blockquote>
+<p>Angular 应用程序引导时，会经历三个阶段：</p>
+<ul>
+<li>模块设置（Module setup）— Module bootstrap</li>
+<li>视图创建（View creation）— Component bootstrap</li>
+<li>变更检测（Change detection）— Component bootstrap</li>
+</ul>
+<p><strong>而这篇文章主要讲 组件构建(component bootstrap);</strong><br>angular 组件构建是从根开始的，如果你不指定根组件，angular实际上也不知道从哪开始。至于根模块，angular一般指向的都是<code>AppModule</code>，当然也可是其他名字。根组件呢，就在根模块里的 <code>@NgModule</code> 装饰器的 <code>bootstrap</code> 中：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  bootstrap: [AppComponent]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppModule &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>在开始设置跟组件时，必须做一些特殊的事：</strong></p>
+<ol>
+<li><strong>Locate root element 找到根元素</strong></li>
+</ol>
+<p>代码段：<code>selectors: [[&#39;app-root&#39;]]</code><br>也就是寻找根元素<code>app-root</code>，所以在 <code>index.html</code> 中添加了 <code>&lt;app-root&gt;</code> 标签，这个标签帮框架确认了根元素位置，以便把 angular 应用程序把所有元素附加到 <code>&lt;app-root&gt;</code> 元素中，确保在编译时这个组件选择器被编译。 在框架从组件定义中获取到选择器后，就知道选择哪个选择器了，angular就是这样定位根元素的。</p>
+<ol>
+<li><strong>Instantiate root component 实例化根组件</strong></li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">factory: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">new</span> AppComponent();</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>angular编译器生成了一个 <code>factory</code> 函数，<code>factory</code>就是用来实例化组件的。</p>
+<ol>
+<li><strong>Render the root component 渲染根组件</strong></li>
+</ol>
+<p>渲染根组件也就是调用模板函数（template function）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template: <span class="function"><span class="keyword">function</span>(<span class="params">renderFlags, context</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (renderFlags &amp; RenderFlags.Create) &#123;</span><br><span class="line">    elements(<span class="number">0</span>, <span class="string">'img'</span>, [<span class="string">'src, '</span>cat.jpg<span class="string">']);</span></span><br><span class="line"><span class="string">      elementStart(1, '</span>h1<span class="string">');</span></span><br><span class="line"><span class="string">       text(2);</span></span><br><span class="line"><span class="string">      elementEnd();</span></span><br><span class="line"><span class="string">      element(3, '</span>info-card<span class="string">');</span></span><br><span class="line"><span class="string">      element(4, '</span>footer<span class="string">');</span></span><br><span class="line"><span class="string">   &#125;</span></span><br><span class="line"><span class="string">    if(renderFlags &amp; RenderFlags.Update) &#123;</span></span><br><span class="line"><span class="string">     // ...</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br></pre></td></tr></table></figure>
+<p>在工厂函数调用之后，会创建<code>app component</code>，然后在创建模式下（RenderFlags.Create），调用模板函数来创建 <code>info-card</code> 和<code>footer</code> 等组件。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">App.ngComponentDef.template(create, app);</span><br><span class="line">InfoCard.ngComponentDef.template(create, info);</span><br><span class="line">Footer.ngComponentDef.template(create, footer);</span><br></pre></td></tr></table></figure>
+<p>如果想创建整个应用程序或者整个应用程序的Dom，我们要做的就是在组件树中调用所有这些模板函数。<br><strong>而这些模板函数的都指向一个函数 Instructions ，它是由 Angular 实现的，这个函数可以粗略分为两个阵营</strong></p>
+<ul>
+<li><strong>Creation Instructions（上文提到的元素、文本，模板创建指令）</strong></li>
+<li><strong>Update Instructions （更新元素、模板，指令）</strong></li>
+</ul>
+<p><img src="/images/ng/how-angular-works/02.png" alt width="80%" height="80%" align="bottom"></p>
+<h3 id="Creation-Instructions"><a href="#Creation-Instructions" class="headerlink" title="Creation Instructions"></a>Creation Instructions</h3><h4 id="Create-elements-amp-Set-up-attributes"><a href="#Create-elements-amp-Set-up-attributes" class="headerlink" title="Create elements &amp; Set up attributes"></a>Create elements &amp; Set up attributes</h4><p>首先开始介绍创建模式是怎么工作的。<br>模板函数的结构实际反映了 <code>HTML</code> 的模板结构，回看上面的代码段。传入<code>elements</code>函数的入参，分别是标签的名称、源属性和值。这么做是为了在模板中更轻松且准确的创建<code>DOM</code>，Angular实际上不只是采用模板的方式，要知道模板的优势要比<code>HTML</code>强，模板不仅仅是它的“内部HTML”，模板可以在它基础之上做更多的操作。<br><strong>Creation阶段是在逐一创建所有元素</strong>，仔细观察结构中的元素，就会发现它的结构很复杂。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elements(<span class="number">0</span>, <span class="string">'img'</span>, [<span class="string">'src, '</span>cat.jpg<span class="string">']);  // &lt;img src="car.jpg"&gt;</span></span><br></pre></td></tr></table></figure>
+<p>再来看看 <code>element</code> 函数的实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">element</span>(<span class="params">index, tag, attrs</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> el = documnet.createElement(tag);</span><br><span class="line">  <span class="keyword">const</span> parent = getCurrentParent();</span><br><span class="line">  setAttributes(el, attrs);</span><br><span class="line">  parent.appendChild(el);</span><br><span class="line">  <span class="keyword">const</span> lView = getLView();</span><br><span class="line">  lView[index] = el;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们逐行解读这到底干了什么。</p>
+<h4 id="Register-listeners"><a href="#Register-listeners" class="headerlink" title="Register listeners"></a>Register listeners</h4><p>第一行，实际上 <code>angular</code> 创建Dom的API应该是大家有使用过的，如<code>document.createElement</code>函数。随之是获取父元素当做根元素，添加任意哈希值（个人理解这么做是为了添加一个唯一标识，方便定位），并附加到它的父元素（2~5行）。同时把要创建的元素添加到了 <code>lView</code>，<code>lView</code>是一个类似数组的数据结构（在change detection相关代码中会十分常见），这么做的目的是为了方便跟踪定位元素，方便以后变更检测中正确的更新这些元素。所以我们需要一些方法来访问它们，比如常见的<code>Dom API</code>就能获取到相应的元素，但这相当昂贵且缓慢，而 <code>Angular</code>有自己的方法来跟踪这些元素。<br><code>angular</code>的方案是存储这些元素在内部数组被称为<code>LView</code>，也被称为逻辑视图，<code>angular</code>为每一个模板实例或者组件实例创建一个 <code>LView</code>实例，所以每个组件都有自己的存储集。<br><img src="/images/ng/how-angular-works/03-LView.png" alt="图2：LView 运行时内部结构"><br><code>LView</code>里除了有其Dom元素，<code>angular</code>还把绑定值等东西放在了<code>LView</code>，这样我们就可以检查旧的绑定值和新的绑定值，我们还把指令实例放在<code>LView</code>，这样我们就可以在以后对它们设置输入。<br>每个组件都有自己的数据来源，​在你创建每个元素时，我们把他添加到这个数组中，所以如果我们回到我们的模板，在创建的过程中，将每个元素加入到这个数组。试想下，我们正在逐行执行它，创建<code>img</code>标签，添加到正确的位置，然后我们会存储到<code>LView</code>，随后创建<code>h1</code>、<code>info-card</code>和<code>footer</code>标签，添加到<code>LView</code>中。</p>
+<h4 id="Match-disrectives"><a href="#Match-disrectives" class="headerlink" title="Match disrectives"></a>Match disrectives</h4><p>实际上 <code>**instructions**</code>一直在执行和匹配指令，因此在编译时，编译器会分析你的ng模块和组件装饰器，它将根据你的ng模块找出哪些指令和组件。一旦它知道所有这些指令是什么，它就会在组件定义中打印出这个指令列表，因此对于 <code>app component</code> ，它可以访问 <code>info card</code> 指令组件和 <code>footer</code> 组件。这使我们的工作更加容易，因为在运行时，你可以不必担心模块范围或任何其他东西，我们知道我们的可用指令列表来自组件定义，所以如果我把注册表放在右边，你就可以直观地看到我们在创建所有这些元素时 我们也在将指令与我们正在创建的元素相匹配。匹配顺序可以参考下图：<br><img src="/images/ng/how-angular-works/04.gif" alt=" "><br>我们会根据注册表的指令集，逐个匹配选择器，直到匹配正确。</p>
+<h4 id="Instantiate-directives"><a href="#Instantiate-directives" class="headerlink" title="Instantiate directives"></a>Instantiate directives</h4><p>在这一步，我们需要实例化我们找到的指令或组件，你可能认为只需要调用下new关键字，就完成实例化操作了，但这没有考虑到依赖注入，这些组件或指令可能有N个参数，可能在组件树的任何地方，我们所做的是调用 <code>components factory</code>，这与实例化组件所用的<code>components factory</code>一样， 所以<code>info-card</code>工厂函数是这个样子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">factory: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="keyword">new</span> InfoCard(</span><br><span class="line">   directiveInject(Info);</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它会像你所期望的那样调用<code>info-card</code>，但它有这个<code>directive inject</code>指令，这是支持依赖注入的<code>**instructions**</code>，这才是真正要去获取的信息。</p>
+<h4 id="Perform-DI"><a href="#Perform-DI" class="headerlink" title="Perform DI"></a>Perform DI</h4><p>在angular中依赖注入的要点是将<code>directive</code>注入<code>**instructions**</code>来获取<code>token</code>，它首先检查的是<code>directive injector tree</code>，随后会定位<code>directive injector</code>所在位置，我们会跟踪您在<code>directives</code>和<code>components</code>定义中添加的所有指令和组件本身。因此每次您有一个包含<code>directives</code>的节点时，我们都会创建一个指令注入器，所以它就变成了这个指令注入器树。我们会找到离我们请求最近的节点的指令注入器并输入它，然后我们会一直走到路由，如果它不存在，我们就会回退到<code>module injector</code>模板注入器，模块注入器是我们跟踪你在模块上设置<code>providers</code>的地方，如果没有找到它，我们会把它全部返回，或者判断它是否是可选的。<br>对于例子中的<code>Info service</code>的<code>provider</code>，假设我们在<code>app module</code>提供了它，那么当我们创建<code>info-card</code>时，你知道我们调用指令注入，会先检查我们当前所在节点，所以会检查<code>info-card</code>是否存储这个指令注入器，这时会有两种情况 是 or 否，否则会移动到下个有指令注入器的父元素 <code>app-root</code>，也就是当前的<code>app component</code>，查看是否提供了<code>Info service</code>，没有，所以这时我们返回到模块注入器，很明显 <code>app module</code> 提供了这个。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">providers: [</span><br><span class="line">  &#123;provide: Info, useClass: HermesInfo&#125;</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<h4 id="Create-child-components"><a href="#Create-child-components" class="headerlink" title="Create child components"></a>Create child components</h4><p>我们可以通过<code>info Service</code>（provide里的info）服务正确地创建<code>infoCardDirective</code>指令，一旦我们创建了<code>info card</code>实例，我们就会将它保存在同一个<code>LView</code>中，就像我们前面提的，我们需要定位指令实例，稍后设置<code>Inputs</code>，以便使用<code>contacts</code>调用其生命周期钩子，我们用指令做了很多事情，所以必须得跟踪指令。由于你可以在同一个节点上设置多个<code>Directive</code>指令，所以我们也会在之后检查注册表中其他指令，以便稍后匹配<code>Footer</code>，并将其添加到同一个<code>LView</code>中。你可能会想，这个指令匹配过程视乎很贵，你可以有N个模块，甚至其他导入模块，这么想没什么问题，所以定向匹配不是我们想要的，每个组件不止匹配一次，我们只想在初始化组件时才去匹配，所以我们怎么让它工作的？<br><img src="/images/ng/how-angular-works/05.png" alt=" "><br>基本上我们通过共享数据结构来使它工作的，我们为每个组件实例创建 <code>LView</code>逻辑视图，我们还有一个 <code>TView</code>或者说模板视图， 我们为每个模板函数或组件创建一个视图，这么说可能够直白。举个例子：如果你有一个有10个实例的组件，angular将创建10个<code>LView</code>和一个<code>TView</code>，所有的实例将共享<code>TView</code>，我们使其工作的方法是，我们将<code>TView</code>存储在组件的<code>def</code>上，所以下次我们创建这个组件实例时，我们可以查看<code>def</code>查找<code>TVIew</code>并查看我们初始化时存储的所有信息，并利用这些信息。<br><img src="/images/ng/how-angular-works/06.png" alt=" "><br>接下来看下在实践中是怎么这样的，首先我们有指令实例，当我们将指令实例推送到<code>LView</code>时，我们也把它们的定义以相同的索引推送到<code>TView</code>，与创建DOM元素类似，我们也将<code>TNode</code>模板节点以相同的索引推送到<code>TView</code>，<code>TNode</code>本质上是有关每个Dom元素的元数据，所以它将创建包含标签名称等信。在这个例子中，关于指令匹配的信息，在<code>TNode</code>上我们有一个指令索引列表或一系列与该节点匹配的指令索引。<br>例如：对于<code>info-card</code>来说，当我们第二次通过这个<code>app component Template</code>时，我们将获得<code>info-card</code>元素，我们会检查是否有一个我们已经创建的T标记，<code>TNode</code>有关于这个节点的指令存储位置等信息，它会指向<code>InfoCard.ref</code>，然后我们就可以立即去实例化<code>infoCard</code>，而不需要做任何匹配，这使得后续组件实例变得非常快。每个组件的创建过程几乎都是这样，所以试想一下<code>info-card</code>和<code>footer</code>在有相同过程，它使我们重复调用变更检测。</p>
+<h3 id="Change-Detection"><a href="#Change-Detection" class="headerlink" title="Change Detection"></a>Change Detection</h3><blockquote>
+<p>在这个过程中，检查绑定值，并将值重排到视图中。</p>
+</blockquote>
+<p>变更检测是我们检测所有绑定值的过程，如果它更改了，我们将重新运行视图来反映更新的值。你可能认为变更检测与视图创建非常相似，我们可以继续调用组件树下的所有模板函数，但这次我们没有使用不是使用创建标志<code>RenderFlags.Create</code>，而是使用更新标志<code>RenderFlags.Update</code>，所以当你从上到下调用所有这些模板函数，这就是变化检测的本质。<br>上已经解释过了Create阶段，现在我们可以只关注模板函数的Update阶段。<br><img src="/images/ng/how-angular-works/07.png" alt=" "><br>通过上图可以看到，name属性绑定是一对一的，但我们不再创建元素了，所以我们不一定对每个元素都有一对一的映射，有些元素会有多个绑定，有些元素没有绑定，所以当我们生成绑定指令时，为了跟踪哪个元素，我们还有这些前进指令（<code>advance instructions</code>下文统称前进指令），这些指令告诉我们如何在节点和绑定之间进行协商。<br>不妨想想右边是<code>LView</code>这个数组，我们将存储我们的元素，这些0到6 <code>LView</code>的索引和索引中的元素，我们需要跟踪的有两个关键点，一是当前节点，也就是我们所在节点上实际想要更新属性的节点，二是当前绑定，当前绑定跟踪我们在L视图中的位置，基本上我们需要跟踪所有旧值，通过每次运行变更检测，我们可以知道它是否发生了变化，所以我们将旧的绑定值保存在更新DOM元素之后的<code>LView</code>中，我们有一种计数器来跟踪节点在<code>LView</code>中位置，你会看到它是如何在一秒内工作的。<br><img src="/images/ng/how-angular-works/08.png" alt=" "><br>现在假设我们执行了第一条<code>advance instructions</code>，它所做的就是告诉我们第一条绑定是在两个节点之下，它会增加当前节点计数器，直到 到达所在的两个节点之下的节点，所以现在我们在文本节点上，然后我们运行文本插值指令<code>textInterpolate1</code>，这所做的基本上就是 检查你传入的标题变量，上下文设置的标题与你在当前索引处绑定的值相对照，而现在它是空的，第一次我们假设值已经改变了，所以我们将继续更新DOM中的文本绑定，我们也会为下次运行变化检测时缓存该值，然后当前绑定增加一位，这样我们就不会继续覆盖到当前的值，于是我们就完成了对当前节点的绑定。再运行第二条<code>advance instructions</code>，这就告诉框架下一个绑定是在一个节点之下的节点，于是命中了<code>info-card</code>，然后我们执行属性绑定指令，不管你现在在哪个节点上，你都要检查name属性，这是第一次调用传入的值​，假设它已经改变了，因此我们要在这里更新绑定值，但name属性不是元素<code>attributes</code>而是<code>@Input</code>指令 ，所以我们不想去设置元素上的name属性，我们想在<code>info-card</code>组件上设置它，还记得我们在某个节点和节点上的所有指令之间做过映射吗，所以我们可以很简单地推断出这是哪一个组件，并直接在上面设置<code>@Input</code>输入，所以下一次你通过变化检测时，将对照我们刚刚保存的这些值进行检查，所以无论<code>header</code>和<code>name</code>的新值是什么，都将对照<code>header</code>和<code>name</code>的旧值再次检查。<br>你可能已经注意到了一件事，那就是变更检测将在一个视图中从上到下运行，因为我们保持了我们的排序，你知道模板中的组件树是从上到下检查的，组件视图中的所有节点也是从上到下检查的，所以它是非常可预测的。</p>
+<h4 id="Ivy-Change-Detection"><a href="#Ivy-Change-Detection" class="headerlink" title="Ivy Change Detection"></a>Ivy Change Detection</h4><ul>
+<li>Component tree checked from top to bottom（检查组件树）</li>
+<li>All nodes checked form top to bottom（检查所有节点）</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">one</span>]=<span class="string">"one"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;&#123; two &#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">comp</span> [<span class="attr">three</span>]=<span class="string">"three"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">comp</span> [<span class="attr">four</span>]=<span class="string">"four"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>假设你有这个模板，其中有<code>DIV</code>和文本绑定，期望它会按照你看到的1234的顺序逐行执行，但实际上略有不同，我不知道你们是否能猜到真实的顺序是什么，你可以尝试脑补一下~</p>
+<h4 id="Pre-Ivy-Change-Detection"><a href="#Pre-Ivy-Change-Detection" class="headerlink" title="Pre-Ivy Change Detection"></a>Pre-Ivy Change Detection</h4><ul>
+<li>Component tree checked from top to bottom</li>
+<li>Nodes checked top to bottom for directive inputs</li>
+<li>Nodes checked top to bottom for property or text bindings</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">comp</span> [<span class="attr">three</span>]=<span class="string">"three"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">comp</span> [<span class="attr">four</span>]=<span class="string">"four"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">one</span>]=<span class="string">"one"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;&#123; two &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>结果是3412，这是因为我们在4之前会做两次单独的传递，对指令输入做一次完整的传递，然后对元素和文本绑定做另一次完整的传递，从实现的角度来看这是有道理的，但从用户的角度来看，让人感到莫名其妙，为什么不是从上到下来检查的。<br>这就是我们修复这个的一个原因，我们让你的模板函数如何运行或你的模板如何被检查变得更加可预测，但我想指出的是，虽然我们会保证节点之间的绑定顺序，但不保证特定节点内的绑定顺序，有一个很好的理由，这是为了保留在一个节点上优化绑定的权利。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">comp</span> [<span class="attr">prop1</span>]=<span class="string">"prop1"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">id</span>=<span class="string">"id-&#123;&#123;id&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">      [<span class="attr">attr.attr1</span>]=<span class="string">"attr1"</span></span></span><br><span class="line"><span class="tag">      [<span class="attr">prop2</span>]=<span class="string">"prop2"</span></span></span><br><span class="line"><span class="tag">      [<span class="attr">attr.attr2</span>]=<span class="string">"attr2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>看上面的comp组件，我们有一堆属性绑定和一堆<code>attributes</code>，我们可以在模板函数中生成这样的东西，我们为每一个绑定的指令都按照你写的顺序来写，就像你期望的那样，但是这很重复，你有两个<code>property instructions</code>，还有<code>attribute instructions</code>，我们有什么办法可以优化这个，我们可以使用<strong>属性链</strong>。如果我们可以在节点内稍微改变顺序并移动它们，这样我们就可以从下面获取属性绑定把它链接到顶部的属性绑定上。由于<code>property instructions</code>返回的是自身，<code>property</code>函数返回的是自身实例，因此我们可以链接到你知道的<code>property</code>和<code>attribute</code>上，并将这些额外的函数 函数名称保存在内存中，这看起来像是小的优化，但实际上在大型模板上它实际上有很大作用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">property(<span class="string">'prop1'</span>, ctx.prop1);</span><br><span class="line">propertyInterpolate1(<span class="string">'id-'</span>, ctx.id, <span class="string">''</span>);</span><br><span class="line">attribute(<span class="string">'attr1'</span>, ctx.attr1);</span><br><span class="line">property(<span class="string">'prop2'</span>, ctx.prop2);</span><br><span class="line">attribute(<span class="string">'attr2'</span>, ctx.attr2);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">property(<span class="string">'prop1'</span>, ctx.prop1)</span><br><span class="line">     .(<span class="string">'prop2'</span>, ctx.prop2);</span><br><span class="line">propertyInterpolate1(<span class="string">'id-'</span>, ctx.id, <span class="string">''</span>);</span><br><span class="line">attribute(<span class="string">'attr1'</span>, ctx.attr1);</span><br><span class="line">    .(<span class="string">'attr2'</span>, ctx.attr2);</span><br></pre></td></tr></table></figure>
+<p><a name="hxtUf"></a></p>
+<h2 id="Lifecycle-Hooks"><a href="#Lifecycle-Hooks" class="headerlink" title="Lifecycle Hooks"></a>Lifecycle Hooks</h2><p>还有一件事我没有谈到，那就是生命周期钩子，你可能想知道这些钩子是什么时候触发的，它们实际上是作为变化检测的一部分来执行的，我只是为了简单起见省略了它，但现在我们要回到过去，丰富我们之前了解的内容。<br>你可能十分熟悉生命周期钩子，但我还是要快速巴巴一下。前三个<code>ngOnChanges</code>、<code>ngOnInit</code> 和 <code>ngDoCheck</code> 这些都是在为特定指令设置<code>@Inputs</code>后运行的钩子，<code>ngAfterViewInit</code>和<code>ngAfterViewChecked</code>通常在<code>View</code>检查之后发生，<code>ngAfterContentInit</code>和<code>ngAfterContentChecked</code>在<code>Content</code>检查后发生，<code>contentChilden</code>检查在<code>Content</code>检查后，但你可能不知道的是 它们的执行方式略有不同。<br><img src="/images/ng/how-angular-works/09.png" alt=" "><br>前三个钩子我们是按<code>Node</code>节点执行的，所以我们会逐个<code>Node</code>节点运行，而其他的钩子是逐个<code>View</code>视图运行的，所以我们会一次对视图运行所有的钩子，而不是一次对某个特定的节点运行所有的钩子，这意味着所有按节点运行的钩子在变化时都只影响它自己。​我们必须在执行模板函数时实际运行，那是我们实际检查节点的时候。<br><img src="/images/ng/how-angular-works/10.png" alt=" "><br>如果我们回顾到<code>Change Detection</code>本质，所有的生命周期钩子都将在<code>advance instruction</code>前进指令中执行，所以除了更改你知道的节点之外，我们也在执行生命周期钩子，所以当 前进指令运行完成，我们就知道我们已经完成了该节点的所有输入和绑定。这就是我们如何知道我们可以前进的原因，就这样一直重复直到我们执行完所有生命周期钩子。当我们执行完 <code>advance(2)</code>，下一步到 <code>textInterpolate1 instruction</code>，我们检查文本绑定，和之前一样更新值，然后进入下一个前进指令，在这一步已经完成了文本节点的所有绑定，显然这不起作用，我们不会为任何文本节点提供任何生命周期钩子，但如果这是个普通元素，<code>advance(1)</code>就是该文本执行生命周期钩子的地方。然后检查一下最后一条指令，这时已经没有更多的前进指令了，因为我们已经完成了，所以我们只是执行那些没有绑定的东西的生命周期钩子。</p>
+<h2 id="After-Template-Function-Invocation"><a href="#After-Template-Function-Invocation" class="headerlink" title="After Template Function Invocation"></a>After Template Function Invocation</h2><p>在模板函数被调用后，我们实际上做了一些更多事情</p>
+<ul>
+<li>Refresh embedded views （刷新嵌入视图），这些是通过<code>ngFor</code> <code>ngIf</code>等指令添加的。</li>
+<li>Flush all content hooks （刷新<code>ngAfterContentInit</code>和<code>ngAfterContentChecked</code>钩子），View hooks 触发后要触发 Content hooks，这是一步是为了一次刷新特定视图的所有 Content hooks。</li>
+<li>Set host bindings 设置主机绑定</li>
+<li>Check child components 再次检查所有子组件</li>
+<li>Flush all view hooks 刷新所有 View hooks，视图检查是从下到上的，所以必须先检查直系节点。</li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>读到这希望现在的你已经对angular是如何工作的有了更好的理解，我们说了一大堆，希望你还没有被劝退，现在我们快速回顾下我们在视图创建中所看到的。<br><img src="/images/ng/how-angular-works/11.png" alt=" "><br>…<br>到这里就结束了，水平有限还请担待，在读完这些内容后，如果感觉有出入，可以联系我。<br>希望有所收获，感谢。</p>
+<p>感兴趣推荐去看原片~（文章头部引用）</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    TommyKi
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tommy0604.github.io/Angular是怎么工作的/" title="Angular是怎么工作的">https://tommy0604.github.io/Angular是怎么工作的/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Angular/" rel="tag"># Angular</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Angular性能优化之纯管道/" rel="next" title="Angular性能优化之纯管道">
+                <i class="fa fa-chevron-left"></i> Angular性能优化之纯管道
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/前端向量的运用/" rel="prev" title="前端向量知识">
+                前端向量知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/malko.jpg" alt="TommyKi">
+            
+              <p class="site-author-name" itemprop="name">TommyKi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Tommy0604" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5386094937" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Appication-Bootstrap"><span class="nav-number">1.</span> <span class="nav-text">Appication Bootstrap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creation-Instructions"><span class="nav-number">1.1.</span> <span class="nav-text">Creation Instructions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-elements-amp-Set-up-attributes"><span class="nav-number">1.1.1.</span> <span class="nav-text">Create elements &amp; Set up attributes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Register-listeners"><span class="nav-number">1.1.2.</span> <span class="nav-text">Register listeners</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Match-disrectives"><span class="nav-number">1.1.3.</span> <span class="nav-text">Match disrectives</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Instantiate-directives"><span class="nav-number">1.1.4.</span> <span class="nav-text">Instantiate directives</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Perform-DI"><span class="nav-number">1.1.5.</span> <span class="nav-text">Perform DI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-child-components"><span class="nav-number">1.1.6.</span> <span class="nav-text">Create child components</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Change-Detection"><span class="nav-number">1.2.</span> <span class="nav-text">Change Detection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ivy-Change-Detection"><span class="nav-number">1.2.1.</span> <span class="nav-text">Ivy Change Detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pre-Ivy-Change-Detection"><span class="nav-number">1.2.2.</span> <span class="nav-text">Pre-Ivy Change Detection</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lifecycle-Hooks"><span class="nav-number">2.</span> <span class="nav-text">Lifecycle Hooks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#After-Template-Function-Invocation"><span class="nav-number">3.</span> <span class="nav-text">After Template Function Invocation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">4.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TommyKi</span>
+
+  
+
+  <br>
+  
+  
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>
