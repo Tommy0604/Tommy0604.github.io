@@ -1,37 +1,919 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next gemini use-motion" lang="zh-Hans,en,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="NfoHNvnMAz9S6JqgSiximHUo1x-iWZ_tymLcLHvG2OI" />
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="code-2aKaLafO55" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo01.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo01.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Angular," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="所有你需要知道的关于Ivy，新的Angular引擎 由于官方文档并没有做Ivy的太多说明，出于好奇就有了这篇译文：）  原文链接: All you need to know about Ivy, The new Angular engine!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular-Ivy">
+<meta property="og:url" content="https://tommy0604.github.io/Angular-Ivy/index.html">
+<meta property="og:site_name" content="Tommy&#39;s blog">
+<meta property="og:description" content="所有你需要知道的关于Ivy，新的Angular引擎 由于官方文档并没有做Ivy的太多说明，出于好奇就有了这篇译文：）  原文链接: All you need to know about Ivy, The new Angular engine!">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-01-06T15:59:11.000Z">
+<meta property="article:modified_time" content="2022-08-19T04:47:52.671Z">
+<meta property="article:author" content="TommyKi">
+<meta property="article:tag" content="Angular">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://tommy0604.github.io/Angular-Ivy/"/>
+
+
+
+
+
+  <title>Angular-Ivy | Tommy's blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tommy's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">developer、popper、喜新恋旧</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Angular-Ivy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/malko.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Angular-Ivy</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-06T23:59:11+08:00">
+                2020-01-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2022-08-19T12:47:52+08:00">
+                2022-08-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Angular/" itemprop="url" rel="index">
+                    <span itemprop="name">Angular</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="所有你需要知道的关于Ivy，新的Angular引擎"><a href="#所有你需要知道的关于Ivy，新的Angular引擎" class="headerlink" title="所有你需要知道的关于Ivy，新的Angular引擎"></a>所有你需要知道的关于Ivy，新的Angular引擎</h2><blockquote>
+<p>由于官方文档并没有做Ivy的太多说明，出于好奇就有了这篇译文：）</p>
+</blockquote>
+<p>原文链接: <a target="_blank" rel="noopener" href="https://medium.com/angular-in-depth/all-you-need-to-know-about-ivy-the-new-angular-engine-9cde471f42cf">All you need to know about Ivy, The new Angular engine!</a></p>
+<span id="more"></span>
+<hr>
+<h2 id="减少包的大小"><a href="#减少包的大小" class="headerlink" title="减少包的大小"></a>减少包的大小</h2><p>现在让我们通过编辑<code>tsconfig.app</code>来选择加入<code>Ivy</code>。添加一节<code>angularComplierOption</code>设置和<code>enableivytrue</code>。对于新的Angular CLI项目，你可以在运行<code>ng new</code>脚本时使用 <code>--enableIvy</code> 标志。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;extends&quot;</span>: <span class="string">&quot;../tsconfig.json&quot;</span>,</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;outDir&quot;</span>: <span class="string">&quot;../out-tsc/app&quot;</span>,</span><br><span class="line">    <span class="string">&quot;types&quot;</span>: []</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;exclude&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;test.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;**/*.spec.ts&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;angularCompilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;enableIvy&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在让我们再次使用<code>ng build -prod</code>构建应用程序:</p>
+<p>我们可以看到我们的包缩小了77KB，是包大小的15%，这意味着我们网站的加载时间提高了15%</p>
+<hr>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Component</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  <span class="attr">selector</span>: <span class="string">&#x27;app-root&#x27;</span>,</span><br><span class="line">  <span class="attr">template</span>: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      &lt;span&gt;&#123;&#123;title&#125;&#125;&lt;/span&gt;</span></span><br><span class="line"><span class="string">      &lt;app-child *ngIf=&quot;show&quot;&gt;&lt;/app-child&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  <span class="attr">styles</span>: []</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AppComponent</span> &#123;</span><br><span class="line">  title = <span class="string">&#x27;ivy-tree-shaking&#x27;</span>;</span><br><span class="line">  <span class="attr">show</span>: <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，让我们运行<code>ngc</code>命令来生成转换后的代码与<code>Ivy</code>生成的代码有很多变化:</p>
+<ol>
+<li>我们不再有工厂<code>factory</code>文件，现在所有的装饰器都转换成了静态函数。在我们的示例中，<code>@Component</code>转换为一个<code>ngComponentDeffor</code>示例。</li>
+</ol>
+<p>2.指令集已经改变，所以它可以被摇树优化了，并边小了</p>
+<hr>
+<h2 id="不仅仅是把包变小了"><a href="#不仅仅是把包变小了" class="headerlink" title="不仅仅是把包变小了"></a>不仅仅是把包变小了</h2><p>如果我们看看<code>ngIf</code>指令编译后的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i0.ɵ<span class="title function_">did</span>(<span class="number">4</span>, <span class="number">16384</span>, <span class="literal">null</span>, <span class="number">0</span>, i3.<span class="property">NgIf</span>, [i0.<span class="property">ViewContainerRef</span>, i0.<span class="property">TemplateRef</span>], &#123; <span class="attr">ngIf</span>: [<span class="number">0</span>, <span class="string">&quot;ngIf&quot;</span>] &#125;, <span class="literal">null</span>)],</span><br></pre></td></tr></table></figure>
+<p>由于某些原因，我的app组件与<code>ViewContainerRef</code>与 <code>TemplateRef</code>相关联。如果你想知道那两个来自哪里，它们实际上是NgIf指令实现的依赖项。</p>
+<p>在<code>Ivy</code>中，这变得更加简单，每个组件现在都引用子组件或指令，尽量使公共API更加独立。它的意思是当我们改变某物时，<code>NgIf</code>的实现，我们不需要重新编译所有的东西，我们只需要重新编译·，而不是整个AppComponent类。</p>
+<p>通过这种方式，我们不仅实现了更小的包，还实现了更快的编译，以及更容易地将库发送到NPM。</p>
+<hr>
+<h2 id="Debugging-with-Ivy"><a href="#Debugging-with-Ivy" class="headerlink" title="Debugging with Ivy"></a>Debugging with Ivy</h2><p><code>Ivy</code>还提供了更简单的调试API。<br>让我们创建一个<code>Input</code>事件，并绑定到一个不存在的函数名为搜索:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Component</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  <span class="attr">selector</span>: <span class="string">&#x27;app-root&#x27;</span>,</span><br><span class="line">  <span class="attr">template</span>: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;input (input)=&quot;search($event)&quot;&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  <span class="attr">styles</span>: []</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AppComponent</span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在用<code>Ivy</code>之前，当我们尝试在输入框中输入一些内容时，我们会在控制台中看到:<br><code>ERROR TypeError: _co.search is not a function</code></p>
+<p>有了Ivy，我们的控制台看起来会更有信息，告诉我们错误来自哪里:<br><code>ERROR TypeError: ctx.search is not a function</code></p>
+<hr>
+<h2 id="动态加载"><a href="#动态加载" class="headerlink" title="动态加载"></a>动态加载</h2><p>Angular 8为加载模块带来了一个新的API，它现在支持ES6动态导入。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="attr">routes</span>: <span class="title class_">Routes</span> = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;feature&#x27;</span>,</span><br><span class="line">    <span class="attr">loadChildren</span>: <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;./feature/feature.module&#x27;</span>)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; FeatureModule &#125;</span>) =&gt;</span> <span class="title class_">FeatureModule</span>)</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>提出问题：既然如此，为什么不直接在组件上尝试相同的导入呢?</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">loadFeature</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">import</span>(<span class="string">&#x27;./feature/feature/feature.component&#x27;</span>)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123;FeatureComponent&#125;</span>) =&gt;</span> <span class="title class_">FeatureComponent</span>)</span><br></pre></td></tr></table></figure>
+<p>在Button上添加<code>click</code>事件 <code>loadFeature</code></p>
+<p>居然可以工作! !等等，奇怪的事情发生了。我们加载了一个组件，但没有在模块中声明它。<br>那么，我们还应该在模块中声明组件吗?或者，模块现在是可选的吗?我们将很快回答这个问题，但是首先，让我们尝试将这个组件添加到视图中。</p>
+<p>为此我们使用<code>ɵrenderComponent</code>功能，对app.component做下修改:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AppComponent</span> &#123;</span><br><span class="line">  <span class="title function_">loadFeature</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">import</span>(<span class="string">&#x27;./feature/feature/feature.component&#x27;</span>)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; FeatureComponent &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        ɵ<span class="title function_">renderComponent</span>(<span class="title class_">FeatureComponent</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我在这里得到一个异常，这是有意义的，因为我们试图将组件附加到视图，但没有告诉谁是主机元素，对吗?</p>
+<p>这里我们有两个选择，第一个是将<code>FeatureComponent</code>选择器添加到DOM中，Angular会知道如何在选择器占位符上渲染组件:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> (<span class="attr">click</span>)=<span class="string">&quot;loadFeature()&quot;</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">app-feature</span>&gt;</span><span class="tag">&lt;/<span class="name">app-feature</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-outlet</span>&gt;</span><span class="tag">&lt;/<span class="name">router-outlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>或者<code>renderComponent</code>有另一个签名，得到一个配置，我们可以设置主机。我们甚至可以添加一个不存在的主机，<code>Ivy</code>会将它附加到它:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">loadFeature</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">import</span>(<span class="string">&#x27;./feature/feature/feature.component&#x27;</span>)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; FeatureComponent &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        ɵ<span class="title function_">renderComponent</span>(<span class="title class_">FeatureComponent</span>, &#123; <span class="attr">host</span>: <span class="string">&#x27;my-container&#x27;</span> &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="模块仍然是必需的吗"><a href="#模块仍然是必需的吗" class="headerlink" title="模块仍然是必需的吗"></a>模块仍然是必需的吗</h3><p>正如我们刚刚看到的，我们不需要在模块上声明组件。这让我们所有人怀疑我们是否真的需要模块?<br>为了回答这个问题，让我们创建另一个用例-现在<code>FeatureComponent</code>将注入一个配置，将在<code>AppModule</code>中声明和提供:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.module.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="attr">APP_NAME</span>: <span class="title class_">InjectionToken</span>&lt;<span class="built_in">string</span>&gt; =</span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">InjectionToken</span>&lt;<span class="built_in">string</span>&gt;(<span class="string">&#x27;App Name&#x27;</span>);</span><br><span class="line">  </span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  ...,</span><br><span class="line">  <span class="attr">providers</span>: [</span><br><span class="line">    &#123;<span class="attr">provide</span>: <span class="variable constant_">APP_NAME</span>, <span class="attr">useValue</span>: <span class="string">&#x27;Ivy&#x27;</span>&#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">bootstrap</span>: [<span class="title class_">AppComponent</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AppModule</span> &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p><code>FeatureComponent:</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Component</span>, <span class="title class_">OnInit</span>, <span class="title class_">Inject</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="variable constant_">APP_NAME</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;src/app/app.module&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  <span class="attr">selector</span>: <span class="string">&#x27;app-feature&#x27;</span>,</span><br><span class="line">  <span class="attr">template</span>: <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;p&gt;</span></span><br><span class="line"><span class="string">    Hello from &#123;&#123;appName&#125;&#125;!</span></span><br><span class="line"><span class="string">  &lt;/p&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">  <span class="attr">styleUrls</span>: [<span class="string">&#x27;./feature.component.scss&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">FeatureComponent</span> <span class="keyword">implements</span> <span class="title class_">OnInit</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="meta">@Inject</span>(APP_NAME) <span class="keyword">public</span> appName: <span class="built_in">string</span></span>) &#123; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">ngOnInit</span>(<span class="params"></span>) &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在-如果我们试图再次加载组件，我们得到一个异常，因为我们的组件没有注入器:</p>
+<p>没有在模块上声明组件也有缺点，我们实际上没有使用注入器。尽管如此，<code>renderComponent</code>配置也让我们声明一个注入器:</p>
+<p><code>app.component.ts</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AppComponent</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">private</span> injector: Injector</span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">loadFeature</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">import</span>(<span class="string">&#x27;./feature/feature/feature.component&#x27;</span>)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; FeatureComponent &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        ɵ<span class="title function_">renderComponent</span>(<span class="title class_">FeatureComponent</span>, &#123; <span class="attr">host</span>: <span class="string">&#x27;my-container&#x27;</span>, <span class="attr">injector</span>: <span class="variable language_">this</span>.<span class="property">injector</span> &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果是可以运行的！🎉🎉🎉</p>
+<hr>
+<h2 id="Higher-Order-Components-HOC"><a href="#Higher-Order-Components-HOC" class="headerlink" title="Higher Order Components (HOC)"></a>Higher Order Components (HOC)</h2><p>正如我们刚刚看到的，Angular现在更加动态了，它还允许我们实现像HOC这样的高级概念。</p>
+<p>什么是<code>HOC</code>?</p>
+<p>HOC是一个函数，它获取一个组件并返回一个组件，但同时也影响其中的组件。</p>
+<p>让我们创建基本的<code>HOC</code>通过添加它作为装饰到我们的AppComponent:</p>
+<p><code>app.component.ts</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Component</span>, ɵrenderComponent, <span class="title class_">Injector</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@HOC</span>()</span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  <span class="attr">selector</span>: <span class="string">&#x27;app-root&#x27;</span>,</span><br><span class="line">  <span class="attr">templateUrl</span>: <span class="string">&#x27;./app.component.html&#x27;</span>,</span><br><span class="line">  <span class="attr">styleUrls</span>: [<span class="string">&#x27;./app.component.scss&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AppComponent</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">private</span> injector: Injector</span>) &#123; &#125;</span><br><span class="line">  <span class="title function_">loadFeature</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">import</span>(<span class="string">&#x27;./feature/feature/feature.component&#x27;</span>)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; FeatureComponent &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        ɵ<span class="title function_">renderComponent</span>(<span class="title class_">FeatureComponent</span>, &#123; <span class="attr">host</span>: <span class="string">&#x27;my-container&#x27;</span>, <span class="attr">injector</span>: <span class="variable language_">this</span>.<span class="property">injector</span> &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">HOC</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">cmpType</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> originalFactory = cmpType.<span class="property">ngComponentDef</span>.<span class="property">factory</span>;</span><br><span class="line">    cmpType.<span class="property">ngComponentDef</span>.<span class="property">factory</span> = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> cmp = <span class="title function_">originalFactory</span>(...args);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(cmp);</span><br><span class="line">      <span class="keyword">return</span> cmp;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在让我们利用<code>HOC</code>和动态导入的概念来创建一个惰性组件:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Component</span>, ɵrenderComponent, <span class="title class_">Injector</span>, ɵɵdirectiveInject, <span class="variable constant_">INJECTOR</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@angular/core&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@LazyComponent</span>(&#123;</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;./feature/feature/feature.component&#x27;</span>,</span><br><span class="line">  <span class="attr">component</span>: <span class="string">&#x27;FeatureComponent&#x27;</span>,</span><br><span class="line">  <span class="attr">host</span>: <span class="string">&#x27;my-container&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">  <span class="attr">selector</span>: <span class="string">&#x27;app-root&#x27;</span>,</span><br><span class="line">  <span class="attr">templateUrl</span>: <span class="string">&#x27;./app.component.html&#x27;</span>,</span><br><span class="line">  <span class="attr">styleUrls</span>: [<span class="string">&#x27;./app.component.scss&#x27;</span>]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AppComponent</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">private</span> injector: Injector</span>) &#123; &#125;</span><br><span class="line">  <span class="title function_">loadFeature</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">import</span>(<span class="string">&#x27;./feature/feature/feature.component&#x27;</span>)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; FeatureComponent &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">        ɵ<span class="title function_">renderComponent</span>(<span class="title class_">FeatureComponent</span>, &#123; <span class="attr">host</span>: <span class="string">&#x27;my-container&#x27;</span>, <span class="attr">injector</span>: <span class="variable language_">this</span>.<span class="property">injector</span> &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">afterViewLoad</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Lazy HOC loaded!&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">LazyComponent</span>(<span class="params">config: &#123; path: <span class="built_in">string</span>, component: <span class="built_in">string</span>, host: <span class="built_in">string</span> &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">cmpType</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> originalFactory = cmpType.<span class="property">ngComponentDef</span>.<span class="property">factory</span>;</span><br><span class="line">    cmpType.<span class="property">ngComponentDef</span>.<span class="property">factory</span> = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> cmp = <span class="title function_">originalFactory</span>(...args);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> injector = ɵɵ<span class="title function_">directiveInject</span>(<span class="variable constant_">INJECTOR</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">import</span>(<span class="string">`<span class="subst">$&#123;config.path&#125;</span>`</span>).<span class="title function_">then</span>(<span class="function"><span class="params">m</span> =&gt;</span></span><br><span class="line">        ɵ<span class="title function_">renderComponent</span>(m[config.<span class="property">component</span>], &#123; <span class="attr">host</span>: config.<span class="property">host</span>, injector &#125;));</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (cmp.<span class="property">afterViewLoad</span>) &#123;</span><br><span class="line">        cmp.<span class="title function_">afterViewLoad</span>();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> cmp;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> cmpType;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.以下是一些有趣的话题:<br>如何在没有Angular DI的情况下获得注入器?还记得ngc命令吗?我用它来检查Angular是如何在转换后的文件中转换构造函数注入的，并找到了<code>directiveInject</code>函数:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const injector = ɵɵdirectiveInject(INJECTOR);</span></span><br><span class="line"><span class="keyword">const</span> injector = <span class="keyword">new</span> <span class="title function_">directiveInject</span>(<span class="variable constant_">INJECTOR</span>);</span><br></pre></td></tr></table></figure>
+<p>2.我使用<code>HOC</code>函数创建了一个名为<code>afterViewLoad</code>的新“生命周期”函数，如果它存在于原始组件上，它将在延迟组件呈现后被调用</p>
+<p>接下来就能正常运行了。</p>
+<p>总结<br>快速总结一下我们刚刚学到的:</p>
+<ul>
+<li><p>Ivy，第三代Angular编译器真的来了!它具有向后兼容性，通过使用它，我们可以得到更小的包，更容易调试API，更快的编译和模块和组件的动态加载。</p>
+</li>
+<li><p>带有Ivy的Angular的未来看起来很激动人心，因为它拥有一些很酷很激动人心的特性，比如HOC。</p>
+</li>
+<li><p>Ivy还为Angular元素在我们的Angular应用程序中变得更加流行奠定了基础。<br>试试吧!这就像设置enableIvy标志为真一样简单!</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    TommyKi
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tommy0604.github.io/Angular-Ivy/" title="Angular-Ivy">https://tommy0604.github.io/Angular-Ivy/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Angular/" rel="tag"># Angular</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/PM2/" rel="next" title="初识PM2">
+                <i class="fa fa-chevron-left"></i> 初识PM2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/javascript-OOP/" rel="prev" title="JavaScript OOP">
+                JavaScript OOP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/malko.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Tommy0604" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5386094937" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E6%9C%89%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%85%B3%E4%BA%8EIvy%EF%BC%8C%E6%96%B0%E7%9A%84Angular%E5%BC%95%E6%93%8E"><span class="nav-number">1.</span> <span class="nav-text">所有你需要知道的关于Ivy，新的Angular引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%8F%E5%B0%91%E5%8C%85%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="nav-number">2.</span> <span class="nav-text">减少包的大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E4%BB%85%E4%BB%85%E6%98%AF%E6%8A%8A%E5%8C%85%E5%8F%98%E5%B0%8F%E4%BA%86"><span class="nav-number">4.</span> <span class="nav-text">不仅仅是把包变小了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debugging-with-Ivy"><span class="nav-number">5.</span> <span class="nav-text">Debugging with Ivy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD"><span class="nav-number">6.</span> <span class="nav-text">动态加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E4%BB%8D%E7%84%B6%E6%98%AF%E5%BF%85%E9%9C%80%E7%9A%84%E5%90%97"><span class="nav-number">6.1.</span> <span class="nav-text">模块仍然是必需的吗</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Higher-Order-Components-HOC"><span class="nav-number">7.</span> <span class="nav-text">Higher Order Components (HOC)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TommyKi</span>
+
+  
+
+  <br>
+  
+  
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>
