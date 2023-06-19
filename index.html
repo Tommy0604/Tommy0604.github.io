@@ -423,6 +423,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Vue3-i18n/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/malko.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Vue3-i18n/" itemprop="url">Vue3 i18n 实践</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-06-19T15:04:15+08:00">
+                2023-06-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-06-19T22:34:15+08:00">
+                2023-06-19
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="https://source.unsplash.com/1200x600/weekly?dog" alt=" "></p>
+<blockquote>
+<p>在之前公司有做过国际化，但是并非自己搭建 ，如果你也没有相关经验且需要对日期插件支持，这篇文章应该对你有用。</p>
+</blockquote>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>Vue3中实现国际化(i18n)大概分两种方式：</p>
+<ol>
+<li>使用Vue I18n插件：<code>Vue I18n</code>是一个官方支持的国际化插件，它提供了一种在Vue应用程序中轻松管理多语言的方式。您可以通过安装并导入<code>Vue I18n</code>库，然后在<code>Vue</code>应用程序的入口文件中创建一个<code>I18n</code>实例，并使用各种功能和选项来定义翻译消息、语言环境和翻译规则等。</li>
+<li>自立更生：官方给我们提供了两个不错的思路，一是使用全局变量的方式，二则是利用<code>Provide</code>/<code>inject</code>。</li>
+</ol>
+<p>由于自立更生式实现复杂翻译（变量翻译和某些需要在翻译文本里插入参数）过于繁琐，所以我选择使用Vue I18n插件。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Vue3-i18n/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/%E5%89%8D%E7%AB%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1733,166 +1878,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90Angular%E4%B8%AD%E7%9A%84ViewChild/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/malko.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tommy's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90Angular%E4%B8%AD%E7%9A%84ViewChild/" itemprop="url">[译]深入分析Angular中的ViewChild，ElementRef和ViewChildren</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-19T23:25:51+08:00">
-                2020-10-19
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2022-08-19T12:47:52+08:00">
-                2022-08-19
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Angular/" itemprop="url" rel="index">
-                    <span itemprop="name">Angular</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>原文 <a target="_blank" rel="noopener" href="https://medium.com/swlh/in-depth-analysis-of-viewchild-elementref-viewchildren-in-angular-b720e4fbe36c">In-depth analysis of ViewChild, ElementRef and ViewChildren in Angular</a></p>
-<p>Angular <code>@ViewChild</code> 是一个最简单但同时也是最难的装饰器。你可以在做编码的时候学习它。<code>@ViewChild</code>是最常用的装饰器之一。该装饰器提供了大量的功能。在本文中，我们将深入研究<code>@ViewChild</code>、<code>ElementRef</code>、<code>ViewChildren</code>装饰器。我们将看到如何使用它的例子，并讨论实际应用中的问题。</p>
-<p><img src="/images/ng/In-depth-ViewChild/01.png" alt=" "></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90Angular%E4%B8%AD%E7%9A%84ViewChild/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1947,7 +1932,7 @@
               
                 <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1969,7 +1954,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

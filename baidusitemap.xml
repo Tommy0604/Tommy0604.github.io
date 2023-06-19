@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://tommy0604.github.io/Vue3-i18n/</loc>
+    <lastmod>2023-06-19</lastmod>
+  </url>
+  <url>
     <loc>https://tommy0604.github.io/%E5%89%8D%E7%AB%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2023-04-03</lastmod>
   </url>
