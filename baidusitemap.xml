@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://tommy0604.github.io/front-end-graphics-2022-07-07-%E5%89%8D%E7%AB%AF%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%94%A8/</loc>
+    <lastmod>2023-06-20</lastmod>
+  </url>
+  <url>
     <loc>https://tommy0604.github.io/Vue3-i18n/</loc>
-    <lastmod>2023-06-19</lastmod>
+    <lastmod>2023-06-20</lastmod>
   </url>
   <url>
     <loc>https://tommy0604.github.io/%E5%89%8D%E7%AB%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2023-04-03</lastmod>
-  </url>
-  <url>
-    <loc>https://tommy0604.github.io/%E5%89%8D%E7%AB%AF%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%94%A8/</loc>
-    <lastmod>2023-04-03</lastmod>
-  </url>
-  <url>
-    <loc>https://tommy0604.github.io/front-end-graphics-2022-07-07-%E5%89%8D%E7%AB%AF%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%94%A8/</loc>
-    <lastmod>2022-08-19</lastmod>
   </url>
   <url>
     <loc>https://tommy0604.github.io/Angular%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/</loc>
