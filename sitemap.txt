@@ -25,8 +25,8 @@ https://tommy0604.github.io/about/index.html
 https://tommy0604.github.io/categories/index.html
 https://tommy0604.github.io/tags/index.html
 https://tommy0604.github.io/
-https://tommy0604.github.io/tags/Angular/
 https://tommy0604.github.io/tags/%E5%A4%B8%E7%99%BD/
+https://tommy0604.github.io/tags/Angular/
 https://tommy0604.github.io/tags/JavaScript/
 https://tommy0604.github.io/tags/Rxjs/
 https://tommy0604.github.io/tags/PM2/
@@ -34,13 +34,13 @@ https://tommy0604.github.io/tags/git/
 https://tommy0604.github.io/tags/%E7%AE%97%E6%B3%95/
 https://tommy0604.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/
 https://tommy0604.github.io/tags/%E9%9D%A2%E8%AF%95/
-https://tommy0604.github.io/tags/Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/
 https://tommy0604.github.io/tags/echarts/
+https://tommy0604.github.io/tags/Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/
 https://tommy0604.github.io/tags/Vue3/
 https://tommy0604.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/
 https://tommy0604.github.io/tags/%E6%95%B0%E5%AD%A6/
-https://tommy0604.github.io/categories/Angular/
 https://tommy0604.github.io/categories/%E5%A4%B8%E7%99%BD/
+https://tommy0604.github.io/categories/Angular/
 https://tommy0604.github.io/categories/%E6%83%B3%E4%B8%8D%E5%88%B0%E7%9A%84bug/
 https://tommy0604.github.io/categories/JavaScript/
 https://tommy0604.github.io/categories/Rxjs/
