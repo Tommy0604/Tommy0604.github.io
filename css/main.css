@@ -244,6 +244,12 @@ embed {
   margin-right: auto;
   max-width: 100%;
 }
+.badges {
+  max-width: 100%; /* 确保图片不会超出容器的宽度 */
+  height: auto; /* 根据宽度自适应高度 */
+  display: inline-block;
+  translate: 0 24px;
+}
 hr {
   background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
   border: 0;

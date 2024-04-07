@@ -1,3 +1,4 @@
+https://tommy0604.github.io/typescript-challenges-easy/
 https://tommy0604.github.io/front-end-engineering-Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/
 https://tommy0604.github.io/Vue3-i18n/
 https://tommy0604.github.io/%E5%89%8D%E7%AB%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E7%BC%96%E7%A8%8B/

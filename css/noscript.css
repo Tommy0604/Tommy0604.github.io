@@ -1,6 +1,11 @@
 body {
   margin-top: 2rem;
 }
+img {
+  max-width: 100%; /* 确保图片不会超出容器的宽度 */
+  height: auto; /* 根据宽度自适应高度 */
+  display: inline-block; /* 将图片显示为内联元素，而不是块级元素 */
+}
 .use-motion .menu-item,
 .use-motion .sidebar,
 .use-motion .sidebar-inner,
