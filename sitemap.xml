@@ -363,6 +363,13 @@
   </url>
   
   <url>
+    <loc>https://tommy0604.github.io/tags/TypeScript/</loc>
+    <lastmod>2024-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://tommy0604.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
     <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -371,13 +378,6 @@
   
   <url>
     <loc>https://tommy0604.github.io/tags/%E6%95%B0%E5%AD%A6/</loc>
-    <lastmod>2024-04-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://tommy0604.github.io/tags/TypeScript/</loc>
     <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -470,14 +470,14 @@
   </url>
   
   <url>
-    <loc>https://tommy0604.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
+    <loc>https://tommy0604.github.io/categories/TypeScript/</loc>
     <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://tommy0604.github.io/categories/TypeScript/</loc>
+    <loc>https://tommy0604.github.io/categories/%E5%8F%AF%E8%A7%86%E5%8C%96/</loc>
     <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

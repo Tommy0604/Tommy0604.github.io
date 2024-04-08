@@ -289,7 +289,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-08 16:27:07" itemprop="dateModified" datetime="2024-04-08T16:27:07+08:00">2024-04-08</time>
+      <time title="修改时间：2024-04-08 16:30:42" itemprop="dateModified" datetime="2024-04-08T16:30:42+08:00">2024-04-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -311,7 +311,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="ReturnType-lt-T-gt"><a href="#ReturnType-lt-T-gt" class="headerlink" title="ReturnType&lt;T&gt;"></a>ReturnType&lt;T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00002-medium-return-type/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+          <p><img src="https://source.unsplash.com/1200x600/weekly?code" alt=" "></p>
+<h2 id="ReturnType-lt-T-gt"><a href="#ReturnType-lt-T-gt" class="headerlink" title="ReturnType&lt;T&gt;"></a>ReturnType&lt;T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00002-medium-return-type/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
 <p>构造一种由函数类型的返回类型组成的类型。不使用内置 <code>ReturnType</code></p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">MyReturnType</span>&lt;T&gt; = T <span class="keyword">extends</span> (...<span class="attr">args</span>: <span class="built_in">never</span>[]) =&gt; infer A ? A : <span class="built_in">never</span>;</span><br></pre></td></tr></table></figure>
 <p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-元组展开 ...-mediumslateblue" alt="元组展开 ..."/> <img class="badges" src="https://img.shields.io/badge/-泛型推断 infer-mediumslateblue" alt="泛型推断 infer"/> <img class="badges" src="https://img.shields.io/badge/-条件类型 extends-mediumslateblue" alt="条件类型 extends"/></p>
@@ -324,19 +325,17 @@
 <p><code>T extends (...args: never[]) =&gt; infer A</code> 这意味着它是一个接受空参数列表的函数类型。由于 <code>never</code> 类型是空集合的子类型，因此任何具有参数的函数类型也可以被赋值给 <code>(...args: never[]) =&gt; infer A</code>。这就解释了为什么条件类型的结果为 <code>true</code>。</p>
 <p>值得一提的是：</p>
 <ol>
-<li>不相交类型的 inteserction 结果为 never:</li>
-</ol>
+<li><p>不相交类型的 inteserction 结果为 never:</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> result = <span class="number">1</span> &amp; <span class="number">2</span>; <span class="comment">// 结果为never</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>除了 never，没有其他类型是 never 的 subtype</li>
-</ol>
+</li>
+<li><p>除了 never，没有其他类型是 never 的 subtype</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Check</span>&lt;T&gt; = <span class="built_in">never</span> <span class="keyword">extends</span> <span class="built_in">never</span> ? <span class="literal">false</span> : T <span class="keyword">extends</span> <span class="built_in">never</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">type</span> result = check&lt;xxx&gt;; <span class="comment">// 结果始终为false</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>布尔运算</li>
-</ol>
+</li>
+<li><p>布尔运算</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T | <span class="built_in">never</span>; <span class="comment">// 结果为T</span></span><br><span class="line">T &amp; <span class="built_in">never</span>; <span class="comment">// 结果为never</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>是任何类型的 subtype（上文已通过例子说明）</li>
+</li>
+<li><p>是任何类型的 subtype（上文已通过例子说明）</p>
+</li>
 </ol>
           <!--noindex-->
             <div class="post-button">

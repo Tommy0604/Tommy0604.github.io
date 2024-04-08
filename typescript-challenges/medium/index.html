@@ -23,13 +23,14 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tommy0604.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="ReturnType&lt;T&gt; 构造一种由函数类型的返回类型组成的类型。不使用内置 ReturnType 1type MyReturnType&lt;T&gt; &#x3D; T extends (...args: never[]) &#x3D;&gt; infer A ? A : never; 核心知识点：   注意点： 这里需要注意条件类型的参数，当参数为 ...args: unknown[] 时，表示“">
+    <meta name="description" content="ReturnType&lt;T&gt; 构造一种由函数类型的返回类型组成的类型。不使用内置 ReturnType 1type MyReturnType&lt;T&gt; &#x3D; T extends (...args: never[]) &#x3D;&gt; infer A ? A : never; 核心知识点：   注意点： 这里需要注意条件类型的参数，当参数为 ...args: unknown[] 时，表示">
 <meta property="og:type" content="article">
 <meta property="og:title" content="typescript-challenges-medium">
 <meta property="og:url" content="https://tommy0604.github.io/typescript-challenges/medium/index.html">
 <meta property="og:site_name" content="Tommy&#39;s blog">
-<meta property="og:description" content="ReturnType&lt;T&gt; 构造一种由函数类型的返回类型组成的类型。不使用内置 ReturnType 1type MyReturnType&lt;T&gt; &#x3D; T extends (...args: never[]) &#x3D;&gt; infer A ? A : never; 核心知识点：   注意点： 这里需要注意条件类型的参数，当参数为 ...args: unknown[] 时，表示“">
+<meta property="og:description" content="ReturnType&lt;T&gt; 构造一种由函数类型的返回类型组成的类型。不使用内置 ReturnType 1type MyReturnType&lt;T&gt; &#x3D; T extends (...args: never[]) &#x3D;&gt; infer A ? A : never; 核心知识点：   注意点： 这里需要注意条件类型的参数，当参数为 ...args: unknown[] 时，表示">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://source.unsplash.com/1200x600/weekly?code">
 <meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
 <meta property="og:image" content="https://img.shields.io/badge/-%E5%85%83%E7%BB%84%E5%B1%95%E5%BC%80%20...-mediumslateblue">
 <meta property="og:image" content="https://img.shields.io/badge/-%E6%B3%9B%E5%9E%8B%E6%8E%A8%E6%96%AD%20infer-mediumslateblue">
@@ -45,11 +46,11 @@
 <meta property="og:image" content="https://img.shields.io/badge/-%E9%80%92%E5%BD%92%E7%B1%BB%E5%9E%8B-mediumslateblue">
 <meta property="og:image" content="https://img.shields.io/badge/-%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B%E6%9F%A5%E8%AF%A2%20keyof-mediumslateblue">
 <meta property="article:published_time" content="2024-04-07T06:31:33.000Z">
-<meta property="article:modified_time" content="2024-04-08T08:27:07.543Z">
+<meta property="article:modified_time" content="2024-04-08T08:30:42.126Z">
 <meta property="article:author" content="TommyKi">
 <meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta name="twitter:image" content="https://source.unsplash.com/1200x600/weekly?code">
 
 
 <link rel="canonical" href="https://tommy0604.github.io/typescript-challenges/medium/">
@@ -232,7 +233,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-08 16:27:07" itemprop="dateModified" datetime="2024-04-08T16:27:07+08:00">2024-04-08</time>
+      <time title="修改时间：2024-04-08 16:30:42" itemprop="dateModified" datetime="2024-04-08T16:30:42+08:00">2024-04-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -253,7 +254,8 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="ReturnType-lt-T-gt"><a href="#ReturnType-lt-T-gt" class="headerlink" title="ReturnType&lt;T&gt;"></a>ReturnType&lt;T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00002-medium-return-type/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+    <div class="post-body" itemprop="articleBody"><p><img src="https://source.unsplash.com/1200x600/weekly?code" alt=" "></p>
+<h2 id="ReturnType-lt-T-gt"><a href="#ReturnType-lt-T-gt" class="headerlink" title="ReturnType&lt;T&gt;"></a>ReturnType&lt;T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00002-medium-return-type/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
 <p>构造一种由函数类型的返回类型组成的类型。不使用内置 <code>ReturnType</code></p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">MyReturnType</span>&lt;T&gt; = T <span class="keyword">extends</span> (...<span class="attr">args</span>: <span class="built_in">never</span>[]) =&gt; infer A ? A : <span class="built_in">never</span>;</span><br></pre></td></tr></table></figure>
 <p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-元组展开 ...-mediumslateblue" alt="元组展开 ..."/> <img class="badges" src="https://img.shields.io/badge/-泛型推断 infer-mediumslateblue" alt="泛型推断 infer"/> <img class="badges" src="https://img.shields.io/badge/-条件类型 extends-mediumslateblue" alt="条件类型 extends"/></p>
@@ -266,19 +268,17 @@
 <p><code>T extends (...args: never[]) =&gt; infer A</code> 这意味着它是一个接受空参数列表的函数类型。由于 <code>never</code> 类型是空集合的子类型，因此任何具有参数的函数类型也可以被赋值给 <code>(...args: never[]) =&gt; infer A</code>。这就解释了为什么条件类型的结果为 <code>true</code>。</p>
 <p>值得一提的是：</p>
 <ol>
-<li>不相交类型的 inteserction 结果为 never:</li>
-</ol>
+<li><p>不相交类型的 inteserction 结果为 never:</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> result = <span class="number">1</span> &amp; <span class="number">2</span>; <span class="comment">// 结果为never</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>除了 never，没有其他类型是 never 的 subtype</li>
-</ol>
+</li>
+<li><p>除了 never，没有其他类型是 never 的 subtype</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Check</span>&lt;T&gt; = <span class="built_in">never</span> <span class="keyword">extends</span> <span class="built_in">never</span> ? <span class="literal">false</span> : T <span class="keyword">extends</span> <span class="built_in">never</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">type</span> result = check&lt;xxx&gt;; <span class="comment">// 结果始终为false</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>布尔运算</li>
-</ol>
+</li>
+<li><p>布尔运算</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T | <span class="built_in">never</span>; <span class="comment">// 结果为T</span></span><br><span class="line">T &amp; <span class="built_in">never</span>; <span class="comment">// 结果为never</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>是任何类型的 subtype（上文已通过例子说明）</li>
+</li>
+<li><p>是任何类型的 subtype（上文已通过例子说明）</p>
+</li>
 </ol>
 <span id="more"></span>
 <h2 id="Omit-lt-T-K-gt"><a href="#Omit-lt-T-K-gt" class="headerlink" title="Omit&lt;T, K&gt;"></a>Omit&lt;T, K&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00003-medium-omit/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
