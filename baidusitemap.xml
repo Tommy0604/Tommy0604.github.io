@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tommy0604.github.io/typescript-challenges-easy/</loc>
+    <loc>https://tommy0604.github.io/typescript-challenges/medium/</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://tommy0604.github.io/typescript-challenges/easy/</loc>
     <lastmod>2024-04-07</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/front-end-engineering-Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/</loc>
+    <loc>https://tommy0604.github.io/front-end-engineering/Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/</loc>
     <lastmod>2024-01-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/front-end-graphics-2022-07-07-%E5%89%8D%E7%AB%AF%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%94%A8/</loc>
+    <loc>https://tommy0604.github.io/front-end-graphics/2022-07-07-%E5%89%8D%E7%AB%AF%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%94%A8/</loc>
     <lastmod>2023-11-20</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/Vue3-i18n/</loc>
+    <loc>https://tommy0604.github.io/2023-06-19-Vue3-i18n/</loc>
     <lastmod>2023-11-08</lastmod>
   </url>
   <url>
@@ -21,83 +25,83 @@
     <lastmod>2023-04-03</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/Angular%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/</loc>
+    <loc>https://tommy0604.github.io/2022-01-04-Angular%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BA%AF%E7%AE%A1%E9%81%93/</loc>
+    <loc>https://tommy0604.github.io/2021-06-29-Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BA%AF%E7%AE%A1%E9%81%93/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/ViewEncapsulation-%E7%8E%B0%E9%A5%AD%E7%8E%B0%E7%82%92/</loc>
+    <loc>https://tommy0604.github.io/2021-05-09-ViewEncapsulation-%E7%8E%B0%E9%A5%AD%E7%8E%B0%E7%82%92/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/%E7%8E%AF%E5%BD%A2%E5%9B%BE%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%B5%AE%E7%AA%97/</loc>
+    <loc>https://tommy0604.github.io/2021-01-29-%E7%8E%AF%E5%BD%A2%E5%9B%BE%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%B5%AE%E7%AA%97/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/%E8%AE%B0%E5%BD%9510%E6%9C%8823%E5%8F%B7%E4%B8%80%E6%AC%A1%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%9D%A2%E8%AF%95/</loc>
+    <loc>https://tommy0604.github.io/2020-11-03-%E8%AE%B0%E5%BD%9510%E6%9C%8823%E5%8F%B7%E4%B8%80%E6%AC%A1%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90Angular%E4%B8%AD%E7%9A%84ViewChild/</loc>
+    <loc>https://tommy0604.github.io/2020-10-19-%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90Angular%E4%B8%AD%E7%9A%84ViewChild/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/Angular%E6%A8%A1%E6%9D%BF%E7%BB%91%E5%AE%9A/</loc>
+    <loc>https://tommy0604.github.io/2020-10-12-Angular%E6%A8%A1%E6%9D%BF%E7%BB%91%E5%AE%9A/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
+    <loc>https://tommy0604.github.io/2020-09-06-%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/git%E8%BF%81%E7%A7%BB%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://tommy0604.github.io/2020-08-15-git%E8%BF%81%E7%A7%BB%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/javascript-OOP/</loc>
+    <loc>https://tommy0604.github.io/2020-06-30-javascript-OOP/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/Angular-Ivy/</loc>
+    <loc>https://tommy0604.github.io/2020-01-06-Angular-Ivy/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/PM2/</loc>
+    <loc>https://tommy0604.github.io/2019-12-09-PM2/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/AngularElements/</loc>
+    <loc>https://tommy0604.github.io/2019-09-16-AngularElements/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/Rxjs/</loc>
+    <loc>https://tommy0604.github.io/2019-08-07-Rxjs/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/Angular%E6%8B%A6%E6%88%AA%E5%99%A8/</loc>
+    <loc>https://tommy0604.github.io/2019-04-22-Angular%E6%8B%A6%E6%88%AA%E5%99%A8/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/JS%E4%B8%AD%E7%9A%84this/</loc>
+    <loc>https://tommy0604.github.io/2019-04-03-JS%E4%B8%AD%E7%9A%84this/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/stopPropagation%E4%BA%8B%E4%BB%B6/</loc>
+    <loc>https://tommy0604.github.io/2019-02-27-stopPropagation%E4%BA%8B%E4%BB%B6/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/ngFor%E9%81%8D%E5%8E%86input%E6%A0%87%E7%AD%BE%E6%95%B0%E6%8D%AE%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</loc>
+    <loc>https://tommy0604.github.io/2019-01-15-ngFor%E9%81%8D%E5%8E%86input%E6%A0%87%E7%AD%BE%E6%95%B0%E6%8D%AE%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/Angualr%E5%A4%A9%E6%A2%AF%E4%B9%8B%E8%B7%AF/</loc>
+    <loc>https://tommy0604.github.io/2018-11-21-Angualr%E5%A4%A9%E6%A2%AF%E4%B9%8B%E8%B7%AF/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
   <url>
-    <loc>https://tommy0604.github.io/blog/</loc>
+    <loc>https://tommy0604.github.io/2018-08-30-blog/</loc>
     <lastmod>2022-08-19</lastmod>
   </url>
 </urlset> 

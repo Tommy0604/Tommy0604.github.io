@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo01.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo01.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo01.ico">
+  <link rel="mask-icon" href="/images/logo01.ico" color="#222">
+  <meta name="google-site-verification" content="NfoHNvnMAz9S6JqgSiximHUo1x-iWZ_tymLcLHvG2OI">
+  <meta name="baidu-site-verification" content="code-2aKaLafO55">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tommy0604.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="所有挑战来源type-challenges题库。  本节条件判断均使用Equal来验证，副验证Expect 代码如下： 1234567type Equal&lt;X, Y&gt; &#x3D; (&lt;T&gt;() &#x3D;&gt; T extends X ? 1 : 2) extends &lt;T&gt;() &#x3D;&gt; T extends Y  ? 1  : 2  ? true  : false;ty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typescript-challenges-easy">
+<meta property="og:url" content="https://tommy0604.github.io/typescript-challenges/easy/index.html">
+<meta property="og:site_name" content="Tommy&#39;s blog">
+<meta property="og:description" content="所有挑战来源type-challenges题库。  本节条件判断均使用Equal来验证，副验证Expect 代码如下： 1234567type Equal&lt;X, Y&gt; &#x3D; (&lt;T&gt;() &#x3D;&gt; T extends X ? 1 : 2) extends &lt;T&gt;() &#x3D;&gt; T extends Y  ? 1  : 2  ? true  : false;ty">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E4%BA%A4%E5%8F%89%E7%B1%BB%E5%9E%8B%20&-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%20extends-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%98%A0%E5%B0%84%E7%B1%BB%E5%9E%8B%20in-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-readonly-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-keyof-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%98%A0%E5%B0%84%E7%B1%BB%E5%9E%8B%20in-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E5%85%83%E7%BB%84-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B%E6%9F%A5%E8%AF%A2%20T[number]-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%98%A0%E5%B0%84%E7%B1%BB%E5%9E%8B%20in-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E7%B4%A2%E5%BC%95%E8%AE%BF%E9%97%AE%E7%B1%BB%E5%9E%8B%20T[">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%20extends-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E5%85%83%E7%BB%84%E8%A7%A3%E6%9E%84%20[infer%20A,%20...infer%20rest]-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E7%B4%A2%E5%BC%95%E8%AE%BF%E9%97%AE%E7%B1%BB%E5%9E%8B%20T[">
+<meta property="og:image" content="https://img.shields.io/badge/-%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F%20extends-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%20extends-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%20extends-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%B3%9B%E5%9E%8B%E6%8E%A8%E6%96%AD%20infer-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E9%80%92%E5%BD%92%E7%B1%BB%E5%9E%8B-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%20extends-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E5%85%83%E7%BB%84%E5%B1%95%E5%BC%80%20...-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%20extends-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%B3%9B%E5%9E%8B%E6%8E%A8%E6%96%AD%20infer-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E9%80%92%E5%BD%92%E7%B1%BB%E5%9E%8B-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E5%85%83%E7%BB%84%E5%B1%95%E5%BC%80%20...-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E5%85%83%E7%BB%84%E5%B1%95%E5%BC%80%20...-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+<meta property="og:image" content="https://img.shields.io/badge/-%E5%85%83%E7%BB%84%E5%B1%95%E5%BC%80%20...-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%B3%9B%E5%9E%8B%E6%8E%A8%E6%96%AD%20infer-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/-%E6%9D%A1%E4%BB%B6%E7%B1%BB%E5%9E%8B%20extends-mediumslateblue">
+<meta property="og:image" content="https://img.shields.io/badge/easy-13-7aad0c">
+<meta property="og:image" content="https://img.shields.io/badge/medium-97-d9901a">
+<meta property="article:published_time" content="2024-04-01T07:15:30.000Z">
+<meta property="article:modified_time" content="2024-04-07T07:42:18.580Z">
+<meta property="article:author" content="TommyKi">
+<meta property="article:tag" content="TypeScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white">
+
+
+<link rel="canonical" href="https://tommy0604.github.io/typescript-challenges/easy/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tommy0604.github.io/typescript-challenges/easy/","path":"typescript-challenges/easy/","title":"typescript-challenges-easy"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>typescript-challenges-easy | Tommy's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tommy's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">developer、popper、喜新恋旧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pick-lt-T-K-gt"><span class="nav-number">1.</span> <span class="nav-text">Pick&lt;T, K&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Readonly-lt-T-gt"><span class="nav-number">2.</span> <span class="nav-text">Readonly&lt;T&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TupleToObject-lt-T-gt"><span class="nav-number">3.</span> <span class="nav-text">TupleToObject&lt;T&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#First-lt-T-gt"><span class="nav-number">4.</span> <span class="nav-text">First&lt;T&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Length-lt-T-gt"><span class="nav-number">5.</span> <span class="nav-text">Length&lt;T&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exclude-lt-T-U-gt"><span class="nav-number">6.</span> <span class="nav-text">Exclude&lt;T, U&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Awaited-lt-T-gt"><span class="nav-number">7.</span> <span class="nav-text">Awaited&lt;T&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#If-lt-C-T-F-gt"><span class="nav-number">8.</span> <span class="nav-text">If&lt;C, T, F&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Concat-lt-T-U-gt"><span class="nav-number">9.</span> <span class="nav-text">Concat&lt;T, U&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Includes-lt-T-U-gt"><span class="nav-number">10.</span> <span class="nav-text">Includes&lt;T, U&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Push-lt-T-T-gt"><span class="nav-number">11.</span> <span class="nav-text">Push&lt;T[ ], T&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unshift-lt-T-T-gt"><span class="nav-number">12.</span> <span class="nav-text">Unshift&lt;T[ ], T&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parameters-lt-T-gt"><span class="nav-number">13.</span> <span class="nav-text">Parameters&lt;T&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-End"><span class="nav-number">14.</span> <span class="nav-text">$The\,End$</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TommyKi"
+      src="/images/malko.jpg">
+  <p class="site-author-name" itemprop="name">TommyKi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Tommy0604" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Tommy0604" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/904859162@qq.com" title="E-Mail → 904859162@qq.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/typescript-challenges/easy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/malko.jpg">
+      <meta itemprop="name" content="TommyKi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="typescript-challenges-easy | Tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          typescript-challenges-easy
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-01 15:15:30" itemprop="dateCreated datePublished" datetime="2024-04-01T15:15:30+08:00">2024-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-07 15:42:18" itemprop="dateModified" datetime="2024-04-07T15:42:18+08:00">2024-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>所有挑战来源<a target="_blank" rel="noopener" href="https://github.com/type-challenges/type-challenges">type-challenges</a>题库。</p>
+</blockquote>
+<p>本节条件判断均使用<code>Equal</code>来验证，副验证<code>Expect</code></p>
+<p>代码如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Equal</span>&lt;X, Y&gt; = (&lt;T&gt;<span class="function">() =&gt;</span> T <span class="keyword">extends</span> X ? <span class="number">1</span> : <span class="number">2</span>) <span class="keyword">extends</span> &lt;T&gt;<span class="function">() =&gt;</span> T <span class="keyword">extends</span> Y</span><br><span class="line">  ? <span class="number">1</span></span><br><span class="line">  : <span class="number">2</span></span><br><span class="line">  ? <span class="literal">true</span></span><br><span class="line">  : <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Expect</span>&lt;T <span class="keyword">extends</span> <span class="literal">true</span>&gt; = T;</span><br></pre></td></tr></table></figure>
+<p>在 ts 中，泛型函数的条件判断可以用类型推断来比较两个类型。<code>Equal</code>在提供的类型验证中，使用了两个泛型函数，它们都是立即执行函数。<br>在这些函数中，通过使用条件类型 <code>&lt;T&gt;() =&gt; T extends X ? 1 : 2 和 &lt;T&gt;() =&gt; T extends Y ? 1 : 2</code> 对类型 X 和 Y 进行检查。</p>
+<p>这里的 1 和 2 实际上是两个不同的类型分支标识符。当条件 <code>&lt;T&gt;() =&gt; T extends X ? 1 : 2</code> 成立时，返回 1，表示类型 X 和当前泛型 T 匹配，比较类型 Y 的逻辑与之类似，然后利用 <code>extends</code> 条件类型关键字进行类型推断，如果类型 X 和 Y 匹配，则返回 true，否则返回 false。</p>
+<p>知道了这两个条件判断，就可以通过类型推断来验证类型是否匹配，接下来进入正题。</p>
+<span id="more"></span>
+<h2 id="Pick-lt-T-K-gt"><a href="#Pick-lt-T-K-gt" class="headerlink" title="Pick&lt;T, K&gt;"></a>Pick&lt;T, K&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00004-easy-pick/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>通过从 Type 中选取属性集 Keys （字符串文字或字符串文字的并集）来构造类型。</p>
+<p>代码如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">MyPick</span>&lt;T, K <span class="keyword">extends</span> <span class="built_in">string</span> | <span class="built_in">symbol</span> | <span class="built_in">number</span>&gt; = &#123;</span><br><span class="line">  [<span class="title class_">Key</span> <span class="keyword">in</span> keyof T &amp; K]: T[<span class="title class_">Key</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-交叉类型 &-mediumslateblue" alt="交叉类型 &"/> <img class="badges" src="https://img.shields.io/badge/-条件类型 extends-mediumslateblue" alt="条件类型 extends"/> <img class="badges" src="https://img.shields.io/badge/-映射类型 in-mediumslateblue" alt="映射类型 in"/></p>
+<p><strong>关键点</strong>：<br><em>交叉类型与类型约束</em>： <code>(keyof T &amp; K)</code> 表示取类型 T 的所有属性名称与 K 类型的交集，即只包含 T 中存在的且在 K 中声明的属性名称。这样做是为了确保挑选的属性名称在类型 T 中是存在的，并且符合 K 的约束。<br><em>映射类型</em>： 使用了映射类型 <code>[Key in (keyof T &amp; K)]: T[Key]</code>，其中 Key 表示每个属性名称，通过 in 关键字对 T 类型的属性名称进行遍历。这样做可以确保新类型中只包含原类型中存在的属性，并且属性的值的类型与原类型中对应属性的类型相同。</p>
+<h2 id="Readonly-lt-T-gt"><a href="#Readonly-lt-T-gt" class="headerlink" title="Readonly&lt;T&gt;"></a>Readonly&lt;T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00007-easy-readonly/README.md" target="_blank"><img class="badges"  src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>构造一个类型，并将 <code>Type</code> 的所有属性设置为 <code>readonly</code> ，这意味着构造类型的属性无法重新分配。</p>
+<p>代码如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">MyReadonly</span>&lt;T&gt; = &#123;</span><br><span class="line">  <span class="keyword">readonly</span> [key <span class="keyword">in</span> keyof T]: T[key];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-readonly-mediumslateblue" alt="readonly"/> <img class="badges" src="https://img.shields.io/badge/-keyof-mediumslateblue" alt="keyof"/> <img class="badges" src="https://img.shields.io/badge/-映射类型 in-mediumslateblue" alt="映射类型 in"/></p>
+<h2 id="TupleToObject-lt-T-gt"><a href="#TupleToObject-lt-T-gt" class="headerlink" title="TupleToObject&lt;T&gt;"></a>TupleToObject&lt;T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00011-easy-tuple-to-object/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>给定数组，将其转换为对象类型，并且键/值必须在提供的数组中。</p>
+<blockquote>
+<p>官方没有这个 Utility Type，可以参考<a target="_blank" rel="noopener" href="https://github.com/type-challenges/type-challenges/blob/main/questions/00011-easy-tuple-to-object/README.md">TupleToObject</a></p>
+</blockquote>
+<p>代码如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">TupleToObject</span>&lt;T <span class="keyword">extends</span> <span class="keyword">readonly</span> (<span class="built_in">string</span> | <span class="built_in">number</span> | <span class="built_in">symbol</span>)[]&gt; = &#123;</span><br><span class="line">  [P <span class="keyword">in</span> T[<span class="built_in">number</span>]]: P;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-元组-mediumslateblue" alt="元组"/> <img class="badges" src="https://img.shields.io/badge/-索引类型查询 T[number]-mediumslateblue" alt="索引类型查询 T[number]"/> <img class="badges" src="https://img.shields.io/badge/-映射类型 in-mediumslateblue" alt="映射类型 in"/> </p>
+<p><strong>关键点</strong>：<br><em>索引类型查询</em>： <code>T[number]</code> 表示元组类型 T 中的每个元素的联合类型。它使用了索引类型查询，返回元组 T 中每个元素的类型的联合。</p>
+<h2 id="First-lt-T-gt"><a href="#First-lt-T-gt" class="headerlink" title="First&lt;T&gt;"></a>First&lt;T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00014-easy-first/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>实现一个通用的<code>First&lt;T&gt;</code>，它接受一个数组<code>T</code>并返回其第一个元素的类型</p>
+<p>代码如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//answer1</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">First</span>&lt;T <span class="keyword">extends</span> <span class="built_in">any</span>[]&gt; = T <span class="keyword">extends</span> [] ? <span class="built_in">never</span> : T[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//answer2</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">First</span>&lt;T <span class="keyword">extends</span> <span class="built_in">any</span>[]&gt; = T[<span class="string">&quot;length&quot;</span>] <span class="keyword">extends</span> <span class="number">0</span> ? <span class="built_in">never</span> : T[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//answer3</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">First</span>&lt;T <span class="keyword">extends</span> <span class="built_in">any</span>[]&gt; = T <span class="keyword">extends</span> [infer A, ...infer rest] ? A : <span class="built_in">never</span>;</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-索引访问类型 T['length']-mediumslateblue" alt="索引访问类型 T['length']"/> <img class="badges" src="https://img.shields.io/badge/-条件类型 extends-mediumslateblue" alt="条件类型 T extends A ? A : B"/> <img class="badges" src="https://img.shields.io/badge/-元组解构 [infer A, ...infer rest]-mediumslateblue" alt="元组解构 [infer A, ...infer rest]"/> </p>
+<blockquote>
+<p>索引访问类型 <code>T[&#39;length&#39;]</code> 与 索引类型查询 <code>T[number]</code> 有所不同，前者返回的是数组的长度，后者返回的是数组中每个元素的联合类型。</p>
+</blockquote>
+<p>元组解构： 使用了元组解构 <code>[infer A, ...infer rest]</code>，它尝试将数组类型 T 解构为第一个元素 A 和剩余元素的数组 rest。如果解构成功，则返回第一个元素类型 A，否则返回 <code>never</code> 类型。</p>
+<p>三个答案都使用了 TypeScript 中的泛型和条件类型机制，以不同的方式实现了获取数组类型的第一个元素类型的功能。</p>
+<h2 id="Length-lt-T-gt"><a href="#Length-lt-T-gt" class="headerlink" title="Length&lt;T&gt;"></a>Length&lt;T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00018-easy-tuple-length/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>对于给定的元组，您需要创建一个通用的<code>Length</code>，请选择元组的长度</p>
+<p>代码如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//answer1</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Length</span>&lt;T <span class="keyword">extends</span> <span class="keyword">readonly</span> <span class="built_in">unknown</span>[]&gt; = T[<span class="string">&quot;length&quot;</span>];</span><br><span class="line"><span class="comment">//answer2</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Length</span>&lt;T <span class="keyword">extends</span> <span class="title class_">Readonly</span>&lt;<span class="title class_">Array</span>&lt;<span class="built_in">unknown</span>&gt;&gt;&gt; = T[<span class="string">&quot;length&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-索引访问类型 T['length']-mediumslateblue" alt="索引访问类型 T['length']"/> <img class="badges" src="https://img.shields.io/badge/-类型约束 extends-mediumslateblue" alt="类型约束 extends"/> </p>
+<p><strong>注意点</strong>：</p>
+<ol>
+<li>answer1 为简写形式，answer2 为完整形式，不可以串用，比如 <code>readonly Array&lt;unknown&gt;</code> 会导致错误。</li>
+<li>之所以使用 <code>readonly</code>, 是因为在 Test Cases 中使用了 <code>as const</code>。 当使用 <code>as const</code> 时，它告诉 TypeScript 将值视为不可变的字面量类型，而不是可变的。这对于确保 TypeScript 能够准确推断出数组的内容类型非常重要，尤其是在使用 <code>Length&lt;T&gt;</code> 类型时，因为它依赖于数组确切的类型。</li>
+</ol>
+<h2 id="Exclude-lt-T-U-gt"><a href="#Exclude-lt-T-U-gt" class="headerlink" title="Exclude&lt;T, U&gt;"></a>Exclude&lt;T, U&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00043-easy-exclude/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>从 <code>T</code> 中排除可分配给 <code>U</code> 的类型</p>
+<p>代码如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">MyExclude</span>&lt;T, U&gt; = T <span class="keyword">extends</span> U ? <span class="built_in">never</span> : T;</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-条件类型 extends-mediumslateblue" alt="索引访问类型 T['length']"/> </p>
+<p><strong>注意点</strong>：<br>关于条件类型 <code>extends</code>，在使用场景不同的情况下其输出结果也会有不同，比如下面例子：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">MyExclude</span>&lt;T, U&gt; = T <span class="keyword">extends</span> U ? <span class="built_in">never</span> : T;</span><br><span class="line"><span class="keyword">type</span> A = <span class="string">&quot;s&quot;</span> | <span class="string">&quot;n&quot;</span> | <span class="string">&quot;q&quot;</span>;</span><br><span class="line"><span class="keyword">type</span> B = <span class="string">&quot;s&quot;</span> | <span class="string">&quot;n&quot;</span>;</span><br><span class="line"><span class="keyword">type</span> C = A <span class="keyword">extends</span> B ? <span class="built_in">never</span> : A; <span class="comment">// &#x27;s&#x27; | &#x27;n&#x27; | &#x27;q&#x27;</span></span><br><span class="line"><span class="keyword">type</span> D = <span class="title class_">MyExclude</span>&lt;A, B&gt;; <span class="comment">// &#x27;q&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，<code>type C</code>的输出结果是 <code>&#39;s&#39; | &#39;n&#39; | &#39;q&#39;</code>，而 type D 的输出结果是 <code>&#39;q&#39;</code>。<br>在 <code>type C</code> 中，条件类型 <code>A extends B ? never : A</code> 在判断 A 是否是 B 的子类型时，根据条件直接返回了整个 <code>type A</code>（<strong>此时的 A 不是分布式的，即不会分解成单个元素</strong>），而不会进一步检查 A 中的每个元素。</p>
+<p>而在 <code>type D</code> 中，使用的是自定义的 MyExclude 类型，<code>type A</code> 和 <code>type B</code> 作为泛型参数传入（<strong>此时的 A 和 B 是分布式的，即会分解成单个元素</strong>），它在定义中使用了条件类型 <code>T extends U ? never : T</code>。这个条件类型会对 T 中的每个元素进行遍历和检查，根据条件排除满足条件的元素，因此得到的结果是排除了 U 中的元素后的 T 类型。</p>
+<h2 id="Awaited-lt-T-gt"><a href="#Awaited-lt-T-gt" class="headerlink" title="Awaited&lt;T&gt;"></a>Awaited&lt;T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00189-easy-awaited/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>这种类型旨在对 <code>async</code> 函数中的 <code>await</code> 或 <code>Promise</code> 上的 <code>.then()</code> 方法等操作进行建模 - 具体来说，他们递归地解开 <code>Promise</code>。</p>
+<p>代码如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">MyAwaited</span>&lt;T <span class="keyword">extends</span> <span class="title class_">PromiseLike</span>&lt;<span class="built_in">any</span> | <span class="title class_">PromiseLike</span>&lt;<span class="built_in">any</span>&gt;&gt;&gt; =</span><br><span class="line">  T <span class="keyword">extends</span> <span class="title class_">PromiseLike</span>&lt;infer U&gt;</span><br><span class="line">    ? U <span class="keyword">extends</span> <span class="title class_">PromiseLike</span>&lt;<span class="built_in">any</span>&gt;</span><br><span class="line">      ? <span class="title class_">MyAwaited</span>&lt;U&gt;</span><br><span class="line">      : U</span><br><span class="line">    : <span class="built_in">never</span>;</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-条件类型 extends-mediumslateblue" alt="条件类型 extends"/> <img class="badges" src="https://img.shields.io/badge/-泛型推断 infer-mediumslateblue" alt="泛型推断 infer"/> <img class="badges" src="https://img.shields.io/badge/-递归类型-mediumslateblue" alt="递归类型"/></p>
+<p><strong>关键点</strong>：<br><em>泛型推断（Generic Inference）</em>：通过 <code>infer</code> 关键字，我们可以让 TypeScript 推断出 <code>PromiseLike</code> 中包含的实际类型。这使得我们在处理嵌套的 <code>PromiseLike</code> 值时能够使用 <code>infer</code> 关键字来暂时代表这个类型，并在条件类型中进一步判断和操作。<br><em>递归类型（Recursive Types）</em>：在 <code>MyAwaited</code> 类型定义中，我们对 U 进行了递归调用，以处理可能嵌套的 <code>PromiseLike</code> 值。这使得我们能够在 U 是 <code>PromiseLike</code> 类型时继续解析，直到达到最内部的非 <code>PromiseLike</code> 值。</p>
+<blockquote>
+<p>在不考虑错误：Unused ‘@ts-expect-error’ directive.(2578) 的情况下，使用<br><code>type MyAwaited&lt;T&gt; = T extends PromiseLike&lt;infer U&gt; ? MyAwaited&lt;U&gt; : T</code><br>即可通过测试。但是为了保证 case test 的覆盖率，当 T 不是 <code>PromiseLike</code> 类型时，应该返回 <code>never</code> 类型更加合理，为此在推断 U 之前添加一层判断，如果 T 不是 <code>PromiseLike</code> 类型，则直接返回 <code>never</code> 类型。</p>
+</blockquote>
+<h2 id="If-lt-C-T-F-gt"><a href="#If-lt-C-T-F-gt" class="headerlink" title="If&lt;C, T, F&gt;"></a>If&lt;C, T, F&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00268-easy-if/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>实现元类型 <code>If&lt;C,T,F&gt;</code>，它接受条件 C、真值 T 和假值 F。</p>
+<p>代码如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">If</span>&lt;C <span class="keyword">extends</span> <span class="built_in">boolean</span>, T, F&gt; = C <span class="keyword">extends</span> <span class="literal">true</span> ? T : F;</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-条件类型 extends-mediumslateblue" alt="条件类型 extends"/></p>
+<h2 id="Concat-lt-T-U-gt"><a href="#Concat-lt-T-U-gt" class="headerlink" title="Concat&lt;T, U&gt;"></a>Concat&lt;T, U&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00533-easy-concat/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>在类型系统中实现 JavaScript <code>Array.concat</code> 函数。类型接收两个参数。输出应是一个新数组，其中按 <code>LTR</code> 顺序包含输入内容</p>
+<p>代码如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Concat</span>&lt;T <span class="keyword">extends</span> <span class="keyword">readonly</span> <span class="built_in">any</span>[], U <span class="keyword">extends</span> <span class="keyword">readonly</span> <span class="built_in">any</span>[]&gt; = [...T, ...U];</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-元组展开 ...-mediumslateblue" alt="元组展开 ..."/></p>
+<h2 id="Includes-lt-T-U-gt"><a href="#Includes-lt-T-U-gt" class="headerlink" title="Includes&lt;T, U&gt;"></a>Includes&lt;T, U&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00898-easy-includes/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>在类型系统中实现 JavaScript <code>Array.includes</code> 函数。类型包含两个参数。输出应为布尔值 true 或 false。</p>
+<p>代码如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Includes</span>&lt;T <span class="keyword">extends</span> <span class="keyword">readonly</span> <span class="built_in">unknown</span>[], U&gt; = T <span class="keyword">extends</span> [</span><br><span class="line">  infer <span class="title class_">First</span>,</span><br><span class="line">  ...infer <span class="title class_">Rest</span></span><br><span class="line">]</span><br><span class="line">  ? <span class="title class_">Equal</span>&lt;<span class="title class_">First</span>, U&gt; <span class="keyword">extends</span> <span class="literal">true</span></span><br><span class="line">    ? <span class="literal">true</span></span><br><span class="line">    : <span class="title class_">Includes</span>&lt;<span class="title class_">Rest</span>, U&gt;</span><br><span class="line">  : <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-条件类型 extends-mediumslateblue" alt="条件类型 extends"/> <img class="badges" src="https://img.shields.io/badge/-泛型推断 infer-mediumslateblue" alt="泛型推断 infer"/> <img class="badges" src="https://img.shields.io/badge/-递归类型-mediumslateblue" alt="递归类型"/></p>
+<p>这题并不 easy，与 exclude 有些许不同。（详细跳转 Challenge Readme）</p>
+<p>类型推断过程：</p>
+<ol>
+<li><code>T extends [infer First, ...infer Rest]</code>：将 T 分解为 <code>[First, ...Rest]</code>，并判断 T 是否为空数组。</li>
+<li><code>Equal&lt;First, U&gt; extends true ? true : Includes&lt;Rest, U&gt;</code>：如果 T 不为空数组，则判断 First 是否等于 U，如果相等，则返回 true，否则递归调用 Includes<Rest, U>。</li>
+<li>如果 T 为空数组，则返回 false。</li>
+</ol>
+<blockquote>
+<p>提问：为什么 includes 函数需要使用递归？而 exclude 函数不需要？<br>因为 includes 函数需要判断数组中是否存在某个元素，而 exclude 函数只需要判断数组中是否不存在某个元素即可。</p>
+</blockquote>
+<h2 id="Push-lt-T-T-gt"><a href="#Push-lt-T-T-gt" class="headerlink" title="Push&lt;T[ ], T&gt;"></a>Push&lt;T[ ], T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/03057-easy-push/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>实现 <code>array.push</code> 的通用版本</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Push</span>&lt;T <span class="keyword">extends</span> <span class="built_in">unknown</span>[], U&gt; = [...T, U];</span><br></pre></td></tr></table></figure>
+<p>核心识点：<img class="badges" src="https://img.shields.io/badge/-元组展开 ...-mediumslateblue" alt="元组展开 ..."/></p>
+<h2 id="Unshift-lt-T-T-gt"><a href="#Unshift-lt-T-T-gt" class="headerlink" title="Unshift&lt;T[ ], T&gt;"></a>Unshift&lt;T[ ], T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/03060-easy-unshift/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>实现 <code>array.unshift</code> 的类型版本</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Unshift</span>&lt;T <span class="keyword">extends</span> <span class="built_in">unknown</span>[], U&gt; = [U, ...T];</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-元组展开 ...-mediumslateblue" alt="元组展开 ..."/></p>
+<h2 id="Parameters-lt-T-gt"><a href="#Parameters-lt-T-gt" class="headerlink" title="Parameters&lt;T&gt;"></a>Parameters&lt;T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/03312-easy-parameters/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>根据函数类型 Type 的参数中使用的类型构造元组类型，不使用内置 <code>Parameters</code>。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">MyParameters</span>&lt;T <span class="keyword">extends</span> (...<span class="attr">args</span>: <span class="built_in">any</span>[]) =&gt; <span class="built_in">unknown</span>&gt; = </span><br><span class="line">T <span class="keyword">extends</span> (...<span class="attr">unknown</span>: infer S) =&gt; <span class="built_in">unknown</span></span><br><span class="line">  ? S</span><br><span class="line">  : <span class="built_in">unknown</span>;</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-元组展开 ...-mediumslateblue" alt="元组展开 ..."/> <img class="badges" src="https://img.shields.io/badge/-泛型推断 infer-mediumslateblue" alt="泛型推断 infer"/> <img class="badges" src="https://img.shields.io/badge/-条件类型 extends-mediumslateblue" alt="条件类型 extends"/></p>
+<p><strong>关键点</strong>：<br>泛型推断（Generic Inference）：通过 infer 关键字，推断出函数类型中包含的参数类型。在这里，我们使用 <code>infer S</code> 来代表参数类型，并在条件类型中进一步操作。</p>
+<h2 id="The-End"><a href="#The-End" class="headerlink" title="$The\,End$"></a>$The\,End$</h2><p>强烈推荐大家动手练习type-challenges，通过思考和实践，相信你们能够轻松掌握其中的技巧。<br>以上内容为 type-challenges <img class="badges" src="https://img.shields.io/badge/easy-13-7aad0c" alt="13"/> 部分，后续继续更新<img class="badges" src="https://img.shields.io/badge/medium-97-d9901a" alt="97"/>部分，随着内容的增加，我们将把它们分为更多期，一期将分为 15 个挑战。<br>感谢你的阅读，期望能够给你带来一些启发与收获。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>TommyKi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tommy0604.github.io/typescript-challenges/easy/" title="typescript-challenges-easy">https://tommy0604.github.io/typescript-challenges/easy/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/front-end-engineering/Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/" rel="prev" title="vite只言片语（一）">
+                  <i class="fa fa-chevron-left"></i> vite只言片语（一）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/typescript-challenges/medium/" rel="next" title="typescript-challenges-medium">
+                  typescript-challenges-medium <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TommyKi</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"Tommy0604/BlogUtterances","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

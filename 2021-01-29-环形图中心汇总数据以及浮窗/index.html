@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo01.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo01.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo01.ico">
+  <link rel="mask-icon" href="/images/logo01.ico" color="#222">
+  <meta name="google-site-verification" content="NfoHNvnMAz9S6JqgSiximHUo1x-iWZ_tymLcLHvG2OI">
+  <meta name="baidu-site-verification" content="code-2aKaLafO55">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tommy0604.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="思路就是在环形图中间放置一个饼图   三步: 先把饼图中间开个洞，变成环形图 再到往饼图中间放个饼图，背景透明 设置label">
+<meta property="og:type" content="article">
+<meta property="og:title" content="环形图中心汇总数据以及浮窗">
+<meta property="og:url" content="https://tommy0604.github.io/2021-01-29-%E7%8E%AF%E5%BD%A2%E5%9B%BE%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%B5%AE%E7%AA%97/index.html">
+<meta property="og:site_name" content="Tommy&#39;s blog">
+<meta property="og:description" content="思路就是在环形图中间放置一个饼图   三步: 先把饼图中间开个洞，变成环形图 再到往饼图中间放个饼图，背景透明 设置label">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-29T03:18:30.000Z">
+<meta property="article:modified_time" content="2022-08-19T04:47:52.792Z">
+<meta property="article:author" content="TommyKi">
+<meta property="article:tag" content="echarts">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tommy0604.github.io/2021-01-29-%E7%8E%AF%E5%BD%A2%E5%9B%BE%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%B5%AE%E7%AA%97/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tommy0604.github.io/2021-01-29-%E7%8E%AF%E5%BD%A2%E5%9B%BE%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%B5%AE%E7%AA%97/","path":"2021-01-29-环形图中心汇总数据以及浮窗/","title":"环形图中心汇总数据以及浮窗"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>环形图中心汇总数据以及浮窗 | Tommy's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tommy's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">developer、popper、喜新恋旧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TommyKi"
+      src="/images/malko.jpg">
+  <p class="site-author-name" itemprop="name">TommyKi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Tommy0604" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Tommy0604" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/904859162@qq.com" title="E-Mail → 904859162@qq.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2021-01-29-%E7%8E%AF%E5%BD%A2%E5%9B%BE%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%B5%AE%E7%AA%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/malko.jpg">
+      <meta itemprop="name" content="TommyKi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="环形图中心汇总数据以及浮窗 | Tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          环形图中心汇总数据以及浮窗
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-29 11:18:30" itemprop="dateCreated datePublished" datetime="2021-01-29T11:18:30+08:00">2021-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-19 12:47:52" itemprop="dateModified" datetime="2022-08-19T12:47:52+08:00">2022-08-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/echarts/" itemprop="url" rel="index"><span itemprop="name">echarts</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>思路就是在环形图中间放置一个饼图</p>
+</blockquote>
+<ul>
+<li>三步:<ul>
+<li>先把饼图中间开个洞，变成环形图</li>
+<li>再到往饼图中间放个饼图，背景透明</li>
+<li>设置<code>label</code></li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+<p>推荐使用全局<code>tooltip</code>，这样<code>series</code>数据都能触发<code>hover</code>事件。</p>
+<p>不能使用<code>title</code>和<code>graphic</code>来充当中心的<code>label</code>，只有数据项才会触发弹窗事件，action操作<code>tooltip.showTip</code>也无效。(曾在<code>graphic</code>的<code>mouseover</code>事件里尝试过)</p>
+<p>可以直接把下面代码copy到官网代码视图部分运行<br>example:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">option = &#123;</span><br><span class="line">    <span class="attr">tooltip</span>: &#123;</span><br><span class="line">        <span class="attr">trigger</span>: <span class="string">&#x27;item&#x27;</span>,</span><br><span class="line">        <span class="attr">formatter</span>: <span class="string">&#x27;&#123;a&#125; &lt;br/&gt;&#123;b&#125;: &#123;c&#125; (&#123;d&#125;%)&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">legend</span>: &#123;</span><br><span class="line">        <span class="attr">orient</span>: <span class="string">&#x27;vertical&#x27;</span>,</span><br><span class="line">        <span class="attr">left</span>: <span class="number">10</span>,</span><br><span class="line">        <span class="attr">data</span>: [<span class="string">&#x27;直接访问&#x27;</span>, <span class="string">&#x27;邮件营销&#x27;</span>, <span class="string">&#x27;联盟广告&#x27;</span>, <span class="string">&#x27;视频广告&#x27;</span>, <span class="string">&#x27;搜索引擎&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">series</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&#x27;访问来源&#x27;</span>,</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&#x27;pie&#x27;</span>,</span><br><span class="line">            <span class="attr">radius</span>: [<span class="string">&#x27;50%&#x27;</span>, <span class="string">&#x27;70%&#x27;</span>],</span><br><span class="line">            <span class="attr">avoidLabelOverlap</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">hoverAnimation</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">label</span>: &#123;</span><br><span class="line">                <span class="attr">show</span>: <span class="literal">false</span>,</span><br><span class="line">                <span class="attr">position</span>: <span class="string">&#x27;center&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">emphasis</span>: &#123;</span><br><span class="line">                <span class="attr">label</span>: &#123;</span><br><span class="line">                    <span class="attr">show</span>: <span class="literal">false</span>,</span><br><span class="line">                    <span class="attr">fontSize</span>: <span class="string">&#x27;30&#x27;</span>,</span><br><span class="line">                    <span class="attr">fontWeight</span>: <span class="string">&#x27;bold&#x27;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">labelLine</span>: &#123;</span><br><span class="line">                <span class="attr">show</span>: <span class="literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">data</span>: [</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">335</span>, <span class="attr">name</span>: <span class="string">&#x27;直接访问&#x27;</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">310</span>, <span class="attr">name</span>: <span class="string">&#x27;邮件营销&#x27;</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">234</span>, <span class="attr">name</span>: <span class="string">&#x27;联盟广告&#x27;</span>&#125;,</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">135</span>, <span class="attr">name</span>: <span class="string">&#x27;视频广告&#x27;</span>&#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">         &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&#x27;搜索引擎&#x27;</span>,</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&#x27;pie&#x27;</span>,</span><br><span class="line">            <span class="attr">radius</span>: [<span class="string">&#x27;0%&#x27;</span>, <span class="string">&#x27;30%&#x27;</span>],</span><br><span class="line">            <span class="attr">avoidLabelOverlap</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">hoverAnimation</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">label</span>: &#123;</span><br><span class="line">                <span class="attr">show</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="attr">position</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">                <span class="attr">verticalAlign</span>: <span class="string">&#x27;bottom&#x27;</span>,</span><br><span class="line">                <span class="attr">formatter</span>: <span class="string">`&#123;a&#125;:&#123;c&#125;`</span>,</span><br><span class="line">                <span class="attr">lineHeight</span>: <span class="number">30</span>,</span><br><span class="line">                <span class="attr">color</span>: <span class="string">&#x27;#30323b&#x27;</span>,</span><br><span class="line">                <span class="attr">fontSize</span>: <span class="number">14</span>,</span><br><span class="line">                <span class="attr">fontWeight</span>: <span class="string">&#x27;lighter&#x27;</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">labelLine</span>: &#123;</span><br><span class="line">                <span class="attr">show</span>: <span class="literal">false</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">data</span>: [</span><br><span class="line">                &#123;<span class="attr">value</span>: <span class="number">1548</span>, <span class="attr">name</span>: <span class="string">&#x27;搜索引擎&#x27;</span>&#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">itemStyle</span>: &#123;</span><br><span class="line">                <span class="attr">color</span>: <span class="string">&#x27;rgba(255, 0, 0, 0)&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>TommyKi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tommy0604.github.io/2021-01-29-%E7%8E%AF%E5%BD%A2%E5%9B%BE%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%B5%AE%E7%AA%97/" title="环形图中心汇总数据以及浮窗">https://tommy0604.github.io/2021-01-29-环形图中心汇总数据以及浮窗/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/echarts/" rel="tag"># echarts</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020-11-03-%E8%AE%B0%E5%BD%9510%E6%9C%8823%E5%8F%B7%E4%B8%80%E6%AC%A1%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%9D%A2%E8%AF%95/" rel="prev" title="记录10月23号一次的面试">
+                  <i class="fa fa-chevron-left"></i> 记录10月23号一次的面试
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021-05-09-ViewEncapsulation-%E7%8E%B0%E9%A5%AD%E7%8E%B0%E7%82%92/" rel="next" title="ViewEncapsulation 现饭现炒">
+                  ViewEncapsulation 现饭现炒 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TommyKi</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"Tommy0604/BlogUtterances","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

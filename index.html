@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,7 +175,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/blog/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2018-08-30-blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/malko.jpg">
@@ -193,7 +193,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/blog/" class="post-title-link" itemprop="url"> </a>
+          <a href="/2018-08-30-blog/" class="post-title-link" itemprop="url"> </a>
         </h2>
 
         <div class="post-meta-container">
@@ -204,14 +204,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2018-08-30 00:00:00" itemprop="dateCreated datePublished" datetime="2018-08-30T00:00:00+08:00">2018-08-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-19 12:47:52" itemprop="dateModified" datetime="2022-08-19T12:47:52+08:00">2022-08-19</time>
+      <time title="创建时间：2022-08-19 12:47:52" itemprop="dateCreated datePublished" datetime="2022-08-19T12:47:52+08:00">2022-08-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -260,7 +253,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/typescript-challenges-easy/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/typescript-challenges/medium/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/malko.jpg">
@@ -278,7 +271,125 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/typescript-challenges-easy/" class="post-title-link" itemprop="url">typescript-challenges-easy</a>
+          <a href="/typescript-challenges/medium/" class="post-title-link" itemprop="url">typescript-challenges-medium</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-07 14:31:33" itemprop="dateCreated datePublished" datetime="2024-04-07T14:31:33+08:00">2024-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-08 16:27:07" itemprop="dateModified" datetime="2024-04-08T16:27:07+08:00">2024-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="ReturnType-lt-T-gt"><a href="#ReturnType-lt-T-gt" class="headerlink" title="ReturnType&lt;T&gt;"></a>ReturnType&lt;T&gt;</h2><p><a href="https://github.com/type-challenges/type-challenges/blob/main/questions/00002-medium-return-type/README.md" target="_blank"><img class="badges" src="https://img.shields.io/badge/-Challenge%20Readme-3178c6?logo=markdown&logoColor=white" alt="Challenge Readme"/></a></p>
+<p>构造一种由函数类型的返回类型组成的类型。不使用内置 <code>ReturnType</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">MyReturnType</span>&lt;T&gt; = T <span class="keyword">extends</span> (...<span class="attr">args</span>: <span class="built_in">never</span>[]) =&gt; infer A ? A : <span class="built_in">never</span>;</span><br></pre></td></tr></table></figure>
+<p>核心知识点：<img class="badges" src="https://img.shields.io/badge/-元组展开 ...-mediumslateblue" alt="元组展开 ..."/> <img class="badges" src="https://img.shields.io/badge/-泛型推断 infer-mediumslateblue" alt="泛型推断 infer"/> <img class="badges" src="https://img.shields.io/badge/-条件类型 extends-mediumslateblue" alt="条件类型 extends"/></p>
+<p><strong>注意点</strong>：</p>
+<p>这里需要注意条件类型的参数，当参数为 <code>...args: unknown[]</code> 时，表示“未知”的类型。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn1</span> = (<span class="params">v: <span class="built_in">boolean</span>, w: <span class="built_in">any</span></span>) =&gt; (v ? <span class="number">1</span> : <span class="number">2</span>);</span><br><span class="line"><span class="keyword">type</span> fn1ReturnType = <span class="title class_">MyReturnType</span>&lt;<span class="keyword">typeof</span> fn1&gt;;</span><br></pre></td></tr></table></figure>
+<p>对于函数 fn1，它的参数类型不符合这个签名，因为它的参数类型不是 <code>unknown[]</code>，而是具体的 <code>boolean</code> 和 <code>any</code> 类型。此时条件类型 <code>T extends (...args: unknown[]) =&gt; infer A</code> 不会匹配到 fn1，因此 fn1Type 的类型将是 <code>never。</code></p>
+<p><strong>提问：<code>never</code> 作为一个底部类型，应该不能赋予除了 never 意外的其他类型，为什么能命中 <code>true</code> 分支？</strong><br>导致这个结果的原因是因为，<code>never</code> 任何类型的 <code>subType</code>。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Check</span>&lt;T&gt; = <span class="built_in">never</span> <span class="keyword">extends</span> T ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">type</span> result = check&lt;xxx&gt;; <span class="comment">// 结果始终为true</span></span><br></pre></td></tr></table></figure>
+<p><code>T extends (...args: never[]) =&gt; infer A</code> 这意味着它是一个接受空参数列表的函数类型。由于 <code>never</code> 类型是空集合的子类型，因此任何具有参数的函数类型也可以被赋值给 <code>(...args: never[]) =&gt; infer A</code>。这就解释了为什么条件类型的结果为 <code>true</code>。</p>
+<p>值得一提的是：</p>
+<ol>
+<li>不相交类型的 inteserction 结果为 never:</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> result = <span class="number">1</span> &amp; <span class="number">2</span>; <span class="comment">// 结果为never</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>除了 never，没有其他类型是 never 的 subtype</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">Check</span>&lt;T&gt; = <span class="built_in">never</span> <span class="keyword">extends</span> <span class="built_in">never</span> ? <span class="literal">false</span> : T <span class="keyword">extends</span> <span class="built_in">never</span> ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">type</span> result = check&lt;xxx&gt;; <span class="comment">// 结果始终为false</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>布尔运算</li>
+</ol>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">T | <span class="built_in">never</span>; <span class="comment">// 结果为T</span></span><br><span class="line">T &amp; <span class="built_in">never</span>; <span class="comment">// 结果为never</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>是任何类型的 subtype（上文已通过例子说明）</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/typescript-challenges/medium/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/typescript-challenges/easy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/malko.jpg">
+      <meta itemprop="name" content="TommyKi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/typescript-challenges/easy/" class="post-title-link" itemprop="url">typescript-challenges-easy</a>
         </h2>
 
         <div class="post-meta-container">
@@ -296,7 +407,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-04-07 14:13:16" itemprop="dateModified" datetime="2024-04-07T14:13:16+08:00">2024-04-07</time>
+      <time title="修改时间：2024-04-07 15:42:18" itemprop="dateModified" datetime="2024-04-07T15:42:18+08:00">2024-04-07</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -329,7 +440,7 @@
 <p>知道了这两个条件判断，就可以通过类型推断来验证类型是否匹配，接下来进入正题。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/typescript-challenges-easy/#more" rel="contents">
+              <a class="btn" href="/typescript-challenges/easy/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -360,7 +471,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/front-end-engineering-Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/front-end-engineering/Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/malko.jpg">
@@ -378,7 +489,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/front-end-engineering-Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/" class="post-title-link" itemprop="url">vite只言片语（一）</a>
+          <a href="/front-end-engineering/Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/" class="post-title-link" itemprop="url">vite只言片语（一）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -425,7 +536,7 @@
 <h2 id="理解-vite"><a href="#理解-vite" class="headerlink" title="理解 vite"></a>理解 vite</h2><p><code>Vite</code> 是一个思维比较前卫而且先进的构建工具，它解决了一些<code>Webpack</code>解决不了的问题，同时降低了一些心智负担。<br><code>Vite</code>基于自己得天独厚的优势，他已经占有一席之地，<code>Vite</code>是 vue 团队的官方出品，背靠强大的生态，<code>vue-cli</code>已经将<code>Vite</code>作为预设构建工具。使用<code>vue-cli</code>去构建 vue 项目的时候你要写的<code>vue.config.js</code>不再是<code>webpack</code>的配置而是<code>vite</code>的配置(目前只基于浏览器项目)。<br><code>Vite</code>支持直接构建<code>react</code>、<code>angular</code>，和<code>svelte</code>项目。<br>而这只是<code>Vite</code>优势的一角。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/front-end-engineering-Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/#more" rel="contents">
+              <a class="btn" href="/front-end-engineering/Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -456,7 +567,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Vue3-i18n/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2023-06-19-Vue3-i18n/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/malko.jpg">
@@ -474,7 +585,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Vue3-i18n/" class="post-title-link" itemprop="url">Vue3 i18n 实践</a>
+          <a href="/2023-06-19-Vue3-i18n/" class="post-title-link" itemprop="url">Vue3 i18n 实践</a>
         </h2>
 
         <div class="post-meta-container">
@@ -517,7 +628,7 @@
 <p>由于自立更生式实现复杂翻译（变量翻译和某些需要在翻译文本里插入参数）过于繁琐，所以我选择使用Vue I18n插件。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Vue3-i18n/#more" rel="contents">
+              <a class="btn" href="/2023-06-19-Vue3-i18n/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -636,7 +747,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/front-end-graphics-2022-07-07-%E5%89%8D%E7%AB%AF%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/front-end-graphics/2022-07-07-%E5%89%8D%E7%AB%AF%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/malko.jpg">
@@ -654,7 +765,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/front-end-graphics-2022-07-07-%E5%89%8D%E7%AB%AF%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%94%A8/" class="post-title-link" itemprop="url">前端向量知识</a>
+          <a href="/front-end-graphics/2022-07-07-%E5%89%8D%E7%AB%AF%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%94%A8/" class="post-title-link" itemprop="url">前端向量知识</a>
         </h2>
 
         <div class="post-meta-container">
@@ -699,7 +810,7 @@
 </blockquote>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/front-end-graphics-2022-07-07-%E5%89%8D%E7%AB%AF%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%94%A8/#more" rel="contents">
+              <a class="btn" href="/front-end-graphics/2022-07-07-%E5%89%8D%E7%AB%AF%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%94%A8/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -730,7 +841,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Angular%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2022-01-04-Angular%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/malko.jpg">
@@ -748,7 +859,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Angular%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/" class="post-title-link" itemprop="url">Angular是怎么工作的</a>
+          <a href="/2022-01-04-Angular%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/" class="post-title-link" itemprop="url">Angular是怎么工作的</a>
         </h2>
 
         <div class="post-meta-container">
@@ -794,7 +905,7 @@
 <p>我们从一个简单的例子开始，全文会围绕这个例子展开：</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Angular%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/#more" rel="contents">
+              <a class="btn" href="/2022-01-04-Angular%E6%98%AF%E6%80%8E%E4%B9%88%E5%B7%A5%E4%BD%9C%E7%9A%84/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -825,7 +936,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BA%AF%E7%AE%A1%E9%81%93/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2021-06-29-Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BA%AF%E7%AE%A1%E9%81%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/malko.jpg">
@@ -843,7 +954,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BA%AF%E7%AE%A1%E9%81%93/" class="post-title-link" itemprop="url">Angular性能优化之纯管道</a>
+          <a href="/2021-06-29-Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BA%AF%E7%AE%A1%E9%81%93/" class="post-title-link" itemprop="url">Angular性能优化之纯管道</a>
         </h2>
 
         <div class="post-meta-container">
@@ -889,7 +1000,7 @@
 <p>接下来我们通过一个例子来演示下：</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BA%AF%E7%AE%A1%E9%81%93/#more" rel="contents">
+              <a class="btn" href="/2021-06-29-Angular%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BA%AF%E7%AE%A1%E9%81%93/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -920,7 +1031,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/ViewEncapsulation-%E7%8E%B0%E9%A5%AD%E7%8E%B0%E7%82%92/">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2021-05-09-ViewEncapsulation-%E7%8E%B0%E9%A5%AD%E7%8E%B0%E7%82%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/malko.jpg">
@@ -938,7 +1049,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/ViewEncapsulation-%E7%8E%B0%E9%A5%AD%E7%8E%B0%E7%82%92/" class="post-title-link" itemprop="url">ViewEncapsulation 现饭现炒</a>
+          <a href="/2021-05-09-ViewEncapsulation-%E7%8E%B0%E9%A5%AD%E7%8E%B0%E7%82%92/" class="post-title-link" itemprop="url">ViewEncapsulation 现饭现炒</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1014,109 +1125,7 @@
 <p>现在我们一个一个地查看所有ViewEncapsulation模式。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/ViewEncapsulation-%E7%8E%B0%E9%A5%AD%E7%8E%B0%E7%82%92/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/%E7%8E%AF%E5%BD%A2%E5%9B%BE%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%B5%AE%E7%AA%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/malko.jpg">
-      <meta itemprop="name" content="TommyKi">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Tommy's blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E7%8E%AF%E5%BD%A2%E5%9B%BE%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%B5%AE%E7%AA%97/" class="post-title-link" itemprop="url">环形图中心汇总数据以及浮窗</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-01-29 11:18:30" itemprop="dateCreated datePublished" datetime="2021-01-29T11:18:30+08:00">2021-01-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-08-19 12:47:52" itemprop="dateModified" datetime="2022-08-19T12:47:52+08:00">2022-08-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/echarts/" itemprop="url" rel="index"><span itemprop="name">echarts</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>思路就是在环形图中间放置一个饼图</p>
-</blockquote>
-<ul>
-<li>三步:<ul>
-<li>先把饼图中间开个洞，变成环形图</li>
-<li>再到往饼图中间放个饼图，背景透明</li>
-<li>设置<code>label</code></li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E7%8E%AF%E5%BD%A2%E5%9B%BE%E4%B8%AD%E5%BF%83%E6%B1%87%E6%80%BB%E6%95%B0%E6%8D%AE%E4%BB%A5%E5%8F%8A%E6%B5%AE%E7%AA%97/#more" rel="contents">
+              <a class="btn" href="/2021-05-09-ViewEncapsulation-%E7%8E%B0%E9%A5%AD%E7%8E%B0%E7%82%92/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>

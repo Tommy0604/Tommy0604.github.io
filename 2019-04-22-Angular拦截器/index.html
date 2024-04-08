@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo01.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo01.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo01.ico">
+  <link rel="mask-icon" href="/images/logo01.ico" color="#222">
+  <meta name="google-site-verification" content="NfoHNvnMAz9S6JqgSiximHUo1x-iWZ_tymLcLHvG2OI">
+  <meta name="baidu-site-verification" content="code-2aKaLafO55">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tommy0604.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="HTTP拦截器是@ angular &#x2F; common &#x2F; http的主要功能。 可以使用拦截器，去检查HTTP请求并将其从应用程序转换为服务器。  顾名思义，HttpInterceptor 会拦截 Angular 应用程序中发出的 Http请求。 拦截意味着他们在将Http请求传递到Web服务器之前捕获并引导了Http请求。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular拦截器&amp;应用场景">
+<meta property="og:url" content="https://tommy0604.github.io/2019-04-22-Angular%E6%8B%A6%E6%88%AA%E5%99%A8/index.html">
+<meta property="og:site_name" content="Tommy&#39;s blog">
+<meta property="og:description" content="HTTP拦截器是@ angular &#x2F; common &#x2F; http的主要功能。 可以使用拦截器，去检查HTTP请求并将其从应用程序转换为服务器。  顾名思义，HttpInterceptor 会拦截 Angular 应用程序中发出的 Http请求。 拦截意味着他们在将Http请求传递到Web服务器之前捕获并引导了Http请求。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-22T14:53:18.000Z">
+<meta property="article:modified_time" content="2022-08-19T04:47:52.643Z">
+<meta property="article:author" content="TommyKi">
+<meta property="article:tag" content="Angular">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://tommy0604.github.io/2019-04-22-Angular%E6%8B%A6%E6%88%AA%E5%99%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tommy0604.github.io/2019-04-22-Angular%E6%8B%A6%E6%88%AA%E5%99%A8/","path":"2019-04-22-Angular拦截器/","title":"Angular拦截器&应用场景"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Angular拦截器&应用场景 | Tommy's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tommy's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">developer、popper、喜新恋旧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">创建一个拦截器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%BF%AE%E6%94%B9"><span class="nav-number">2.</span> <span class="nav-text">请求头修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E4%BD%93%E4%BF%AE%E6%94%B9"><span class="nav-number">3.</span> <span class="nav-text">请求体修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%AF%B7%E6%B1%82%E4%BD%93-HttpRequest-body"><span class="nav-number">4.</span> <span class="nav-text">关于请求体(HttpRequest body)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%81-%E6%8E%88%E6%9D%83"><span class="nav-number">5.</span> <span class="nav-text">认证&#x2F;授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E6%A8%A1%E6%8B%9F"><span class="nav-number">6.</span> <span class="nav-text">后端模拟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98"><span class="nav-number">7.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%BF%97"><span class="nav-number">8.</span> <span class="nav-text">日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">9.</span> <span class="nav-text">错误处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TommyKi"
+      src="/images/malko.jpg">
+  <p class="site-author-name" itemprop="name">TommyKi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Tommy0604" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Tommy0604" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/904859162@qq.com" title="E-Mail → 904859162@qq.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/2019-04-22-Angular%E6%8B%A6%E6%88%AA%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/malko.jpg">
+      <meta itemprop="name" content="TommyKi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Angular拦截器&应用场景 | Tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Angular拦截器&应用场景
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-04-22 22:53:18" itemprop="dateCreated datePublished" datetime="2019-04-22T22:53:18+08:00">2019-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-19 12:47:52" itemprop="dateModified" datetime="2022-08-19T12:47:52+08:00">2022-08-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Angular/" itemprop="url" rel="index"><span itemprop="name">Angular</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>HTTP拦截器是@ angular / common / http的主要功能。 可以使用拦截器，去检查HTTP请求并将其从应用程序转换为服务器。</p>
+</blockquote>
+<p>顾名思义，<code>HttpInterceptor</code> 会拦截 Angular 应用程序中发出的 Http请求。 拦截意味着他们在将Http请求传递到Web服务器之前捕获并引导了Http请求。</p>
+<span id="more"></span>
+<p>在Angular中，与服务器的通信是通过注入<code>HttpClient</code>服务类并调用以下方法来完成的:</p>
+<ul>
+<li>get</li>
+<li>post</li>
+<li>delete</li>
+<li>options</li>
+<li>put</li>
+</ul>
+<p>based on the action we want on the server.</p>
+<h2 id="创建一个拦截器"><a href="#创建一个拦截器" class="headerlink" title="创建一个拦截器"></a>创建一个拦截器</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AppComponent</span> &#123;</span><br><span class="line">    <span class="attr">feed$</span>: <span class="title class_">Observable</span></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"><span class="keyword">private</span> httpClient: HttpClient</span>) &#123;&#125;</span><br><span class="line">    <span class="title function_">ngOnInit</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">feed$</span> = <span class="variable language_">this</span>.<span class="property">httpClient</span>.<span class="title function_">get</span>(<span class="string">&quot;/api/feed&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建拦截器之前，先利用 <code>HttpClient</code> 创建一个请求</p>
+<p>如果在应用程序上配置了<code>HttpInterceptor</code>，它将捕获到 <code>/ api / feed</code> 的Http GET请求，并且可以使用它执行所有操作，从身份验证到记录所有开发人员。</p>
+<p>要在Angular应用中创建<code>HttpInterceptor</code>，首先要创建一个服务类，并使该类实现<code>HttpInterceptor</code>接口的拦截方法。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AnHttpInterceptor</span> implemenss <span class="title class_">HttpInterceptor</span> &#123;</span><br><span class="line">    <span class="title function_">intercept</span>(<span class="attr">req</span>: <span class="title class_">HttpRequest</span>&lt;<span class="built_in">any</span>&gt;, <span class="attr">next</span>: <span class="title class_">HttpHandler</span>): <span class="title class_">Observable</span>&lt;<span class="title class_">HttpEvent</span>&lt;<span class="built_in">any</span>&gt;&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> next.<span class="title function_">handle</span>(req);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们这里有一个<code>HttpInterceptor</code>，即<code>AnHttpInterceptor</code>，它实际上不执行任何操作，只是将请求向下传递给拦截器链（拦截器可以有多个,<a target="_blank" rel="noopener" href="https://angular.cn/guide/http#interceptor-order">调用顺序</a>与链表顺序一致）。</p>
+<p><code>HttpInterceptor</code>必须实现拦截方法，这是它在链中第一个参数req和下一个<code>HttpHandler</code>中接收Http请求的位置。 为了将Http请求传递到拦截器管道，它调用HttpHandler＃handle方法。</p>
+<p>这个<code>AnHttpInterceptor</code>不会拦截任何Http请求，需要将其添加到<code>NgModule</code>：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">    <span class="attr">providers</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">provide</span>: <span class="variable constant_">HTTP_INTERCEPTORS</span>,<span class="attr">useClass</span>: <span class="title class_">AnHttpInterceptor</span>, <span class="attr">multi</span>: <span class="literal">true</span> </span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>AnHttpInterceptor</code>将在我们的应用程序中拦截Http请求。</p>
+<p>对HttpInterceptors的工作原理有了 了解，再来看看它能起到什么作用。</p>
+<h2 id="请求头修改"><a href="#请求头修改" class="headerlink" title="请求头修改"></a>请求头修改</h2><p>我们可以从<code>HttpInterceptor</code>修改Http标头。</p>
+<p>headers是Angular的<code>HttpRequest</code>类的一个属性，它是<code>HttpHeaders</code>的对象。<code>HttpHeaders</code>类具有<code>headersproperty</code>，它是一个Map实例，用于以键值方式存储标头。</p>
+<p>因此，从传递给<code>HttpInterceptor</code>拦截方法的<code>HttpRequest</code>对象中，我们可以引用标头：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AnHttpInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HttpInterceptor</span> &#123;</span><br><span class="line">    <span class="title function_">intercept</span>(<span class="attr">req</span>: <span class="title class_">HttpRequest</span>&lt;<span class="built_in">any</span>&gt;, <span class="attr">next</span>: <span class="title class_">HttpHandler</span>): <span class="title class_">Observable</span>&lt;<span class="title class_">HttpEvent</span>&lt;<span class="built_in">any</span>&gt;&gt; &#123;</span><br><span class="line">        <span class="comment">// we can set a new Header</span></span><br><span class="line">        req.<span class="property">headers</span>.<span class="title function_">set</span>(&#123;<span class="string">&quot;MyHeader&quot;</span>: <span class="number">789</span>&#125;)</span><br><span class="line">        <span class="comment">// we can modify a Header</span></span><br><span class="line">        req.<span class="property">headers</span>.<span class="title function_">append</span>(&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="literal">null</span>&#125;)</span><br><span class="line">        <span class="comment">// we can delete a Header</span></span><br><span class="line">        req.<span class="property">headers</span>.<span class="title function_">delete</span>(<span class="string">&quot;Content-Type&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> next.<span class="title function_">handle</span>(req);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们更改了HttpRequest请求。 官方说req HttpRequest应该保持不变。 这是为了避免HttpInterceptors多次重新处理同一请求。</p>
+<p>因此，我们需要克隆req并对其进行修改。 HttpRequest具有方法克隆，用于创建原始请求的新副本。 我们使用了clone方法来复制一个http请求副本，并修改副本中的标头，然后将该副本向下传递到链中。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AnHttpInterceptor</span> implemenss <span class="title class_">HttpInterceptor</span> &#123;</span><br><span class="line">    <span class="title function_">intercept</span>(<span class="attr">req</span>: <span class="title class_">HttpRequest</span>&lt;<span class="built_in">any</span>&gt;, <span class="attr">next</span>: <span class="title class_">HttpHandler</span>): <span class="title class_">Observable</span>&lt;<span class="title class_">HttpEvent</span>&lt;<span class="built_in">any</span>&gt;&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> reqCopy = req.<span class="title function_">clone</span>()</span><br><span class="line">        <span class="comment">// we can set a new Header</span></span><br><span class="line">        reqCopy.<span class="property">headers</span>.<span class="title function_">set</span>(&#123;<span class="string">&quot;MyHeader&quot;</span>: <span class="number">789</span>&#125;)</span><br><span class="line">        <span class="comment">// we can modify a Header</span></span><br><span class="line">        reqCopy.<span class="property">headers</span>.<span class="title function_">append</span>(&#123;<span class="string">&quot;Content-Type&quot;</span>: <span class="literal">null</span>&#125;)</span><br><span class="line">        <span class="comment">// we can delete a Header</span></span><br><span class="line">        reqCopy.<span class="property">headers</span>.<span class="title function_">delete</span>(<span class="string">&quot;Content-Type&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> next.<span class="title function_">handle</span>(reqCopy);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果我们的Http请求是这样的：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">headers</span>: &#123;</span><br><span class="line">        <span class="title class_">Content</span>-<span class="title class_">Type</span>: <span class="string">&quot;aplication/json&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">body</span>: &#123;...&#125;,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>经过<code>AnHttpInterceptor</code>之后； 它将被修改成：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">headers</span>: &#123;</span><br><span class="line">        <span class="string">&quot;MyHeader&quot;</span>: <span class="number">789</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">body</span>: &#123;...&#125;,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这就是服务器将收到的内容。</p>
+<h2 id="请求体修改"><a href="#请求体修改" class="headerlink" title="请求体修改"></a>请求体修改</h2><p>我们已经了解了如何在req HttpRequest中修改header属性。我们还可以通过HttpInterceptor修改请求主体。在HttpRequest中，主体是一个属性，用于通过post方法向服务器发送附加信息。因此，通过传递给HttpInterceptor的HttpRequest对象，我们可以引用body属性并随意修改它。</p>
+<p>假设我们的Http请求是这样的</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">httpClient.<span class="title function_">post</span>(<span class="string">&quot;/api/login&quot;</span>, &#123; <span class="attr">name</span>: <span class="string">&quot;tommy&quot;</span>, <span class="attr">password</span>: <span class="string">&quot;xxxx&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>这个<code>&#123;name: tommy, password: xxxx&#125;</code>是Http请求中的主体。在我们的AnHttpInterceptor中，我们可以修改任何属性</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AnHttpInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HttpInterceptor</span> &#123;</span><br><span class="line">    <span class="title function_">intercept</span>(<span class="attr">req</span>: <span class="title class_">HttpRequest</span>&lt;<span class="built_in">any</span>&gt;, <span class="attr">next</span>: <span class="title class_">HttpHandler</span>): <span class="title class_">Observable</span>&lt;<span class="title class_">HttpEvent</span>&lt;<span class="built_in">any</span>&gt;&gt; &#123;</span><br><span class="line">        <span class="comment">// remove name</span></span><br><span class="line">        cont body = &#123;<span class="attr">password</span>: req.<span class="property">body</span>.<span class="property">password</span> &#125;</span><br><span class="line">        <span class="keyword">const</span> reqCopy = req.<span class="title function_">clone</span>(&#123;</span><br><span class="line">            body</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">// modfiy name to &quot;chidume&quot;</span></span><br><span class="line">        cont body = &#123;...req.<span class="property">body</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;chidume&quot;</span>&#125;</span><br><span class="line">        <span class="keyword">const</span> reqCopy = req.<span class="title function_">clone</span>(&#123;</span><br><span class="line">            body</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> next.<span class="title function_">handle</span>(reqCopy);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在服务器将获得：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&quot;/api/login&quot;</span>,</span><br><span class="line">    <span class="attr">body</span>: &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;chidume&quot;</span>,</span><br><span class="line">        <span class="attr">password</span>: <span class="string">&quot;xxxx&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="关于请求体-HttpRequest-body"><a href="#关于请求体-HttpRequest-body" class="headerlink" title="关于请求体(HttpRequest body)"></a>关于请求体(HttpRequest body)</h2><p>由于可以获取HttpRequest，因此可以修改其中的任何属性：URL，方法，标头，报文和其他请求配置选项。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">HttpRequest</span> &#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * The request body, or `null` if one isn&#x27;t set.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * Bodies are not enforced to be immutable, as they can include a reference to any</span></span><br><span class="line"><span class="comment">   * user-defined data type. However, interceptors should take care to preserve</span></span><br><span class="line"><span class="comment">   * idempotence by treating them as such.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">body</span>: T|<span class="literal">null</span> = <span class="literal">null</span>;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Outgoing headers for this request.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="comment">// TODO(issue/24571): remove &#x27;!&#x27;.</span></span><br><span class="line">  <span class="keyword">readonly</span> headers !: <span class="title class_">HttpHeaders</span>;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Whether this request should be made in a way that exposes progress events.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * Progress events are expensive (change detection runs on each event) and so</span></span><br><span class="line"><span class="comment">   * they should only be requested if the consumer intends to monitor them.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">reportProgress</span>: <span class="built_in">boolean</span> = <span class="literal">false</span>;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Whether this request should be sent with outgoing credentials (cookies).</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">withCredentials</span>: <span class="built_in">boolean</span> = <span class="literal">false</span>;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * The expected response type of the server.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * This is used to parse the response appropriately before returning it to</span></span><br><span class="line"><span class="comment">   * the requestee.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">responseType</span>: <span class="string">&#x27;arraybuffer&#x27;</span>|<span class="string">&#x27;blob&#x27;</span>|<span class="string">&#x27;json&#x27;</span>|<span class="string">&#x27;text&#x27;</span> = <span class="string">&#x27;json&#x27;</span>;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * The outgoing HTTP request method.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">method</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Outgoing URL parameters.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="comment">// TODO(issue/24571): remove &#x27;!&#x27;.</span></span><br><span class="line">  <span class="keyword">readonly</span> params !: <span class="title class_">HttpParams</span>;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * The outgoing URL with all URL parameters set.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">readonly</span> <span class="attr">urlWithParams</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过将HttpRequest对象传递给HttpInterceptor的拦截方法，我们可以修改HttpRequest类中的任何属性。</p>
+<h2 id="认证-授权"><a href="#认证-授权" class="headerlink" title="认证/授权"></a>认证/授权</h2><p>HttpInterceptor可用于为前往特定域的HTTP请求设置授权标头。</p>
+<p>当我们要保护服务器中的API端点时，通过HttpInterceptors授权非常有用。 我们创建一个HttpInterceptor，它为每个HTTP请求附加一个带有 “Bearer” 令牌的授权标头：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">AuthInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HttpInterceptor</span> &#123;</span><br><span class="line">  <span class="title function_">intercept</span>(<span class="attr">req</span>: <span class="title class_">HttpRequest</span>&lt;<span class="built_in">any</span>&gt;, <span class="attr">next</span>: <span class="title class_">HttpHandler</span>): <span class="title class_">Observable</span>&lt;<span class="title class_">HttpEvent</span>&lt;<span class="built_in">any</span>&gt;&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> token = <span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (token) &#123;</span><br><span class="line">      <span class="keyword">const</span> cloned = req.<span class="title function_">clone</span>(&#123;</span><br><span class="line">        <span class="attr">headers</span>: req.<span class="property">headers</span>.<span class="title function_">set</span>(<span class="string">&quot;Authorization&quot;</span>, <span class="string">&quot;Bearer &quot;</span> + token)</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span> next.<span class="title function_">handle</span>(cloned);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> next.<span class="title function_">handle</span>(req);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先，它从<code>localStroage</code>获取令牌。 然后克隆Http请求（因为Http请求保持不变），并在请求上为 “Authorization” 标头设置了带有令牌的值 “Bearer” 。 最后将其传递到管道中。</p>
+<p>让我们看看如何在服务器上验证此令牌。</p>
+<p>为了验证请求，我们不得不从Authorization标头中提取JWT，并检查时间戳和用户标识符。 此身份验证应用于我们要授权的路由。</p>
+<p>假设我们有一台Express-Backed节点服务器。 使用Express创建路由并添加身份验证中间件：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>()</span><br><span class="line">app</span><br><span class="line">  .<span class="title function_">route</span>(<span class="string">&quot;api/refferals&quot;</span>)</span><br><span class="line">  .<span class="title function_">get</span>(authMidWare, refferalCtrl.<span class="property">getRefferals</span>)</span><br></pre></td></tr></table></figure>
+<p>路线 “api/refferals” 受到保护。 在调用refferalCtrl.getRefferals以返回推荐列表之前，authMidWare必须先对HTTP请求中的Authorization标头进行身份验证，然后把访问权限传递给 “refferalCtrl.getRefferals” 。</p>
+<p>我们使用<code>express-jwt</code>库来验证Bearer令牌。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm i express-jwt</span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>()</span><br><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">&quot;express-jwt&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> authMidWare = <span class="title function_">jwt</span>(&#123;</span><br><span class="line">  <span class="attr">secret</span>: <span class="variable constant_">YOUR_SECRET_KEY_HERE</span></span><br><span class="line">&#125;)</span><br><span class="line">app</span><br><span class="line">  .<span class="title function_">route</span>(<span class="string">&quot;api/refferals&quot;</span>)</span><br><span class="line">  .<span class="title function_">get</span>(authMidWare, refferalCtrl.<span class="property">getRefferals</span>)</span><br></pre></td></tr></table></figure>
+<p>向jwt传递了一个秘密密钥，它将用于认证Authorization标头中的Bearer令牌。 如果承载令牌未正确签名并且令牌已过期，则jwt将引发错误。 如果全部通过，将运行refferalCtrl.getRefferals中间件，并将返回refferals列表。</p>
+<h2 id="后端模拟"><a href="#后端模拟" class="headerlink" title="后端模拟"></a>后端模拟</h2><p>有时候，我们想搭建一个<code>server</code>来测试我们的Angular应用程序行为。 我们甚至会发现，用Nodejs或其他语言框架中最简单的服务还是挺麻烦。 我们只需要简单的东西，它们可以非常快速地为我们的JSON对象提供服务。</p>
+<p>在这种情况下，HttpInterceptors将变得非常有用。 在这种情况下，我们不会通过HttpHandler＃handle向下传递Http请求请求，而是返回并给HttpResponse提供所需的伪数据。</p>
+<p>假设我们有一个从服务器请求用户列表的组件:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AppComponent</span> &#123;</span><br><span class="line">    <span class="attr">users$</span>: <span class="title class_">Observable</span></span><br><span class="line">    <span class="title function_">ngOnInit</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">users$</span> = <span class="variable language_">this</span>.<span class="property">httpClient</span>.<span class="title function_">get</span>(<span class="string">&quot;/api/users&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们将使用HttpInterceptor截取对“/ api / users”的Http调用，并返回包含用户数组的Observable：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> usersData = &#123;</span><br><span class="line">    <span class="string">&quot;users&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;tommy ki&quot;</span>,</span><br><span class="line">            <span class="string">&quot;age&quot;</span>: <span class="number">26</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;chisom&quot;</span>,</span><br><span class="line">            <span class="string">&quot;age&quot;</span>: <span class="number">46</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;elvis&quot;</span>,</span><br><span class="line">            <span class="string">&quot;age&quot;</span>: <span class="number">21</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;osy mattew&quot;</span>,</span><br><span class="line">            <span class="string">&quot;age&quot;</span>: <span class="number">21</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;valentine&quot;</span>,</span><br><span class="line">            <span class="string">&quot;age&quot;</span>: <span class="number">21</span></span><br><span class="line">        &#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BackendInterceptor</span> implemnets <span class="title class_">HttpInterceptor</span> &#123;</span><br><span class="line"> <span class="title function_">constructor</span>(<span class="params"><span class="keyword">private</span> injector: Injector</span>) &#123;&#125;</span><br><span class="line"> <span class="title function_">intercept</span>(<span class="attr">request</span>: <span class="title class_">HttpRequest</span>, <span class="attr">next</span>: <span class="title class_">HttpHandler</span>): <span class="title class_">Observable</span>&lt;<span class="title class_">HttpEvent</span>&lt;<span class="built_in">any</span>&gt;&gt; &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="title function_">of</span>(<span class="keyword">new</span> <span class="title class_">HttpResponse</span>(&#123;</span><br><span class="line">         <span class="attr">status</span>: <span class="number">200</span>,</span><br><span class="line">         <span class="attr">body</span>: usersData</span><br><span class="line">     &#125;));</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们创建了一个新的<code>HttpResponse</code>的<code>Observable</code>，而不是HttpHandler＃handle，它传入了伪造的用户数组usersData，响应状态为200并返回了Observable，这不会对其他服务产生影响。</p>
+<p>我们可以修改拦截器以在知道返回什么之前检查URL路径。<br>在请求之前对url判断一下就更好了</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BackendInterceptor</span> implemnets <span class="title class_">HttpInterceptor</span> &#123;</span><br><span class="line"> <span class="title function_">constructor</span>(<span class="params"><span class="keyword">private</span> injector: Injector</span>) &#123;&#125;</span><br><span class="line"> <span class="title function_">intercept</span>(<span class="attr">request</span>: <span class="title class_">HttpRequest</span>, <span class="attr">next</span>: <span class="title class_">HttpHandler</span>): <span class="title class_">Observable</span>&lt;<span class="title class_">HttpEvent</span>&lt;<span class="built_in">any</span>&gt;&gt; &#123;</span><br><span class="line">     <span class="keyword">if</span>(request.<span class="property">url</span>.<span class="title function_">includes</span>(<span class="string">&quot;/api/users&quot;</span>))</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">of</span>(<span class="keyword">new</span> <span class="title class_">HttpResponse</span>(&#123;</span><br><span class="line">            <span class="attr">status</span>: <span class="number">200</span>,</span><br><span class="line">            <span class="attr">body</span>: usersData</span><br><span class="line">        &#125;));</span><br><span class="line">     next.<span class="title function_">handle</span>(request)</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们检查请求对象中的url是否包含 “/api/users” 端点，以便知道返回假用户数组。 如果没有，我们将请求向下传递。</p>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>我们可以缓存Http请求和响应以提高性能。</p>
+<p>可以缓存Http请求的GET方法。</p>
+<p>举例来说，在应用的个人资料部分。 用户可以在更新个人资料并刷新页面后更新执行POST操作的个人资料，该页面执行GET请求以获取新的个人资料。</p>
+<p>如果他再次刷新页面，则该页面不应再次从服务器获取配置文件，因为先前的GET请求将获得与当前Get请求相同的结果，因此它们之间不会执行POST。 不需要在第二个GET请求上再次从服务器获取结果，这会影响性能。</p>
+<p>当GET方法之间没有进行任何修改请求时，它是理想的缓存方法。</p>
+<p>HttpInterceptor是在Angular中缓存GET方法的不错选择。 让我们看一下代码：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CacheInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HttpInterceptor</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">cache</span>: <span class="title class_">Map</span>&lt;<span class="title class_">HttpRequest</span>，<span class="title class_">HttpResponse</span>&gt; = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">intercept</span>(<span class="attr">req</span>: <span class="title class_">HttpRequest</span>&lt;<span class="built_in">any</span>&gt;, <span class="attr">next</span>: <span class="title class_">HttpHandler</span>): <span class="title class_">Observable</span>&lt;<span class="title class_">HttpEvent</span>&lt;<span class="built_in">any</span>&gt;&gt;&#123;</span><br><span class="line">    <span class="keyword">if</span>(req.<span class="property">method</span> !== <span class="string">&quot;GET&quot;</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> next.<span class="title function_">handle</span>(req)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(req.<span class="property">headers</span>.<span class="title function_">get</span>(<span class="string">&quot;reset&quot;</span>)) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">delete</span>(req)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="attr">cachedResponse</span>: <span class="title class_">HttpResponse</span> = <span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">get</span>(req)</span><br><span class="line">    <span class="keyword">if</span>(cachedResponse) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">of</span>(cachedResponse.<span class="title function_">clone</span>())</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> next.<span class="title function_">handle</span>(req).<span class="title function_">pipe</span>(</span><br><span class="line">            <span class="title function_">do</span>(<span class="function"><span class="params">stateEvent</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(stateEvent <span class="keyword">instanceof</span> <span class="title class_">HttpResponse</span>) &#123;</span><br><span class="line">                    <span class="variable language_">this</span>.<span class="property">cache</span>.<span class="title function_">set</span>(req, stateEvent.<span class="title function_">clone</span>())</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        ).<span class="title function_">share</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先，我们有一个缓存，其中HttpRequest和HttpResponse存储在键值对中。 在拦截方法中，检查GET方法，如果该方法不是GET，则不进行缓存，将请求沿链向下传递。</p>
+<p>它通过检查标题中的“reset”键来检查是否要重置缓存。 如果存在，则将删除缓存的响应并发出新请求。</p>
+<p>接下来，从缓存中获取请求的缓存响应。 如果缓存中有响应，则返回响应。 如果没有，则将新请求最终通过链传送到服务器。 服务器返回一个响应，该响应通过do运算符获得，该响应针对请求用键值对的形式进行缓存。 然后，响应通过拦截器的链传递到调用它的组件/服务。</p>
+<h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><p>我们可以从HttpInterceptor记录HttpRequest和HttpResponse。</p>
+<p>我们可以记录从请求到响应所花费的时间，我们记录HttpRequest和HttpResponse统计信息，只要您想要的任何信息，就由您决定要记录什么。</p>
+<p>让我们看看如何记录从请求到响应的时间。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LoggingInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HttpInterceptor</span> &#123;</span><br><span class="line">  </span><br><span class="line">  <span class="title function_">intercept</span>(<span class="attr">req</span>: <span class="title class_">HttpRequest</span>&lt;<span class="built_in">any</span>&gt;, <span class="attr">next</span>: <span class="title class_">HttpHandler</span>): <span class="title class_">Observable</span>&lt;<span class="title class_">HttpEvent</span>&lt;<span class="built_in">any</span>&gt;&gt;&#123;</span><br><span class="line">      <span class="keyword">const</span> started = <span class="title class_">Date</span>.<span class="title function_">now</span>()</span><br><span class="line">    <span class="keyword">return</span> next.<span class="title function_">handle</span>(req).<span class="title function_">pipe</span>(</span><br><span class="line">        <span class="title function_">finalize</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> elapsed = <span class="title class_">Date</span>.<span class="title function_">now</span>() - started;</span><br><span class="line">            <span class="title function_">log</span>(<span class="string">`URL: <span class="subst">$&#123;req.url&#125;</span> Method: <span class="subst">$&#123;req.method&#125;</span> Time took: <span class="subst">$&#123;elapsed&#125;</span> ms`</span>)  </span><br><span class="line">        &#125;))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这将记录请求的URL，到达服务器并获得响应所用的方法和时间。</p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>在处理http请求时，难免遇到错误。我们可以把错误统一处理，或做有针对性地处理。</p>
+<p>处理错误需要对 <code>HttpErrorResponse</code> 有点了解，我们可以从 <code>HttpErrorResponse</code> 中获取错误信息，状态码，url以及其他属性。</p>
+<p>关于 <code>HttpErrorResponse</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">declare</span> <span class="keyword">class</span> <span class="title class_">HttpErrorResponse</span> <span class="keyword">extends</span> <span class="title class_ inherited__">HttpResponseBase</span> <span class="keyword">implements</span> <span class="title class_">Error</span> &#123;</span><br><span class="line">    <span class="keyword">readonly</span> name = <span class="string">&quot;HttpErrorResponse&quot;</span>;</span><br><span class="line">    <span class="keyword">readonly</span> <span class="attr">message</span>: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">readonly</span> <span class="attr">error</span>: <span class="built_in">any</span> | <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Errors are never okay, even when the status code is in the 2xx success range.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">readonly</span> ok = <span class="literal">false</span>;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">init: &#123;</span></span><br><span class="line"><span class="params">        error?: <span class="built_in">any</span>;</span></span><br><span class="line"><span class="params">        headers?: HttpHeaders;</span></span><br><span class="line"><span class="params">        status?: <span class="built_in">number</span>;</span></span><br><span class="line"><span class="params">        statusText?: <span class="built_in">string</span>;</span></span><br><span class="line"><span class="params">        url?: <span class="built_in">string</span>;</span></span><br><span class="line"><span class="params">    &#125;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更多错误信息可以查看进一步查看 <code>HttpResponseBase</code></p>
+<p>我这里针对err.status为404的错误，为用户弹窗提示。</p>
+<p>首先通过拦截器调用链，利用tap操作符判断是否有错误，再使用 async&amp;await 处理错误操作，以免阻塞。然后判断 err是否属于 <code>HttpErrorResponse</code> ，如果是就可以对错误做你想要的反馈，记录日志也好、用户提示都可以。例子如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Injectable</span>()</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ErrorInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HttpInterceptor</span> &#123;</span><br><span class="line"><span class="title function_">intercept</span>(<span class="attr">req</span>: <span class="title class_">HttpRequest</span>&lt;<span class="built_in">any</span>&gt;, <span class="attr">next</span>: <span class="title class_">HttpHandler</span>): <span class="title class_">Observable</span>&lt;<span class="title class_">HttpEvent</span>&lt;<span class="built_in">any</span>&gt;&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> next.<span class="title function_">handle</span>(req).<span class="title function_">pipe</span>(</span><br><span class="line">    <span class="title function_">tap</span>(</span><br><span class="line">      <span class="function">(<span class="params">event: HttpEvent&lt;<span class="built_in">any</span>&gt;</span>) =&gt;</span> &#123; &#125;,</span><br><span class="line">      <span class="keyword">async</span> (<span class="attr">err</span>: <span class="built_in">any</span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (err <span class="keyword">instanceof</span> <span class="title class_">HttpErrorResponse</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (err.<span class="property">status</span> === <span class="number">404</span>) &#123;</span><br><span class="line">            <span class="comment">// TODO</span></span><br><span class="line">            <span class="comment">// 弹窗</span></span><br><span class="line">            <span class="keyword">const</span> toast = <span class="keyword">await</span> <span class="variable language_">this</span>.<span class="property">toastController</span>.<span class="title function_">create</span>(&#123;</span><br><span class="line">              <span class="attr">header</span>: err.<span class="property">statusText</span>,</span><br><span class="line">              <span class="attr">message</span>: err.<span class="property">message</span>,</span><br><span class="line">              <span class="attr">duration</span>: <span class="number">3000</span>,</span><br><span class="line">              <span class="attr">position</span>: <span class="string">&#x27;top&#x27;</span>,</span><br><span class="line">            &#125;);</span><br><span class="line">            toast.<span class="title function_">present</span>();</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我们可以用HttpInterceptors做的有用的事情无穷无尽。 在这里，我列出了其中的一些内容，感兴趣可以继续查找在Angular应用程序中非常有用的方法。</p>
+<p>Thanks for watching！😉</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>TommyKi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tommy0604.github.io/2019-04-22-Angular%E6%8B%A6%E6%88%AA%E5%99%A8/" title="Angular拦截器&amp;应用场景">https://tommy0604.github.io/2019-04-22-Angular拦截器/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Angular/" rel="tag"># Angular</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019-04-03-JS%E4%B8%AD%E7%9A%84this/" rel="prev" title="JS中的this">
+                  <i class="fa fa-chevron-left"></i> JS中的this
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019-08-07-Rxjs/" rel="next" title="Rxjs的使用">
+                  Rxjs的使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TommyKi</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"Tommy0604/BlogUtterances","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>

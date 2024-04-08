@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo01.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo01.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo01.ico">
+  <link rel="mask-icon" href="/images/logo01.ico" color="#222">
+  <meta name="google-site-verification" content="NfoHNvnMAz9S6JqgSiximHUo1x-iWZ_tymLcLHvG2OI">
+  <meta name="baidu-site-verification" content="code-2aKaLafO55">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tommy0604.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="第一部分，让我们从构建工具的角度，逐步深入了解 Vite，重点关注它的核心特性——依赖预构建。  理解 viteVite 是一个思维比较前卫而且先进的构建工具，它解决了一些Webpack解决不了的问题，同时降低了一些心智负担。Vite基于自己得天独厚的优势，他已经占有一席之地，Vite是 vue 团队的官方出品，背靠强大的生态，vue-cli已经将Vite作为预设构建工具。使用vue-cli去">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vite只言片语（一）">
+<meta property="og:url" content="https://tommy0604.github.io/front-end-engineering/Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/index.html">
+<meta property="og:site_name" content="Tommy&#39;s blog">
+<meta property="og:description" content="第一部分，让我们从构建工具的角度，逐步深入了解 Vite，重点关注它的核心特性——依赖预构建。  理解 viteVite 是一个思维比较前卫而且先进的构建工具，它解决了一些Webpack解决不了的问题，同时降低了一些心智负担。Vite基于自己得天独厚的优势，他已经占有一席之地，Vite是 vue 团队的官方出品，背靠强大的生态，vue-cli已经将Vite作为预设构建工具。使用vue-cli去">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://source.unsplash.com/1200x600/weekly?food">
+<meta property="og:image" content="https://tommy0604.github.io/images/vite/vite-deps.jpg">
+<meta property="og:image" content="https://tommy0604.github.io/images/vite/prebundling.jpg">
+<meta property="article:published_time" content="2024-01-15T06:06:40.000Z">
+<meta property="article:modified_time" content="2024-01-19T15:27:13.995Z">
+<meta property="article:author" content="TommyKi">
+<meta property="article:tag" content="Front end engineering">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://source.unsplash.com/1200x600/weekly?food">
+
+
+<link rel="canonical" href="https://tommy0604.github.io/front-end-engineering/Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tommy0604.github.io/front-end-engineering/Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/","path":"front-end-engineering/Vite只言片语01/","title":"vite只言片语（一）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vite只言片语（一） | Tommy's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Tommy's blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">developer、popper、喜新恋旧</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%A7%A3-vite"><span class="nav-number">1.</span> <span class="nav-text">理解 vite</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">什么是构建工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.</span> <span class="nav-text">构建工具做了什么</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89-vite%EF%BC%9F%EF%BC%9A%E5%AE%98%E6%96%B9%E9%A6%96%E5%BD%93%E5%85%B6%E5%86%B2%E7%9A%84%E6%8C%87%E5%BC%95"><span class="nav-number">3.</span> <span class="nav-text">为什么选 vite？：官方首当其冲的指引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E9%A2%84%E5%8A%A0%E8%BD%BD"><span class="nav-number">4.</span> <span class="nav-text">依赖预加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81"><span class="nav-number">4.1.</span> <span class="nav-text">为什么需要</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">5.</span> <span class="nav-text">思维导图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">源代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E9%A2%84%E6%9E%84%E5%BB%BA"><span class="nav-number">6.1.</span> <span class="nav-text">依赖预构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#buildStart"><span class="nav-number">6.2.</span> <span class="nav-text">buildStart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#initDepsOptimizer"><span class="nav-number">6.3.</span> <span class="nav-text">initDepsOptimizer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B"><span class="nav-number">6.3.1.</span> <span class="nav-text">初始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E7%BC%93%E5%AD%98%E5%92%8C%E8%AE%BE%E7%BD%AE%E7%8A%B6%E6%80%81"><span class="nav-number">6.3.2.</span> <span class="nav-text">加载缓存和设置状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E4%BC%98%E5%8C%96%E5%99%A8"><span class="nav-number">6.3.3.</span> <span class="nav-text">启动优化器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E7%BC%BA%E5%A4%B1%E7%9A%84%E5%AF%BC%E5%85%A5"><span class="nav-number">6.3.4.</span> <span class="nav-text">注册缺失的导入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E5%99%A8%E8%BF%90%E8%A1%8C"><span class="nav-number">6.3.5.</span> <span class="nav-text">优化器运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E4%BC%98%E5%8C%96"><span class="nav-number">6.3.6.</span> <span class="nav-text">提交优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%8A%9F%E8%83%BD"><span class="nav-number">6.3.7.</span> <span class="nav-text">其他功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">6.3.8.</span> <span class="nav-text">最后</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-End"><span class="nav-number">7.</span> <span class="nav-text">The End</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="TommyKi"
+      src="/images/malko.jpg">
+  <p class="site-author-name" itemprop="name">TommyKi</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Tommy0604" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Tommy0604" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/904859162@qq.com" title="E-Mail → 904859162@qq.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/big/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tommy0604.github.io/front-end-engineering/Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/malko.jpg">
+      <meta itemprop="name" content="TommyKi">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="vite只言片语（一） | Tommy's blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vite只言片语（一）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-01-15 14:06:40" itemprop="dateCreated datePublished" datetime="2024-01-15T14:06:40+08:00">2024-01-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-01-19 23:27:13" itemprop="dateModified" datetime="2024-01-19T23:27:13+08:00">2024-01-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Front-end-engineering/" itemprop="url" rel="index"><span itemprop="name">Front end engineering</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="https://source.unsplash.com/1200x600/weekly?food" alt=" "></p>
+<blockquote>
+<p>第一部分，让我们从构建工具的角度，逐步深入了解 <code>Vite</code>，重点关注它的核心特性——依赖预构建。</p>
+</blockquote>
+<h2 id="理解-vite"><a href="#理解-vite" class="headerlink" title="理解 vite"></a>理解 vite</h2><p><code>Vite</code> 是一个思维比较前卫而且先进的构建工具，它解决了一些<code>Webpack</code>解决不了的问题，同时降低了一些心智负担。<br><code>Vite</code>基于自己得天独厚的优势，他已经占有一席之地，<code>Vite</code>是 vue 团队的官方出品，背靠强大的生态，<code>vue-cli</code>已经将<code>Vite</code>作为预设构建工具。使用<code>vue-cli</code>去构建 vue 项目的时候你要写的<code>vue.config.js</code>不再是<code>webpack</code>的配置而是<code>vite</code>的配置(目前只基于浏览器项目)。<br><code>Vite</code>支持直接构建<code>react</code>、<code>angular</code>，和<code>svelte</code>项目。<br>而这只是<code>Vite</code>优势的一角。</p>
+<span id="more"></span>
+<h2 id="什么是构建工具"><a href="#什么是构建工具" class="headerlink" title="什么是构建工具"></a>什么是构建工具</h2><blockquote>
+<p>浏览器只认识 html、css、js。</p>
+</blockquote>
+<p>企业级项目里除了基本的原生 Api，为了提高团队生产力必定会加入其他<code>Library</code>，比如<code>TypeScript</code>、<code>Vue</code>、<code>sass</code>、<code>babel</code>、<code>build tool</code>等等。<br>在前后端没分离的多页应用时期，只要有任何代码、文件改动，都需要重新发布或者部署到服务器，才能看见最新的页面，开发起来相当麻烦。</p>
+<p>而<strong>构建工具</strong>能够帮我们把<code>tsc</code>、<code>react-compliler</code>、<code>sass</code>、<code>babel</code>，<code>uglifyjs</code>集成到一起，这样我们能把更多精力放在业务代码。</p>
+<h3 id="构建工具做了什么"><a href="#构建工具做了什么" class="headerlink" title="构建工具做了什么"></a>构建工具做了什么</h3><ul>
+<li>模块化支持：支持从<code>node_modules</code>引入代码 + 多种模块化支持（<code>vite</code>默认是 ESM 规范）</li>
+<li>代码兼容性与转译：比如<code>babel</code>语法降级，<code>less</code>、<code>ts</code>语法兼容等等</li>
+<li>提高项目性能：<ul>
+<li>压缩文件：压缩 JavaScript、CSS 等代码，减小文件大小，提高加载速度。</li>
+<li>文件指纹：为文件生成唯一的指纹或哈希值，以便于缓存管理和版本控制。</li>
+<li>代码分割：将代码拆分成更小的块，使得页面加载时只需下载当前视图所需的代码，提高加载速度。</li>
+</ul>
+</li>
+<li>优化开发体验：<ul>
+<li>错误检查和修复： 使用工具（如<code>ESLint</code>、<code>TSLint</code>）检查代码中的错误和潜在问题，并在可能的情况下自动修复。</li>
+<li>服务启动：提供本地开发服务器，支持热更新（<code>Hot Module Replacement</code>），使得开发过程更加高效。</li>
+</ul>
+</li>
+</ul>
+<p>如果没有构建工具，我们将要手动执行这些任务，这会导致效率低下、易出错，并且难以保持项目的可维护性。</p>
+<h2 id="为什么选-vite？：官方首当其冲的指引"><a href="#为什么选-vite？：官方首当其冲的指引" class="headerlink" title="为什么选 vite？：官方首当其冲的指引"></a>为什么选 vite？：<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/guide/why.html#the-problems">官方首当其冲的指引</a></h2><p>由于<code>Webpack</code>底层实现和兼容性考虑各方面因素，导致编译和打包时间劣于<code>Vite</code>。</p>
+<h2 id="依赖预加载"><a href="#依赖预加载" class="headerlink" title="依赖预加载"></a>依赖预加载</h2><blockquote>
+<p>官方解释：当你首次启动 vite 时，Vite 在本地加载你的站点之前预构建了项目依赖。默认情况下，它是自动且透明地完成的。</p>
+</blockquote>
+<p>可以理解为，vite 首先会找到对应的依赖，然后调用<code>esbuild</code>(对 js 语法进行处理的一个库)，将其他规范的代码转换成<code>esmodule</code>规范，然后放到当前目录下的<code>node modules/.vite/deps/</code>，对<code>esmodule</code>规范的各个模块统一集成。</p>
+<p><img src="/images/vite/vite-deps.jpg" alt=""></p>
+<p>官方也给出了相关说明<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/guide/features.html#npm-dependency-resolving-and-pre-bundling">npm-dependency-resolving-and-pre-bundling</a></p>
+<h3 id="为什么需要"><a href="#为什么需要" class="headerlink" title="为什么需要"></a>为什么需要</h3><ol>
+<li><strong>模块兼容性</strong>：不同的第三方包会有不同的导入导出格式(比如非 ESM 规范的 react，在开发环境，需要借助预构建将非 ESM 转成 ESM，从而在浏览器 import 模块时成功识别)</li>
+<li><strong>路径便捷处理</strong>：对路径的处理上可以直接使用 .vite/deps，方便路径重写</li>
+<li><strong>性能提升</strong>：网络多包传输的性能问题(也是原生 ESM 规范不敢支持<code>node_modules</code>的原因之一)，有了依赖预构建以后无论依赖有多少 export 和 import，<code>vite</code>都会尽可能的集成为一个或几个模块。</li>
+</ol>
+<p>根据上述三点，我们可以得出结论：<strong>依赖预构建是为了保障模块的兼容性，也是为了提升性能</strong>。</p>
+<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p>预构建究竟是怎么样的过程？我们先来看一幅关于依赖预构建的思维导图</p>
+<p><img src="/images/vite/prebundling.jpg" alt="深入浅出 Vite5 中依赖预构建&#39;"></p>
+<ul>
+<li><p><strong>启动开发服务器</strong>： 当执行 <code>npm run dev</code> 启动 Vite 的开发服务器时，Vite 默认会检索项目目录下的所有 .html 文件（忽略了 <code>node_modules</code>、<code>build.outDir</code>、<code>__tests__</code> 和 <code>coverage</code>）以确定需要预构建的依赖项。这一过程在没有明确指定 build.rollupOptions.input 或 optimizeDeps.entries 的情况下自动进行。</p>
+</li>
+<li><p><strong>分析入口文件</strong>： Vite 会分析项目的入口 HTML 文件，检测其中的 <code>&lt;script&gt;</code> 标签，以识别引入的 <code>JavaScript</code> 或 <code>TypeScript</code> 资源。例如，通过分析 <code>/src/main.ts</code>，Vite 能够识别项目的主要入口。</p>
+</li>
+<li><p><strong>分析模块依赖</strong>： 进一步分析 <code>/src/main.ts</code> 中的模块依赖，包括第三方依赖和项目内源代码。对于第三方依赖，Vite 记录其入口文件地址，并将其标记为外部模块，不进行深度递归扫描。对于项目内源代码，Vite 递归扫描所有的导入语句，建立模块之间的依赖关系。</p>
+</li>
+<li><p><strong>递归分析非第三方模块</strong>： 在分析主模块后，Vite 进一步递归分析非第三方模块中的依赖引用，例如 /src/App.tsx。这个过程重复第三步骤，构建完整的依赖关系图。</p>
+</li>
+<li><p><strong>生产依赖预构建</strong>： 基于建立的依赖关系图，Vite 利用 EsBuild 对扫描出的所有第三方依赖入口文件进行打包。生成的产物存放在 <code>node_modules/.vite/deps</code> 文件夹中，例如，源码中导入的 antd 最终会被构建为一个单独的 <code>antd.js</code> 文件。</p>
+</li>
+</ul>
+<p>这个过程的优势在于提高开发服务器的启动速度，同时通过按需预构建依赖，加速了整体的开发体验。</p>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><blockquote>
+<p>由于 Vite 的项目结构为 <code>monorepo</code> 结构，这里我们仅仅关心 vite 目录即可。</p>
+</blockquote>
+<p>首先，Vite 目录下的 <a target="_blank" rel="noopener" href="https://github.com/vitejs/vite/blob/main/packages/vite/bin/vite.js">/pakcages/vite/bin/vite.js</a> 文件是作为项目 cli 入口文件。<br>实际当运行 vite 命令时会执行该文件，执行该文件会经过以下调用链：</p>
+<p>执行 <code>/vite/src/node/cli.ts</code> 文件处理一系列命令行参数。</p>
+<p>处理完毕后再次调用 <code>/vite/src/node/server/index.ts</code> 创建开发服务器。</p>
+<p>创建服务关键函数便是 <a target="_blank" rel="noopener" href="https://github.com/vitejs/vite/blob/947aa53bb8ea60ce03a207421a6e7a4117385e58/packages/vite/src/node/server/index.ts#L384">createServer</a> 函数，其中不乏一些配置函数比如 <code>resolveConfig</code>、<code>resolveChokidarOptions</code>等等。</p>
+<h3 id="依赖预构建"><a href="#依赖预构建" class="headerlink" title="依赖预构建"></a>依赖预构建</h3><p>在 _createServer 下半部分我们能发现以下内容：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!middlewareMode &amp;&amp; httpServer) &#123;</span><br><span class="line">  <span class="comment">// overwrite listen to init optimizer before server start</span></span><br><span class="line">  <span class="keyword">const</span> listen = httpServer.<span class="property">listen</span>.<span class="title function_">bind</span>(httpServer);</span><br><span class="line">  httpServer.<span class="property">listen</span> = (<span class="keyword">async</span> (<span class="attr">port</span>: <span class="built_in">number</span>, ...<span class="attr">args</span>: <span class="built_in">any</span>[]) =&gt; &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// ensure ws server started</span></span><br><span class="line">      hot.<span class="title function_">listen</span>();</span><br><span class="line">      <span class="keyword">await</span> <span class="title function_">initServer</span>();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      httpServer.<span class="title function_">emit</span>(<span class="string">&quot;error&quot;</span>, e);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">listen</span>(port, ...args);</span><br><span class="line">  &#125;) <span class="keyword">as</span> <span class="built_in">any</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (options.<span class="property">hotListen</span>) &#123;</span><br><span class="line">    hot.<span class="title function_">listen</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">initServer</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 <code>initServer</code> 执行之前保证 WebSocket 服务器成功启动和连接，这与 HMR 相关。</p>
+<blockquote>
+<p>Hot Module Replacement，HMR 允许在运行时更新应用程序的一部分而无需进行完全刷新。为了实现 HMR，通常会使用 WebSocket 来在开发服务器和客户端之间建立实时的双向通信通道。这个通道用于传递模块变更的信息，以便在应用程序运行时进行相应的更新。</p>
+</blockquote>
+<p>接下来看核心函数 <code>initServer</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// httpServer.listen can be called multiple times</span></span><br><span class="line"><span class="comment">// when port when using next port number</span></span><br><span class="line"><span class="comment">// this code is to avoid calling buildStart multiple times</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">initingServer</span>: <span class="title class_">Promise</span>&lt;<span class="built_in">void</span>&gt; | <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">let</span> serverInited = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">initServer</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (serverInited) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">if</span> (initingServer) <span class="keyword">return</span> initingServer;</span><br><span class="line"></span><br><span class="line">  initingServer = (<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">await</span> container.<span class="title function_">buildStart</span>(&#123;&#125;);</span><br><span class="line">    <span class="comment">// start deps optimizer after all container plugins are ready</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_">isDepsOptimizerEnabled</span>(config, <span class="literal">false</span>)) &#123;</span><br><span class="line">      <span class="keyword">await</span> <span class="title function_">initDepsOptimizer</span>(config, server);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">warmupFiles</span>(server);</span><br><span class="line">    initingServer = <span class="literal">undefined</span>;</span><br><span class="line">    serverInited = <span class="literal">true</span>;</span><br><span class="line">  &#125;)();</span><br><span class="line">  <span class="keyword">return</span> initingServer;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="buildStart"><a href="#buildStart" class="headerlink" title="buildStart"></a>buildStart</h3><p>首先是两个 if 是为了防止 <code>buildStart</code> 多次调用产生性能问题，<br><code>container.buildStart(&#123;&#125;)</code> 主要负责触发并行执行构建过程中插件的 <code>buildStart</code> 钩子，确保插件在构建开始阶段得到调用。这对于插件执行一些在构建开始前的准备工作非常重要，例如一些初始化或预处理工作。</p>
+<h3 id="initDepsOptimizer"><a href="#initDepsOptimizer" class="headerlink" title="initDepsOptimizer"></a>initDepsOptimizer</h3><p>initDepsOptimizer 函数下的 createDepsOptimizer 便是 <code>pre-bundled</code> 的主要实现。</p>
+<h4 id="初始"><a href="#初始" class="headerlink" title="初始"></a>初始</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">createDepsOptimizer</span>(<span class="params"></span></span><br><span class="line"><span class="params">  config: ResolvedConfig,</span></span><br><span class="line"><span class="params">  server?: ViteDevServer</span></span><br><span class="line"><span class="params"></span>): <span class="title class_">Promise</span>&lt;<span class="built_in">void</span>&gt; &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在初始化阶段，该函数接收两个参数：config 是已解析的 Vite 配置，而 server 是 ViteDevServer 的实例。它还定义了一系列变量，包括日志记录器、是否是 SSR 模式、时间戳等。</p>
+<h4 id="加载缓存和设置状态"><a href="#加载缓存和设置状态" class="headerlink" title="加载缓存和设置状态"></a>加载缓存和设置状态</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cachedMetadata = <span class="keyword">await</span> <span class="title function_">loadCachedDepOptimizationMetadata</span>(config, ssr);</span><br><span class="line"><span class="keyword">let</span> <span class="attr">debounceProcessingHandle</span>: <span class="title class_">NodeJS</span>.<span class="property">Timeout</span> | <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">let</span> closed = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">let</span> metadata =</span><br><span class="line">  cachedMetadata || <span class="title function_">initDepsOptimizerMetadata</span>(config, ssr, sessionTimestamp);</span><br><span class="line"><span class="keyword">const</span> <span class="attr">depsOptimizer</span>: <span class="title class_">DepsOptimizer</span> = &#123;</span><br><span class="line">  <span class="comment">/* ... */</span></span><br><span class="line">&#125;;</span><br><span class="line">depsOptimizerMap.<span class="title function_">set</span>(config, depsOptimizer);</span><br><span class="line"><span class="keyword">let</span> newDepsDiscovered = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">newDepsToLog</span>: <span class="built_in">string</span>[] = [];</span><br><span class="line"><span class="keyword">let</span> <span class="attr">newDepsToLogHandle</span>: <span class="title class_">NodeJS</span>.<span class="property">Timeout</span> | <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">logNewlyDiscoveredDeps</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">/* ... */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> depOptimizationProcessing = promiseWithResolvers&lt;<span class="built_in">void</span>&gt;();</span><br><span class="line"><span class="keyword">let</span> <span class="attr">depOptimizationProcessingQueue</span>: <span class="title class_">PromiseWithResolvers</span>&lt;<span class="built_in">void</span>&gt;[] = [];</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">resolveEnqueuedProcessingPromises</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">/* ... */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">enqueuedRerun</span>: (<span class="function">() =&gt;</span> <span class="built_in">void</span>) | <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">let</span> currentlyProcessing = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">let</span> firstRunCalled = !!cachedMetadata;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">crawlEndFinder</span>: <span class="title class_">CrawlEndFinder</span> | <span class="literal">undefined</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<p>这一部分主要用于加载缓存的优化元数据，初始化一些状态变量，并设置一些用于处理优化过程的工具函数(比如生成<code>_metadata</code>文件，创建 <code>depsOptimizer</code> 对象等等)。其中，<code>depsOptimizer</code> 是一个关键的对象，它包含了优化元数据、处理新依赖的函数等。</p>
+<h4 id="启动优化器"><a href="#启动优化器" class="headerlink" title="启动优化器"></a>启动优化器</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">onCrawlEnd</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">await</span> depsOptimizer.<span class="property">scanProcessing</span>;</span><br><span class="line">  <span class="keyword">if</span> (optimizationResult &amp;&amp; !config.<span class="property">optimizeDeps</span>.<span class="property">noDiscovery</span>) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> crawlDeps = <span class="title class_">Object</span>.<span class="title function_">keys</span>(metadata.<span class="property">discovered</span>);</span><br><span class="line">    currentlyProcessing = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (crawlDeps.<span class="property">length</span> === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">debouncedProcessing</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在静态导入结束后，触发 <code>onCrawlEnd</code> 函数。根据是否有优化结果，决定是使用之前的结果进行优化，还是执行新的优化操作。这部分逻辑保证了 <code>Vite</code> 在启动阶段能够正确处理静态导入和优化依赖。</p>
+<h4 id="注册缺失的导入"><a href="#注册缺失的导入" class="headerlink" title="注册缺失的导入"></a>注册缺失的导入</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">registerMissingImport</span>(<span class="params">id: <span class="built_in">string</span>, resolved: <span class="built_in">string</span></span>): <span class="title class_">OptimizedDepInfo</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">return</span> missing;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>registerMissingImport</code> 函数用于注册缺失的导入，它负责将缺失的依赖添加到优化元数据中，以及触发后续的优化操作。这个函数是整个优化过程中一个关键的环节。</p>
+<h4 id="优化器运行"><a href="#优化器运行" class="headerlink" title="优化器运行"></a>优化器运行</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 优化运行成功后，将创建所有当前和发现的依赖项的新捆绑版本</span></span><br><span class="line"><span class="comment">// 在缓存目录中，并将新的元数据信息分配给 _metadata。仅在之前捆绑的依赖项发生更改时才会发出 fullReload。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果重新运行失败，_metadata 保持不变，当前发现的依赖项被清除，并发出 fullReload。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 所有依赖项，包括之前已知的和新发现的，都会被重新捆绑</span></span><br><span class="line"><span class="comment">// 保持插入顺序以保持元数据文件稳定</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">runOptimizer</span>(<span class="params">preRunResult?: DepOptimizationResult</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>runOptimizer</code> 函数是整个优化过程的核心。它包含了处理新依赖的逻辑、触发优化运行、处理优化结果的流程。这里通过比对哈希值等判断是否需要执行全页面刷新，以达到</p>
+<h4 id="提交优化"><a href="#提交优化" class="headerlink" title="提交优化"></a>提交优化</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">commitProcessing</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!needsReload) &#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">commitProcessing</span>();</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">commitProcessing</span>();</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 <code>commitProcessing</code> 函数中：</p>
+<ul>
+<li>如果不需要页面刷新 (needsReload 为 false)，则会执行 await commitProcessing()，并记录日志或启动 debounced 日志记录。</li>
+<li>如果需要页面刷新 (needsReload 为 true)，也会执行 await commitProcessing()，然后记录日志或启动 debounced 日志记录，并执行 fullReload 函数，发起全页面刷新。</li>
+</ul>
+<h4 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h4><p>此外，还有一些其他功能，如处理延迟启动优化器（<code>delayDepsOptimizerUntil</code>）、注册新依赖（<code>registerMissingImport</code>）、触发重新运行（<code>rerun</code>）等等。这些功能在整个优化过程中起到了辅助作用。</p>
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p><code>createDepsOptimizer</code> 函数是 <code>Vite</code> 中实现依赖优化的核心。通过对其代码的深入解析，我们理解了其初始化过程、静态导入处理、优化运行和结果处理等关键步骤。这个函数的设计巧妙，保证了 <code>Vite</code> 在开发过程中对依赖的快速响应和高效优化。</p>
+<h2 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h2><p>本文简单聊了聊构建工具和<code>vite</code> 的核心之一依赖预构建 <code>Dependency Pre-Bundling</code>，后续我会继续更新 vite 其他进阶内容，比如 HMR、 build过程等等。</p>
+<p>$The\,End$</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>TommyKi
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tommy0604.github.io/front-end-engineering/Vite%E5%8F%AA%E8%A8%80%E7%89%87%E8%AF%AD01/" title="vite只言片语（一）">https://tommy0604.github.io/front-end-engineering/Vite只言片语01/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Front-end-engineering/" rel="tag"># Front end engineering</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023-06-19-Vue3-i18n/" rel="prev" title="Vue3 i18n 实践">
+                  <i class="fa fa-chevron-left"></i> Vue3 i18n 实践
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/typescript-challenges/easy/" rel="next" title="typescript-challenges-easy">
+                  typescript-challenges-easy <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">TommyKi</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="utterances" type="application/json">{"enable":true,"repo":"Tommy0604/BlogUtterances","issue_term":"title","theme":"github-light"}</script>
+<script src="/js/third-party/comments/utterances.js"></script>
+
+</body>
+</html>
